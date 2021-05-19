@@ -1,26 +1,30 @@
-<h1 align="center">Spoty Share</h1
+# Spoty Share List
+It's a web application for sharing Playlists with it's users. The objective is to intensify and amplify the usage of music streaming services like Spotify®
 
-This website was created for the purpose of completing the first Milestone Project for the Code Institute's Full Stack Developer course. 
-Please note, this project is for education purposes only.
+Since everyone loves music (and I even more), why not do something enjoyable  and productive in the same time. As we all know, these days the consumption of the streaming services are only growing, and a great tool to have is to be part of a awesome group of people with great music taste, some may discord, where you can create, edit, share your Playlists and much more...(more features to be added in the future).
 
-## User Experience (UX)
+# Table of Contents
 
--   ### User stories
-
-    -   #### First Time Visitor Goals
-
-        1. Easily understand the main purpose of the site and learn more about it works and how to use its features offered.
-        2. Eeasily navigate throughout the site to find content.
-        3. Look for the Playlists/Albuns links in the community.
-        4. Create their own personalised Playlist/Album.
-
-    -   #### Returning Visitor Goals
-
-        1. Find New Playlists/Albuns from the community.
-        2. Update your own Catalogue of Playlists.
-        3. Find social media links.
-
-    -   #### Frequent User Goals
-        1. Check to see if there are any newly added Playlists.
-        2. Check to see if there are any new Songs, or Users.
-        3. Sign up to the Newsletter so that I am emailed any major updates and/or changes to the website.
+- [Spoty Share List](#Spoty-Share-List)
+- [UX](#ux)
+  * [General](#general)
+  * [User Stories](#user-stories)
+  * [Wireframes](#wireframes)
+- [Features](#features)
+  * [Dictionary](#dictionary)
+  * [Navigation](#navigation)
+  * [Footer](#footer)
+  * [About](#about)
+  * [Register](#register)
+  * [Log In](#log-in)
+  * [User Tools](#user-tools)
+  * [Profile Dashboard](#profile-dashboard)
+  * [Submit Playlist](#submit-Playlist)
+  * [Change Password](#change-password)
+  * [404 pages](#404-pages)
+  * [Search](#search)
+- [Features to implement in future updates](#features-to-implement-in-future-updates)
+- [User Types and permissions](#user-types-and-permissions)
+  * [Visitor](#visitor)
+  * [User](#user)
+  * [Admin](#admin)
