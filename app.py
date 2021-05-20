@@ -25,6 +25,11 @@ def get_playlists():
     return render_template("playlists.html", playlists=playlists)
 
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
