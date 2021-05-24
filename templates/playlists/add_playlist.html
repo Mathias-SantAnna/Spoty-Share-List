@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+Submit a new Playlist
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h3 class="center-align"> Add Playlist </h3>
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="">
+            <div class="row">
+                <!-- Music Genre name -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <select id="genre_name" name="genre_name" class="validate" required>
+                            <option value="" disabled selected>Choose Music Genre</option>
+                            {% for genre in genres %}
+                            <option value="{{ genre.genre_name}}">{{ genre.genre_name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="genre_name">Music Genre</label>
+                    </div>
+                </div>
+                <!-- Playlist Name -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <input id="playlist_name" name="playlist_name" type="text" pattern="^[^\s][A-Za-z0-9\s]{1,30}$"
+                            class="validate" required>
+                        <label for="playlist_name">Playlist name</label>
+                    </div>
+                </div>
+                
+                <!-- Enter Img URL -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
+                        value="https://...jpg" required>
+                        <label for="img_url">Image url</label>
+                        <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't image url, keep the default value.</span>
+                    </div>
+                </div>
+
+                <!-- Playlist Details  -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <textarea id="playlist_details" name="playlist_details" class="materialize-textarea validate"
+                            required></textarea>
+                        <label for="playlist_details">Playlist Details</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write a short summary in a single line.</span>
+                    </div>
+                </div>
+               
+                <!-- Playlist tracks  -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"
+                            required></textarea>
+                        <label for="playlist_tracks">Playlist Tracks</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
+                    </div>
+                </div>
+                
+                <!-- Artists Name  -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <textarea id="artist_name" name="artist_name" class="materialize-textarea validate"
+                            required></textarea>
+                        <label for="artist_name">Artist Name</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-calendar-alt prefix green-text text-accent-4"></i>
+                        <input id="released_date" name="released_date" type="text" class="datepicker validate" required>
+                        <label for="released_date">Released Date</label>
+                    </div>
+                </div>
+
+                <!-- Enter Playlist URL -->
+                <div class="row">
+                    <div class="input-field col s11">
+                        <input id="playlist_url" name="playlist_url" type="url" pattern="https?://.+" class="validate" 
+                        value="https://...jpg" required>
+                        <label for="playlist_url">Playlist Url</label>
+                        <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="row">
+                    <div class="col s6 center-align">
+                        <button type="submit" class="btn-small custom-btn waves-effect teal lighten-2">Add
+                            recipe</button>
+                    </div>
+                    <div class="col s6 center-align">
+                        <a class="btn-small custom-btn waves-effect red accent-4"
+                            href="{{ url_for('profile', username=session['user'])  }}">Cancel</a>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

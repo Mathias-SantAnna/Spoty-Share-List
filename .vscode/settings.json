@@ -20,6 +20,6 @@
       "**/CVS": true
    },
    "files.autoSave": "off",
-   "workbench.colorTheme": "Dracula Soft",
+   "workbench.colorTheme": "Dracula At Night",
    "editor.defaultFormatter": "HookyQR.beautify",
 }
