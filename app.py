@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 @app.route("/get_playlists")
 def get_playlists():
     playlists = mongo.db.playlists.find()
-    return render_template("/playlists.html", playlists=playlists)
+    return render_template("/playlists/playlists.html", playlists=playlists)
 
 
 # REGISTER
@@ -124,9 +124,10 @@ def add_playlist():
         flash("Playlist successfully added")
         return redirect(url_for("profile", username=session['user']))
 
+    artist = mongo.db.artist.find()
     music_genre = mongo.db.music_genre.find().sort("genre_name", 1)
     return render_template(
-        "playlists/add_playlist.html", music_genre=music_genre
+        "playlists/add_playlist.html", artist=artist, music_genre=music_genre
         )
 
 

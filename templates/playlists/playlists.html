@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <h2>Playlists Library!</h2>
+<div class="container playlist-container center-align">
+    <div class="row">
+        <h2>Playlists Library</h2>
+    </div>
+</div>
 
     {% for playlists in playlists %}
         {{ playlists.playlist_name }}<br>
@@ -14,5 +17,6 @@
         {{ playlists.created_by }}<br>
         {{ playlists.playlist_url }}<br>
     {% endfor %}
+</div>
 
 {% endblock %}

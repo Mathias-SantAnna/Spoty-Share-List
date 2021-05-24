@@ -18,7 +18,7 @@ Submit a new Playlist
                         <select id="genre_name" name="genre_name" class="validate" required>
                             <option value="" disabled selected>Choose Music Genre</option>
                             {% for genre in genres %}
-                            <option value="{{ genre.genre_name}}">{{ genre.genre_name}}</option>
+                            <option value="{{ music_genre.genre_name}}">{{ music_genre.genre_name}}</option>
                             {% endfor %}
                         </select>
                         <label for="genre_name">Music Genre</label>
@@ -39,7 +39,7 @@ Submit a new Playlist
                         <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
                         value="https://...jpg" required>
                         <label for="img_url">Image url</label>
-                        <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't image url, keep the default value.</span>
+                        <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@ Submit a new Playlist
                 <div class="row">
                     <div class="col s6 center-align">
                         <button type="submit" class="btn-small custom-btn waves-effect teal lighten-2">Add
-                            recipe</button>
+                            Playlist</button>
                     </div>
                     <div class="col s6 center-align">
                         <a class="btn-small custom-btn waves-effect red accent-4"
