@@ -15,10 +15,10 @@ Submit a new Playlist
                 <!-- Music Genre name -->
                 <div class="row">
                     <div class="input-field col s11">
-                        <select id="genre_name" name="genre_name" class="validate" required>
+                        <select id="genre" name="genre_name" class="validate" required>
                             <option value="" disabled selected>Choose Music Genre</option>
-                            {% for genre in genres %}
-                            <option value="{{ music_genre.genre_name}}">{{ music_genre.genre_name}}</option>
+                            {% for genre in music_genre %}
+                            <option value="{{genre._id}}">{{genre.genre_name}}</option>
                             {% endfor %}
                         </select>
                         <label for="genre_name">Music Genre</label>

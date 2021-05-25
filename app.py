@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from flask_pymongo import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -47,7 +48,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-        
+          
     return render_template("/register.html")
 
 
@@ -85,10 +86,19 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    username = user["username"]
+    user_playlist = list(mongo.db.playlist.find(
+        {'created_by': ObjectId(user["_id"])}))
+    for paylist in user_playlist:
+        paylist['created_by'] = mongo.db.users.find_one(
+            {"_id": paylist['created_by']})['username']
+        paylist['genre'] =  mongo.db.music_genre.find_one(
+            {"_id": paylist['genre']})['genre_name']
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", username=username, user_playlist=user_playlist)
 
     return redirect(url_for("login"))
 
@@ -109,23 +119,25 @@ def add_playlist():
         render_template("templates/error_handlers/404.html")
 
     if request.method == "POST":
-        Playlist = {
-            "genre_name": request.form.get("genre_name"),
+        user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        playlist = {
+            "genre": ObjectId(request.form.get("genre_name")),
             "playlist_name": request.form.get("playlist_name"),
             "img_url": request.form.get("img_url"),
             "playlist_details": request.form.get("playlist_details"),
             "playlist_tracks": request.form.get("playlist_tracks"),
             "artist_name": request.form.get("artist_name"),
-            "created_by": session["user"],
+            "created_by": ObjectId(user_id),
             "playlist_url": request.form.get("playlist_url")
         }
 
-        mongo.db.playlist.insert_one(Playlist)
+        mongo.db.playlist.insert_one(playlist)
         flash("Playlist successfully added")
         return redirect(url_for("profile", username=session['user']))
 
     artist = mongo.db.artist.find()
-    music_genre = mongo.db.music_genre.find().sort("genre_name", 1)
+    music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
         "playlists/add_playlist.html", artist=artist, music_genre=music_genre
         )
