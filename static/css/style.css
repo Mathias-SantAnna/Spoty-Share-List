@@ -20,4 +20,26 @@ nav .brand-logo {
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;
-    white-space: nowrap;
+    white-space: nowrap;}
+
+
+ /*  Single Plylist */
+ 
+ .playlist-container{
+    margin-top:1rem;
+}
+
+.card.small .card-image+.card-content, .card.medium .card-image+.card-content, .card.large .card-image+.card-content {
+    max-height: 50%;
+}
+
+.card-content{
+    max-height: inherit !important;
+    padding: 0.5rem !important;
+}
+
+/*  Profile */
+
+.username{
+    text-transform: capitalize;
+}

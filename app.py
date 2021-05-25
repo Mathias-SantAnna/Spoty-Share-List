@@ -22,8 +22,22 @@ mongo = PyMongo(app)
 @app.route("/") 
 @app.route("/get_playlists")
 def get_playlists():
-    playlists = mongo.db.playlists.find()
+    playlists = mongo.db.playlist.find()
     return render_template("/playlists/playlists.html", playlists=playlists)
+
+# SEARCH PLAYLISTS
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.playlist.find({"$text": {"$search": query}}))
+    if len(playlist) == 0:
+        flash(f"Sorry no playlists with {query} were found!")
+    else:
+        flash(f"Your search for {query} returned {len(playlist)} result(s)!")
+    return render_template("/playlists/playlists.html", playlist=playlist)  
+
+
+
 
 
 # REGISTER
