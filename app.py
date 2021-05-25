@@ -91,11 +91,11 @@ def profile(username):
     username = user["username"]
     user_playlist = list(mongo.db.playlist.find(
         {'created_by': ObjectId(user["_id"])}))
-    for paylist in user_playlist:
-        paylist['created_by'] = mongo.db.users.find_one(
-            {"_id": paylist['created_by']})['username']
-        paylist['genre'] =  mongo.db.music_genre.find_one(
-            {"_id": paylist['genre']})['genre_name']
+    for playlist in user_playlist:
+        playlist['created_by'] = mongo.db.users.find_one(
+            {"_id": playlist['created_by']})['username']
+        playlist['genre'] = mongo.db.music_genre.find_one(
+            {"_id": playlist['genre']})['genre_name']
     if session["user"]:
         return render_template(
             "profile.html", username=username, user_playlist=user_playlist)
@@ -141,6 +141,37 @@ def add_playlist():
     return render_template(
         "playlists/add_playlist.html", artist=artist, music_genre=music_genre
         )
+
+
+# EDIT PLAYLIST
+@ app.route("/edit_playlist", methods=["GET", "POST"])
+def edit_playlist():
+    if not session.get("user"):
+        render_template("templates/error_handlers/404.html")
+
+    if request.method == "POST":
+        user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        submit = {
+            "genre": ObjectId(request.form.get("genre_name")),
+            "playlist_name": request.form.get("playlist_name"),
+            "img_url": request.form.get("img_url"),
+            "playlist_details": request.form.get("playlist_details"),
+            "playlist_tracks": request.form.get("playlist_tracks"),
+            "artist_name": request.form.get("artist_name"),
+            "created_by": ObjectId(user_id),
+            "playlist_url": request.form.get("playlist_url")
+        }
+
+        mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, submit)
+        flash("Playlist successfully edited")
+        return redirect(url_for("profile", username=session['user']))
+
+    playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
+    artist = mongo.db.artist.find()
+    music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+    return render_template(
+        "playlists/add_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
 
 
 # THE APP
