@@ -1,21 +1,25 @@
+# Import Python Modules
 import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from flask_pymongo import ObjectId
+from bson.objectid import ObjectId
+import bson
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
-
+# Flask Instance
 app = Flask(__name__)
 
+# MongoDB Config
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-
+# MongoDB Global Variable
 mongo = PyMongo(app)
 
 
@@ -24,20 +28,6 @@ mongo = PyMongo(app)
 def get_playlists():
     playlists = mongo.db.playlist.find()
     return render_template("/playlists/playlists.html", playlists=playlists)
-
-# SEARCH PLAYLISTS
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    query = request.form.get("query")
-    recipes = list(mongo.db.playlist.find({"$text": {"$search": query}}))
-    if len(playlist) == 0:
-        flash(f"Sorry no playlists with {query} were found!")
-    else:
-        flash(f"Your search for {query} returned {len(playlist)} result(s)!")
-    return render_template("/playlists/playlists.html", playlist=playlist)  
-
-
-
 
 
 # REGISTER
@@ -62,7 +52,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-          
+        
     return render_template("/register.html")
 
 
@@ -177,7 +167,8 @@ def edit_playlist():
             "playlist_url": request.form.get("playlist_url")
         }
 
-        mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, submit)
+        mongo.db.playlist.update(
+            {"_id": ObjectId(playlist_id)}, submit)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))
 
@@ -185,7 +176,8 @@ def edit_playlist():
     artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/add_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
+        "playlists/add_playlist.html", playlist=playlist,
+         artist=artist, music_genre=music_genre)
 
 
 # THE APP
