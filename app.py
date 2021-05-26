@@ -30,6 +30,17 @@ def get_playlists():
     return render_template("/playlists/playlists.html", playlists=playlists)
 
 
+# SINGLE PLAYLIST
+@app.route("/playlists/<playlist_id>")
+def playlist(playlist_id):
+    try:
+        bson.objectid.ObjectId.is_valid(playlist_id)
+        playlist = mongo.db.recipes.find_one({"_id": ObjectId(playlist_id)})
+        genre = mongo.db.music_genre.find()
+        return render_template("playlist.html", playlist=playlist,
+                               genre_name=genre, playlist_name=playlist)
+
+
 # REGISTER
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -50,9 +61,10 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Welcome, {}".format(
+            request.form.get("username")), "success")
         return redirect(url_for("profile", username=session["user"]))
-        
+
     return render_template("/register.html")
 
 
