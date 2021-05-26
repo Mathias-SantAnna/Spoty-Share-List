@@ -4,8 +4,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
-import bson
+from flask_pymongo import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -27,18 +26,43 @@ mongo = PyMongo(app)
 @app.route("/get_playlists")
 def get_playlists():
     playlists = mongo.db.playlist.find()
-    return render_template("/playlists/playlists.html", playlists=playlists)
+    music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+    return render_template("/playlists/playlists.html", playlists=playlists, music_genre=music_genre)
+
+
+# SEARCH PLAYLISTS
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    playlist = list(mongo.db.playlist.find({"$text": {"$search": query}}))
+    if len(playlist) == 0:
+        flash(f"Sorry no playlists with {query} were found!")
+    else:
+        flash(f"Your search for {query} returned {len(playlist)} result(s)!")
+    return render_template("/playlists/playlists.html", playlist=playlist)  
+
+
+# FILTER PLAYLISTS (GENRE & ARTISTS)
+@app.route("/genre_filter/<id>")
+def genre_filter(id):
+    genre = list(mongo.db.music_genre.find({"playlist_name": id}))
+    return render_template("/playlists/playlists.html", genre=genre)
+
+
+# FILTER PLAYLISTS (GENRE & ARTISTS)
+@app.route("/artist_filter/<id>")
+def artist_filter(id):
+    artist = list(mongo.db.artist.find({"artist": id}))
+    return render_template("playlist/playlist.html", artist=artist)
 
 
 # SINGLE PLAYLIST
-@app.route("/playlists/<playlist_id>")
+@app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
-    try:
-        bson.objectid.ObjectId.is_valid(playlist_id)
-        playlist = mongo.db.recipes.find_one({"_id": ObjectId(playlist_id)})
-        genre = mongo.db.music_genre.find()
-        return render_template("playlist.html", playlist=playlist,
-                               genre_name=genre, playlist_name=playlist)
+    playlist_db = mongo.db.playlist.find_one_or_404(
+        {'_id': ObjectId(playlist_id)})
+
+    return render_template("playlist/playlist.html", playlist=playlist_db)
 
 
 # REGISTER
