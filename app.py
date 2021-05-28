@@ -24,8 +24,8 @@ mongo = PyMongo(app)
 
 # Index
 @app.route("/") 
-@app.route("/get_playlists")
-def get_playlists():
+@app.route("/home")
+def home():
     playlists = mongo.db.playlist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
@@ -142,6 +142,7 @@ def profile(username):
         return render_template(
             "profile.html", username=username, user_playlist=user_playlist)
 
+    flash("Access denied. Create your own account and login", "error")
     return redirect(url_for("login"))
 
 
@@ -214,8 +215,10 @@ def edit_playlist():
     artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/add_playlist.html", playlist=playlist,
-         artist=artist, music_genre=music_genre)
+        "playlists/add_playlist.html",
+         playlist=playlist,
+         artist=artist, 
+         music_genre=music_genre)
 
 
 # THE APP

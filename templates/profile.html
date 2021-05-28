@@ -11,42 +11,64 @@
         </div>
         <div class="row">
             {% for playlist in playlists %}
-            <div class="col s12 m6 l4">
-                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-
-                    <div class="container">
-                        <div class="card">
-                            <div class="card-image">
-                                <img class="img_playlist responsive-img" src="{{ playlist.img_url }}" alt="playlist image">
-                            </div>
-                            <div class="card-content">
-                                <h4>{{ playlist.playlist_name }}</h4>
-                                    <p>Genre: {{ music_genre.genre_name}}</p>
-                            </div>
-                            <div class="card-action"> 
-                                        <a class="btn waves-effect btn modal-trigger green accent-4" Style="margin-right:30px;" href="#modal1"><i class="material-icons iconclass">delete</i></a>   
-                                        <!-- Modal Structure -->
-                                        <div id="modal1" class="modal">
-                                            <div class="modal-content">
-                                            <h4>Are you sure you want to delete your playlist?</h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" class="modal-close waves-effect btn-flat green accent-4 ">Cancel</a>
-                                                <a href="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" class="modal-close waves-effect btn-flat red accent-4">YES</a>
-                                            </div>
-                                        </div>
-
-                                        <a href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"
-                                            class="btn waves-effect teal lighten-1"><i class="material-icons iconclass">Save Changes</i></a>
-                            </div>
-                        </div>
+            {% if session.user | lower == playlist.username | lower %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card playlist-summary playlist-summary-height bg-color-fbeade">
+                    <!-- playlist Image & Genre & Title -->
+                    <div class="card-body">
+                        {% if playlist.playlist_img_url %}
+                        <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
+                            <img class="card-img-top playlist-img-top" src="{{ playlist.playlist_img_url }}" alt="{{ playlist.playlist_title }}" />
+                        </a>
+                        {% else %}
+                        <img class="card-img-top playlist-img-top"
+                            src="{{ url_for('static', filename='images/no-playlist-img.png') }}" alt="No playlist image" />
+                        {% endif %}
+                        <p class="card-text genre">Genre: {{ playlist.genre_name | title }}</p>
+                        <h4>{{ playlist.playlist_name | title }}</h4>
+                        <!-- playlist Owner & Posted Date -->
+                        <ul class="list-group list-group-flush posted-list">
+                            <li class="list-group-item bg-color-fbeade text-center">
+                                Posted on {{ playlist.created_by }}
+                            </li>
+                        </ul>
                     </div>
-                </a>
+                    <!-- Edit & Delet playlist Buttons -->
+                    <div class="card-body">
+                        <a class="btn manage-playlist-edit btn-ffd5b7" href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="fas fa-edit"></i>Save Changes</a>
+                        <button class="btn manage-playlist-delete btn-e84610" type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </div>
+                </div>
             </div>
 
+            <!-- Modal for Delete Confirmation & Credit: MDB Modal @ https://mdbootstrap.com/docs/standard/components/modal/ -->
+            <div id="modal-delete{{ playlist._id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content color-493323">
+                        <div class="modal-header">
+                            <h4 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Are you sure to DELETE?</h4>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="h3 font-weight-700 mb-0">{{ playlist.playlist_title | title }} <span class="h5">playlist</span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" method="POST">
+                                <input class="btn btn-e84610 font-weight-700" type="submit" value="Delete">
+                            </form>
+                            <button class="btn btn-ffd5b7-06" type="button" data-mdb-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
+        <!-- /End of Credit -->
     </div>
-</div>
+</section>
 
 {% endblock %}
