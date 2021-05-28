@@ -1,4 +1,12 @@
 # Spoty Share List 
+
+<div align="center">
+
+  <img src="https://i.ibb.co/mN6nYwf/Site-Mockup.jpg" alt="Screenshot: PokeCards Site Mockup" >
+  <img scr="https://i.postimg.cc/06gBvFN4/Spoty-Share-List.gif" alt= "Site Logo">
+  <img scr="https://i.ibb.co/94gcrmY/White-Full-Logo.png" alt= "Site Logo2">
+</div>
+
 It's a mobile-first &#38; responsive web application for sharing Playlists with it's users. The objective is to intensify and amplify the usage of music streaming services like Spotify® 🎶
 Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/home)
 
