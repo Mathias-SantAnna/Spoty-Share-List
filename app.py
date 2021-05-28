@@ -22,12 +22,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Index
 @app.route("/") 
 @app.route("/get_playlists")
 def get_playlists():
     playlists = mongo.db.playlist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
-    return render_template("/playlists/playlists.html", playlists=playlists, music_genre=music_genre)
+    return render_template(
+        "/playlists/playlists.html", playlists=playlists, music_genre=music_genre)
 
 
 # SEARCH PLAYLISTS
@@ -45,7 +47,7 @@ def search():
 # FILTER PLAYLISTS (GENRE & ARTISTS)
 @app.route("/genre_filter/<id>")
 def genre_filter(id):
-    genre = list(mongo.db.music_genre.find({"playlist_name": id}))
+    genre = list(mongo.db.music_genre.find({"genre_name": id}))
     return render_template("/playlists/playlists.html", genre=genre)
 
 
@@ -53,7 +55,7 @@ def genre_filter(id):
 @app.route("/artist_filter/<id>")
 def artist_filter(id):
     artist = list(mongo.db.artist.find({"artist": id}))
-    return render_template("playlist/playlist.html", artist=artist)
+    return render_template("playlists/playlists.html", artist=artist)
 
 
 # SINGLE PLAYLIST
@@ -62,7 +64,7 @@ def playlist(playlist_id):
     playlist_db = mongo.db.playlist.find_one_or_404(
         {'_id': ObjectId(playlist_id)})
 
-    return render_template("playlist/playlist.html", playlist=playlist_db)
+    return render_template("playlists/playlists.html", playlist=playlist_db)
 
 
 # REGISTER
