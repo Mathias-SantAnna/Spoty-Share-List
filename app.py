@@ -29,7 +29,9 @@ def home():
     playlists = mongo.db.playlist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "/playlists/playlists.html", playlists=playlists, music_genre=music_genre)
+        "/playlists/playlists.html",
+         playlists=playlists, 
+         music_genre=music_genre)
 
 
 # SEARCH PLAYLISTS
