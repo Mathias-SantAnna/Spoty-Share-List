@@ -10,19 +10,15 @@
             </h3>
         </div>
         <div class="row">
-            {% for playlist in playlists %}
-            {% if session.user | lower == playlist.username | lower %}
+            {% for playlist in user_playlist %}
             <div class="col-md-6 col-lg-4">
                 <div class="card playlist-summary playlist-summary-height bg-color-fbeade">
                     <!-- playlist Image & Genre & Title -->
                     <div class="card-body">
-                        {% if playlist.playlist_img_url %}
-                        <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-                            <img class="card-img-top playlist-img-top" src="{{ playlist.playlist_img_url }}" alt="{{ playlist.playlist_title }}" />
-                        </a>
+                        {% if playlist.img_url %}
+                        <img class="card-img-top playlist-full-img border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
                         {% else %}
-                        <img class="card-img-top playlist-img-top"
-                            src="{{ url_for('static', filename='images/no-playlist-img.png') }}" alt="No playlist image" />
+                        <img class="card-img-top playlist-full-img border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                         {% endif %}
                         <p class="card-text genre">Genre: {{ playlist.genre_name | title }}</p>
                         <h4>{{ playlist.playlist_name | title }}</h4>
@@ -56,7 +52,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <form action="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" method="POST">
+                            <form  method="POST">
                                 <input class="btn btn-e84610 font-weight-700" type="submit" value="Delete">
                             </form>
                             <button class="btn btn-ffd5b7-06" type="button" data-mdb-dismiss="modal">No</button>
@@ -64,7 +60,6 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
         <!-- /End of Credit -->

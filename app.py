@@ -195,8 +195,7 @@ def edit_playlist():
         render_template("templates/error_handlers/404.html")
 
     if request.method == "POST":
-        user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
+        user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
         submit = {
             "genre": ObjectId(request.form.get("genre_name")),
             "playlist_name": request.form.get("playlist_name"),
@@ -207,9 +206,8 @@ def edit_playlist():
             "created_by": ObjectId(user_id),
             "playlist_url": request.form.get("playlist_url")
         }
-
-        mongo.db.playlist.update(
-            {"_id": ObjectId(playlist_id)}, submit)
+    
+        mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, submit)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))
 
