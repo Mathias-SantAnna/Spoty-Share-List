@@ -43,3 +43,10 @@ nav .brand-logo {
 .username{
     text-transform: capitalize;
 }
+
+#section-playlist {
+    margin: 0 auto 3rem;
+    max-width: 55rem;
+    padding: 3rem 3rem 2rem;
+    width: 85%;
+}

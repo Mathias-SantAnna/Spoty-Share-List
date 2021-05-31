@@ -1,5 +1,5 @@
 # Spoty Share List 
-[![LOGO-2.gif](https://i.postimg.cc/T3t2wrZK/LOGO-2.gif)](https://postimg.cc/9DqHgqX2)
+[![LOGO-2.gif](https://i.postimg.cc/T3t2wrZK/LOGO-2.gif)](https://postimg.cc/bsHMtJJn)
 
 It's a mobile-first &#38; responsive web application for sharing Playlists with it's users. The objective is to intensify and amplify the usage of music streaming services like Spotify® 🎶
 Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/home)
@@ -122,14 +122,14 @@ Summary of playlists and full playlists are accessible by any users. Summary of 
 
 Below is the chart of the website to show the core relationships between the pages. &#40;Most of the pages are linked to each other subject to permission&#41;<br>
 
-![image](https://github.com/Toto-Kotaro-Tanaka/ms3-uncle-jams-baking-playlists/blob/master/readme/ux/front-end-chart.png)<br>
+![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/SiteMap2.0.png)<br>
 
 — **Back-end** —<br>
 Users must have an account to create playlists so there is a **users collection** that has <ins>username</ins> and <ins>password</ins> as keys of the data. <ins>username</ins> in **users collections** is linked with the <ins>username</ins> in **playlists collection** because users who have an account can only create a Playlist and they create a Playlist in their own account. Same principle as <ins>username</ins> in **users collection** that users can only create a Playlist for the Music Genre available in a **Music Genre collection** so it is liked with <ins>playlist_name</ins> in **playlists collection**. Music Genre in **Music Genre collection** are editable by admin so it is created as an independent collection. Data in **subscription collection** is independent data for newsletters because users who do not have an account can also subscribe to it if they wish to do. The data in all the collections are retrievable and can be identified by the key or unique id of the object.
 
 Below is the chart of the database to show the collections and their relationships.
 
-![image](https://github.com/Toto-Kotaro-Tanaka/ms3-uncle-jams-baking-playlists/blob/master/readme/ux/back-end-chart.png)<br>
+![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/Collections%20SCHEMA.png
 
 > **Note:**<br>
 > On the subscription collection, subs_name is listed but the subscribe function collects e-mail address only

@@ -206,7 +206,7 @@ def edit_playlist():
             "created_by": ObjectId(user_id),
             "playlist_url": request.form.get("playlist_url")
         }
-    
+        
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, submit)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))
@@ -215,10 +215,7 @@ def edit_playlist():
     artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/add_playlist.html",
-         playlist=playlist,
-         artist=artist, 
-         music_genre=music_genre)
+        "playlists/add_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
 
 
 # THE APP
