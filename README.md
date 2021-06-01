@@ -10,7 +10,7 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
 
 - [Spoty Share List](#Spoty-Share-List)
 - [UX](#ux)
-  * [General](#WHO'S THIS WEBSITE FOR)
+  * [General](##WHO'S-THIS-WEBSITE-FOR)
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
 - [Features](#features)
