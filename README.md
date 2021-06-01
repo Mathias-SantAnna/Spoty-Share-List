@@ -129,7 +129,7 @@ Users must have an account to create playlists so there is a **users collection*
 
 Below is the chart of the database to show the collections and their relationships.
 
-![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/Collections%20SCHEMA.png
+![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/Collections%20SCHEMA.png)
 
 > **Note:**<br>
 > On the subscription collection, subs_name is listed but the subscribe function collects e-mail address only
@@ -140,10 +140,16 @@ It is a mobile-first website because people usually bake with a recipe so a good
 
 - [Wireframes: Home &#40;`index.html`&#41;](/workspace/Spoty-Share-List/wireframes/Home.png)
 
-- [Wireframes: Login / Register &#40;`login.html`&#41;](/workspace/Spoty-Share-List/wireframes/Register_Login.png) CHANGE HERE!!
+- [Wireframes: Login / Register &#40;`login.html`&#41;](/workspace/Spoty-Share-List/wireframes/Register_Login.png) UPDATE LATER!!
 
 - [Wireframes: Profile &#40;`profile.html`&#41;](/workspace/Spoty-Share-List/wireframes/.png)
 
 - [Wireframes: Playlist &#40;`playlist.html`&#41;](/workspace/Spoty-Share-List/wireframes/SinglePlaylist.png)
 
 - [Wireframes: Playlists Library &#40;`playlists.html`&#41;](/workspace/Spoty-Share-List/wireframes/PlaylistsLibrary.png)
+
+- [Wireframes: Create a Playlist &#40;`add_playlist.html`&#41;](/workspace/Spoty-Share-List/wireframes/CreateYourPlaylist.png)
+
+- [Wireframes: Edit a Playlist &#40;`edit_playlist.html`&#41;](/workspace/Spoty-Share-List/wireframes/EditPlaylist.png)
+
+- [Wireframes: Manage Genre &#40;`manage_genre.html`&#41;](/workspace/Spoty-Share-List/wireframes/ManageGenre(Admin).png) UPDATE LATER!
