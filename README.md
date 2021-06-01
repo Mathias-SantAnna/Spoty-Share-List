@@ -133,3 +133,17 @@ Below is the chart of the database to show the collections and their relationshi
 
 > **Note:**<br>
 > On the subscription collection, subs_name is listed but the subscribe function collects e-mail address only
+
+### Skeleton Plane
+
+It is a mobile-first website because people usually bake with a recipe so a good mobile-first design helps users whose main purpose is seeing recipes. For users whose main purpose is creating and posting recipes, the form is also well designed on both mobile and desktop sizes. There are wireframes of mobile and desktop sizes for all the core pages of the website.
+
+- [Wireframes: Home &#40;`index.html`&#41;](/workspace/Spoty-Share-List/wireframes/Home.png)
+
+- [Wireframes: Login / Register &#40;`login.html`&#41;](/workspace/Spoty-Share-List/wireframes/Register_Login.png) CHANGE HERE!!
+
+- [Wireframes: Profile &#40;`profile.html`&#41;](/workspace/Spoty-Share-List/wireframes/.png)
+
+- [Wireframes: Playlist &#40;`playlist.html`&#41;](/workspace/Spoty-Share-List/wireframes/SinglePlaylist.png)
+
+- [Wireframes: Playlists Library &#40;`playlists.html`&#41;](/workspace/Spoty-Share-List/wireframes/PlaylistsLibrary.png)
