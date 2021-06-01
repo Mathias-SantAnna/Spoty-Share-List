@@ -252,6 +252,7 @@ Updating README.md and some testing is also done during the above process
 
 - [Balsamiq](https://balsamiq.com/) for wireframes
 - [ImageResizer](https://imageresizer.com/) for resizing images
+- [PostImages](https://postimages.org/) for hosting images online
 - [PNG to ICO](https://hnet.com/png-to-ico/) for converting png to ico for favicon
 - [removebg](https://www.remove.bg/) for removing background images
 - [Canva](https://www.canva.com/) for creating logos and some images
