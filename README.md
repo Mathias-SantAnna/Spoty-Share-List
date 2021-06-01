@@ -192,3 +192,30 @@ This project contains both front-end and back-end so well-structured planning is
 Updating README.md and some testing is also done during the above process
 
 <div align="right"><a href="#top">🔝</a></div>
+
+## FEATURES
+
+### Existing Features
+
+- Create with **HTML5**, **CSS3** &#40;with Material Design for Bootstrap&#41;, **JavaScript**, **Python** &#40;Flask&#41;, **MongoDB** &#40;Atlas&#41;
+- It consists of 1 base html file and 14?????? other html files
+- Modal for "Create Playlist" instructions and confirmation for "Delete" function
+- CONTINUE... ???
+
+### Features Left To Implement
+
+- **Resetting Password When Users Forget It:** To achieve this, an e-mail address is probably required for creating an account. The current primary purpose of the website is to provide easy access to the platform so do not ask e-mail address to create an account. In addition, do not know how to implement this with my current skills, decide to leave this out.
+
+- **Upload Image For Each Recipe:** Image data cannot be stored in MongoDB so this is not possible with the current project however, having image for recipes is achieved by using image URL.
+
+- **Share Button:** Do not know how to achieve this with my current skill and do not have time to learn so decide to leave this out.
+
+- **“Like” Reaction By Other Users:** Do not know how to achieve this with my current skill and do not have time to learn so decide to leave this out.
+
+- **Customise Pagination Page Display:** Manage to do pagination as it is essential to make the website neat, however, do not know how to customise pagination page display &#40;e.g. When there are more recipes, it will show page 1, 2, 3, 4, 5, 6, 7...&#41; and do not have time to look into details so decide to leave as it is.
+
+- **Error Pages:** Only one type of error page &#40;404&#41; is set up for the project. Ideally, users should be directed to a specific error page depending on the type of the error, however, do not have time to implement this so leave this out.
+
+- **Hooked Up a Spotify API** Where the user can connect to it's Spotify account and there bring data like their playlists, all with two clicks. I'm very exciting to be able to implement this feature in the future. 
+
+<div align="right"><a href="#top">🔝</a></div>
