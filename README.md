@@ -153,3 +153,23 @@ It is a mobile-first website because people usually bake with a recipe so a good
 - [Wireframes: Edit a Playlist &#40;`edit_playlist.html`&#41;](/workspace/Spoty-Share-List/wireframes/EditPlaylist.png)
 
 - [Wireframes: Manage Genre &#40;`manage_genre.html`&#41;](/workspace/Spoty-Share-List/wireframes/ManageGenre(Admin).png) UPDATE LATER!
+
+### Surface Plane
+
+— **Colour** —
+
+Inspired in the famous music streaming service, the base color is lime green &#40;#21E666&#41;. It is used as it is on some headings, texts as well as the navigation bar, footer, and slightly transparent colour is used for some background. Regular Black and White are used for some text and background when it needs contrast. Also the same lime green is used when it needs an accent on the website such as See Recipe button, flash messages and hover effect.
+
+[![Color-Palette.png](https://i.postimg.cc/gc8hRqR3/Color-Palette.png)](https://postimg.cc/MXZXJB9G)
+
+— **Typography** —
+
+For the Logo was used **Monserrat Classic**, **Moontime**, and **Blibker Thin**.
+For &#40;h1&#41; and headings of other pages &#40;h2&#41; was also used **Monserrat**.
+
+**Raleway**, which is also another type of This is a powerful typeface, is used for menu and other headings &#40;h3 - h6&#41; as it matches the image of the website well.
+
+[From Spotify Fonts](https://www.designyourway.net/blog/typography/spotify-font/)
+
+<div align="right"><a href="#top">🔝</a></div>
+
