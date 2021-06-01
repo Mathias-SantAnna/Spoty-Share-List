@@ -1,5 +1,5 @@
 # Spoty Share List 
-[![LOGO-2.gif](https://i.postimg.cc/T3t2wrZK/LOGO-2.gif)](https://postimg.cc/bsHMtJJn)
+[![Big-Logo-Read-Me.gif](https://i.postimg.cc/CLWV9npc/Big-Logo-Read-Me.gif)](https://postimg.cc/bsHMtJJn)
 
 It's a mobile-first &#38; responsive web application for sharing Playlists with it's users. The objective is to intensify and amplify the usage of music streaming services like Spotify® 🎶
 Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/home)
@@ -14,14 +14,14 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
 - [Features](#features)
-  * [Dictionary](#dictionary)
+  * [Paylists Library](#playlists-library)
   * [Navigation](#navigation)
   * [Footer](#footer)
   * [Register](#register)
   * [Log In](#log-in)
   * [User Tools](#user-tools)
-  * [Profile Dashboard](#profile-dashboard)
-  * [Submit Playlist](#submit-Playlist)
+  * [User Profile](#user-profile)
+  * [Create a Playlist](#create-a-Playlist)
   * [404 pages](#404-pages)
   * [Search](#search)
 - [Features to implement in future updates](#features-to-implement-in-future-updates)
