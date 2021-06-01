@@ -219,3 +219,31 @@ Updating README.md and some testing is also done during the above process
 - **Hooked Up a Spotify API** Where the user can connect to it's Spotify account and there bring data like their playlists, all with two clicks. I'm very exciting to be able to implement this feature in the future. 
 
 <div align="right"><a href="#top">🔝</a></div>
+
+## TECHNOLOGIES USED
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML) for markup
+- [CSS3](https://en.wikipedia.org/wiki/CSS) for style
+- [Material Design for Bootstrap 5 & 4](https://mdbootstrap.com/) &#40;an open-source toolkit based on Bootstrap for developing Material Design&#41; for the mainframe of the website
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) for interaction
+- [Python3](https://www.python.org/) as a backend programming language
+- [Flask](https://flask.palletsprojects.com/) &#40;a micro web framework written in Python&#41; as the main framework of Python
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/) as database
+- [Google Fonts](https://fonts.google.com/) for fonts
+- [Font Awesome](https://fontawesome.com/) for icons
+- [Gitpod](https://www.gitpod.io/) as Integrated Development Environment &#40;IDE&#41;
+- [Git](https://git-scm.com/) for local version control, keeping the files & documents
+- [GitHub](https://github.com/) for online version control and keeping the files & documents
+- [Heroku](https://www.heroku.com/) for deploying the website
+
+<div align="right"><a href="#top">🔝</a></div>
+
+## RESOURCES
+
+### General Resources
+
+- Code Institute Course Materials
+- [Stack Overflow](https://stackoverflow.com/)
+- [YouTube](https://www.youtube.com/)
+- [W3schools](https://www.w3schools.com/)
+- [Google](https://www.google.com/)
