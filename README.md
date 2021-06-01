@@ -136,7 +136,7 @@ Below is the chart of the database to show the collections and their relationshi
 
 ### Skeleton Plane
 
-It is a mobile-first website because people usually bake with a recipe so a good mobile-first design helps users whose main purpose is seeing recipes. For users whose main purpose is creating and posting recipes, the form is also well designed on both mobile and desktop sizes. There are wireframes of mobile and desktop sizes for all the core pages of the website.
+It is a mobile-first website because people usually bake with a playlist so a good mobile-first design helps users whose main purpose is seeing playlists. For users whose main purpose is creating and posting playlists, the form is also well designed on both mobile and desktop sizes. There are wireframes of mobile and desktop sizes for all the core pages of the website.
 
 - [Wireframes: Home &#40;`index.html`&#41;](/workspace/Spoty-Share-List/wireframes/Home.png)
 
@@ -158,7 +158,7 @@ It is a mobile-first website because people usually bake with a recipe so a good
 
 — **Colour** —
 
-Inspired in the famous music streaming service, the base color is lime green &#40;#21E666&#41;. It is used as it is on some headings, texts as well as the navigation bar, footer, and slightly transparent colour is used for some background. Regular Black and White are used for some text and background when it needs contrast. Also the same lime green is used when it needs an accent on the website such as See Recipe button, flash messages and hover effect.
+Inspired in the famous music streaming service, the base color is lime green &#40;#21E666&#41;. It is used as it is on some headings, texts as well as the navigation bar, footer, and slightly transparent colour is used for some background. Regular Black and White are used for some text and background when it needs contrast. Also the same lime green is used when it needs an accent on the website such as See playlist button, flash messages and hover effect.
 
 [![Color-Palette.png](https://i.postimg.cc/gc8hRqR3/Color-Palette.png)](https://postimg.cc/MXZXJB9G)
 
@@ -173,3 +173,22 @@ For &#40;h1&#41; and headings of other pages &#40;h2&#41; was also used **Monser
 
 <div align="right"><a href="#top">🔝</a></div>
 
+## WEBSITE CONSTRUCTION PLANS
+
+This project contains both front-end and back-end so well-structured planning is required to do the work efficiently. Below is a summary of the plans.
+
+1. Creating Database in MongoDB
+1. Installing necessary Python frameworks, creating a Python file for the app and testing functions
+1. Deploying the website in Heroku
+1. Connecting Database and App
+1. Creating parent HTML template with common sections &#40;e.g. header & footer&#41;
+1. Creating *Register*, *Login*, *Profile* pages
+1. Creating *Create*, *Edit* Playlist pages
+1. Creating an single *Playlist* page pages
+1. Creating *Create*, *Edit* &#40;Manage Genre&#41; pages
+1. Creating *Home* page with top playlists and filter
+1. Creating *404* page
+
+Updating README.md and some testing is also done during the above process
+
+<div align="right"><a href="#top">🔝</a></div>
