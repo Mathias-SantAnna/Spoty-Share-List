@@ -248,3 +248,19 @@ Updating README.md and some testing is also done during the above process
 - [W3schools](https://www.w3schools.com/)
 - [Google](https://www.google.com/)
 
+### Tools
+
+- [Balsamiq](https://balsamiq.com/) for wireframes
+- [ImageResizer](https://imageresizer.com/) for resizing images
+- [PNG to ICO](https://hnet.com/png-to-ico/) for converting png to ico for favicon
+- [removebg](https://www.remove.bg/) for removing background images
+- [Canva](https://www.canva.com/) for creating logos and some images
+- [Multi Device Website Mockup Generator](http://techsini.com/multi-mockup/index.php) for mockup
+- [Autoprefixer](https://autoprefixer.github.io/) for parsing CSS and add vendor prefixes
+- [W3C Markup Validation Service](https://validator.w3.org/) for testing HTML code
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) for testing CSS code
+- [jshint](https://jshint.com/) for testing JavaScript code
+- [PEP8 Online](http://pep8online.com/) for checking Python code compliance
+- [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) for testing, style checking and debugging
+
+<div align="right"><a href="#top">🔝</a></div>
