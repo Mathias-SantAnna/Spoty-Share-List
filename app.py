@@ -66,7 +66,7 @@ def playlist(playlist_id):
     playlist_db = mongo.db.playlist.find_one_or_404(
         {'_id': ObjectId(playlist_id)})
 
-    return render_template("playlists/playlists.html", playlist=playlist_db)
+    return render_template("playlists/playlist.html", playlist=playlist_db)
 
 
 # REGISTER

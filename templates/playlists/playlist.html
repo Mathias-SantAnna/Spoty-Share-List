@@ -2,7 +2,7 @@
 
 {% block heading %}
 <h2 class="playlist-title h2-p-5-15-1 mb-0">{{ playlist.playlist_name }} Playlist</h2>
-{% endblock %
+{% endblock %}
 
 {% block content %}
 <section id="section-playlist" class="color-493323">
@@ -45,9 +45,8 @@
         
     </div>
     
-    <!-- Home & Back To Genre Links -->
+    <!-- Genre Links -->
     <div class="p-3">
-        <a class="btn btn-ffd5b7" href="{{ url_for('home') }}">Home</a>
         <a class="btn btn-ffd5b7-06" href="{{ url_for('music_genre', genre_name=music_genre.genre_name) }}">{{ music_genre.genre_name | title }}</a>
     </div>
     {% if playlist.created_by %}
@@ -56,4 +55,4 @@
     </div>
     {% endif %}
 </section>
-{% endblock %
+{% endblock %}
