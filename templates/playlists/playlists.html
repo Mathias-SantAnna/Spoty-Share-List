@@ -24,28 +24,7 @@
             </div>
         </form>
     </div>
-    <div class="row">
-        <div class="row col s6">
-            <!-- Dropdown Trigger -->
-        <a href="#" class="dropdown-trigger btn-large green accent-4" data-target="dropdown">Music Genre</a>
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{{ url_for('genre_filter', id='Metal') }}">Metal</a></li>
-            <li><a href="{{ url_for('genre_filter', id='Pop') }}">Pop</a></li>
-            <li><a href="{{ url_for('genre_filter', id='Rock') }}">Rock</a></li>
-            <li><a href="{{ url_for('genre_filter', id='Reggae') }}">Reggae</a></li>
-            <li><a href="{{ url_for('genre_filter', id='Dance & Eletro') }}">Dance & Eletro</a></li>
-            <li><a href="{{ url_for('genre_filter', id='ap & Hip Hop') }}">Rap & Hip Hop</a></li>
-        </div>
-        <div class="row col s6">
-            <!-- Dropdown Trigger -->
-        <a href="#" class="dropdown-trigger btn-large green accent-4" data-target="dropdown">Artists</a>
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{{ url_for('artist_filter', id='Linkin Park') }}">Linkin Park</a></li>
-            <li><a href="{{ url_for('artist_filter', id='Amy Lee') }}">Amy Lee</a></li>
-    </div>
-
+    
     <div class="row">
         {% for playlist in playlists %}
             <div class="col s12 m4">

@@ -50,3 +50,10 @@ nav .brand-logo {
     padding: 3rem 3rem 2rem;
     width: 85%;
 }
+
+.playlist-img-top {
+    height: 20vw;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 20vh%;
+}

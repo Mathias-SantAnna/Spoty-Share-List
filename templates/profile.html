@@ -11,21 +11,22 @@
         </div>
         <div class="row">
             {% for playlist in user_playlist %}
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-4 col-lg-4">
                 <div class="card playlist-summary playlist-summary-height bg-color-fbeade">
                     <!-- playlist Image & Genre & Title -->
                     <div class="card-body">
+                        <h4 class="center-align">{{ playlist.playlist_name }}</h4>
                         {% if playlist.img_url %}
-                        <img class="card-img-top playlist-full-img border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
                         {% else %}
-                        <img class="card-img-top playlist-full-img border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                         {% endif %}
-                        <p class="card-text genre">Genre: {{ playlist.genre_name | title }}</p>
-                        <h4>{{ playlist.playlist_name | title }}</h4>
+                        <p class="card-text genre">Genre: {{ playlist.genre_name }}</p>
+                        
                         <!-- playlist Owner & Posted Date -->
                         <ul class="list-group list-group-flush posted-list">
                             <li class="list-group-item bg-color-fbeade text-center">
-                                Posted on {{ playlist.created_by }}
+                                Created by: {{ playlist.created_by }}
                             </li>
                         </ul>
                     </div>
