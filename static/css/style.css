@@ -52,8 +52,9 @@ nav .brand-logo {
 }
 
 .playlist-img-top {
-    height: 20vw;
+    height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
-    width: 20vh%;
+    width: 100%;
 }
+

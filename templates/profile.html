@@ -14,7 +14,7 @@
             {% for playlist in user_playlist %}
             <div class="col s12 m4">
                 <div class="card playlist-summary playlist-summary-height bg-color-fbeade">
-                    <!-- playlist Image & Genre & Title -->
+                    <!-- Title, Playlist Image, Genre & Details  -->
                     <div class="card-body">
                         <h4 class="center-align">{{ playlist.playlist_name }}</h4>
                         {% if playlist.img_url %}
@@ -22,13 +22,16 @@
                         {% else %}
                         <img class="card-img-top playlist-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                         {% endif %}
-                        <p class="card-text genre">Genre: {{ playlist.genre_name }}</p>
+                        <h4 class="card-title center-align pt-2 pb-1">
+                            {{ playlist.genre | title }}</h4>
+                        <p class="card-text details">Details: {{ playlist.playlist_details }}</p>
                         
-                        <!-- playlist Owner & Posted Date -->
+                        <!-- Tracks, Artits, Created By & Url -->
                         <ul class="list-group list-group-flush posted-list">
-                            <li class="list-group-item bg-color-fbeade text-center">
-                                Created by: {{ playlist.created_by }}
-                            </li>
+                            <li class="list-group-item bg-color-fbeade text-center">Tracks: {{ playlist.playlist_tracks | truncate(70) }}</li>
+                            <li class="list-group-item bg-color-fbeade text-center">Artists: {{ playlist.artist_name | truncate(70) }}</li>
+                            <li class="list-group-item bg-color-fbeade text-center">Created by: {{ playlist.created_by | capitalize}}</li>
+                                <li class="list-group-item bg-color-fbeade text-center"><a href="{{ playlist.playlist_url }}" target="_blank" rel="noopener noreferrer">Spotify Link </a></li>
                         </ul>
                     </div>
                     <!-- Edit & Delet playlist Buttons -->
