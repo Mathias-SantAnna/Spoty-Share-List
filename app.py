@@ -189,8 +189,8 @@ def add_playlist():
 
 
 # EDIT PLAYLIST
-@ app.route("/edit_playlist", methods=["GET", "POST"])
-def edit_playlist():
+@ app.route("/edit_playlist/<playlist_id>", methods=["GET", "POST"])
+def edit_playlist(playlist_id):
     if not session.get("user"):
         render_template("templates/error_handlers/404.html")
 
@@ -215,7 +215,7 @@ def edit_playlist():
     artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/add_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
+        "playlists/edit_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
 
 
 # THE APP

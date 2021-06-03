@@ -12,7 +12,7 @@
         <form id="form-playlist" method="POST" action="{{ url_for('edit_playlist', playlist_id=playlist._id) }}">
             <!-- Select genre -->
             <div class="form-outline form-white mb-4">
-                <label class="genre-name" for="genre_name">Playlist Genre</label>
+                <label class="genre-name" for="genre_name">Genre</label>
                 <select id="genre_name" class="form-select bg-color-49332-06 playlist-select color-fff" name="genre_name" aria-label="playlist genres">
                     {% for genre in music_genre %}
                     {% if music_genre._id == playlist.genre_name %}
