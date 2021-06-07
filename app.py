@@ -26,13 +26,17 @@ mongo = PyMongo(app)
 @app.route("/") 
 @app.route("/home")
 def home():
-    playlists = mongo.db.playlist.find()
+    playlists = list(mongo.db.playlist.find())
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+
+    for playlist in playlists:
+        genreId = playlist["genre"]
+        for genre in music_genre:
+            if genreId == genre["_id"]:
+                playlist["genre_name"] = genre["genre_name"]
     return render_template(
         "/playlists/playlists.html",
-         playlists=playlists, 
-         music_genre=music_genre)
-
+         playlists = playlists)
 
 # SEARCH PLAYLISTS
 @app.route("/search", methods=["GET", "POST"])
@@ -63,10 +67,14 @@ def artist_filter(id):
 # SINGLE PLAYLIST
 @app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
-    playlist_db = mongo.db.playlist.find_one_or_404(
-        {'_id': ObjectId(playlist_id)})
-
-    return render_template("playlists/playlist.html", playlist=playlist_db)
+    playlist = mongo.db.playlist.find_one_or_404(
+            {'_id': ObjectId(playlist_id)}
+        )
+    genre = mongo.db.music_genre.find_one_or_404(
+            {'_id': ObjectId(playlist["genre"])}
+        )
+    playlist["genre_name"] = genre["genre_name"]
+    return render_template("playlists/playlist.html", playlist=playlist)
 
 
 # REGISTER
@@ -171,8 +179,8 @@ def add_playlist():
             "playlist_name": request.form.get("playlist_name"),
             "img_url": request.form.get("img_url"),
             "playlist_details": request.form.get("playlist_details"),
-            "playlist_tracks": request.form.get("playlist_tracks"),
-            "artist_name": request.form.get("artist_name"),
+            "playlist_tracks": request.form.getlist("playlist_tracks"),
+            "artist_name": request.form.getlist("artist_name"),
             "created_by": ObjectId(user_id),
             "playlist_url": request.form.get("playlist_url")
         }
