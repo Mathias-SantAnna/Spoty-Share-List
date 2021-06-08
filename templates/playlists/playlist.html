@@ -18,7 +18,7 @@
         <div class="playlist-full grid-top-title bg-color-fbeade border-radius-025">
             <!-- Playlist Title, Creator & Detail -->
             <div class="text-center">
-                <h3 class="font-weight-700">{{ playlist.playlist_name | title }} Playlist<br>by {{ playlist.created_by | title }}</h3>
+                <h3 class="font-weight-700">{{ playlist.playlist_name | title }} Playlist<br>by {{ user.username | title }}</h3>
                 <p class="card-text">{{ playlist.playlist_details               }}</p>
             </div>
             <!-- Playlist Artist -->
@@ -35,9 +35,9 @@
         <div>
             <h5 class="text-center font-weight-700 mt-4">Tracks</h5>
             <ul class="list-group list-group-flush border-radius-025">
-                {% for tracks in playlist.playlist_tracks %}
+                {% for track in playlist.playlist_tracks.splitlines()%}
                 <li class="list-group-item">
-                    &#9679; {{ tracks }}
+                    &#9679; {{ track }}
                 </li>
                 {% endfor %}
             </ul>

@@ -35,7 +35,9 @@
                         </div>
                         <div class="card-content">
                             <h5>{{ playlist.playlist_name }}</h5>
-                            <p>Genre: {{ playlist.genre_name}}</p>
+                            {% for genre in music_genre if playlist.genre == genre._id %}
+                                <p>Genre: {{ genre.genre_name}}</p>
+                            {% endfor %}
                         </div>
                     </div>
                     
