@@ -49,9 +49,9 @@
     <div class="p-3">
         <a class="btn btn-ffd5b7-06" href="#">{{ playlist.genre_name | title }}</a>
     </div>
-    {% if playlist.created_by %}
+    {% if playlist.playlist_url %}
     <div class="bbc-playlist-full text-center pb-3">
-        <a class="h6" href="{{ playlist.created_by }}" target="_blank" rel="noopener">TESTING Playlist</a>
+        <a class="h6" href="{{ playlist.playlist_url }}" target="_blank" rel="noopener">Spotify Url Click Here </a>
     </div>
     {% endif %}
 </section>
