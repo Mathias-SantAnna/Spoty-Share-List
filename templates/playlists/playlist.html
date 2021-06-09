@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block heading %}
-<h2 class="playlist-title h2-p-5-15-1 mb-0">{{ playlist.playlist_name }} Playlist</h2>
+<h2 class="text-center playlist-title ">{{ playlist.playlist_name }} Playlist</h2>
 {% endblock %}
 
 {% block content %}
@@ -18,15 +18,19 @@
         <div class="playlist-full grid-top-title bg-color-fbeade border-radius-025">
             <!-- Playlist Title, Creator & Detail -->
             <div class="text-center">
-                <h3 class="font-weight-700">{{ playlist.playlist_name | title }} Playlist<br>by {{ user.username | title }}</h3>
+                <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
                 <p class="card-text">{{ playlist.playlist_details               }}</p>
             </div>
             <!-- Playlist Artist -->
             <div>
-                <h4 class="text-center mt-3 font-weight-700">Artist</h4>
-                <p class="text-center pb-3">
-                    <i class="fas fa-users"></i> {{ playlist.artist_name }}
-                </p>
+                <h5 class="text-center mt-3 font-weight-700">Artists</h4>
+                <ul class="list-group list-group-flush border-radius-025">
+                    {% for artist in playlist.artist_name.splitlines()%}
+                    <li class="list-group-item">
+                        &#9834; {{ artist }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
@@ -37,7 +41,7 @@
             <ul class="list-group list-group-flush border-radius-025">
                 {% for track in playlist.playlist_tracks.splitlines()%}
                 <li class="list-group-item">
-                    &#9679; {{ track }}
+                    &#9835; {{ track }}
                 </li>
                 {% endfor %}
             </ul>
@@ -46,13 +50,16 @@
     </div>
     
     <!-- Genre Links -->
-    <div class="p-3">
-        <a class="btn btn-ffd5b7-06" href="#">{{ playlist.genre_name | title }}</a>
-    </div>
     {% if playlist.playlist_url %}
     <div class="bbc-playlist-full text-center pb-3">
-        <a class="h6" href="{{ playlist.playlist_url }}" target="_blank" rel="noopener">Spotify Url Click Here </a>
+        <h5>    
+            <a class="h5" href="{{ playlist.playlist_url }}" target="_blank" rel="noopener">Click Here to Open in Spotify</a>
+        </h5>
     </div>
     {% endif %}
+    <br>
+    <div class="p-3">
+        <a class="btn btn-ffd5b7-06" href="#">All {{ playlist.genre_name | title }} Playlists</a>
+    </div>
 </section>
 {% endblock %}
