@@ -31,8 +31,9 @@ def home():
 
     return render_template(
         "/playlists/playlists.html",
-         playlists = playlists,
-         music_genre = music_genre)
+        playlists=playlists,
+        music_genre=music_genre)
+
 
 # SEARCH PLAYLISTS
 @app.route("/search", methods=["GET", "POST"])
@@ -73,7 +74,9 @@ def playlist(playlist_id):
     user = mongo.db.users.find_one_or_404(
             {'_id': ObjectId(playlist["created_by"])}
         )
-    return render_template("playlists/playlist.html", playlist=playlist, user=user)
+    return render_template(
+        "playlists/playlist.html",
+         playlist=playlist, user=user)
 
 
 # REGISTER
@@ -114,7 +117,8 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
+                    existing_user["password"],
+                     request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
                         flash("Welcome, {}".format(
                             request.form.get("username")))
@@ -222,7 +226,10 @@ def edit_playlist(playlist_id):
     artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/edit_playlist.html", playlist=playlist, artist=artist, music_genre=music_genre)
+        "playlists/edit_playlist.html", 
+        playlist=playlist, 
+        artist=artist, 
+        music_genre=music_genre)
 
 
 # THE APP
