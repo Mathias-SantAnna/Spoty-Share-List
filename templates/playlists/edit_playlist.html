@@ -32,6 +32,20 @@
                 <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name" maxlength="30" value="{{ playlist.playlist_name }}" required />
                 <p class="input-note">&#40;max 30&#41;</p>
             </div>
+
+            <!-- Artists Name  -->
+            {% for tracks in playlist.playlist_tracks %}
+            <label for="playlist_artist_{{ loop.index }}"></label>
+            {% endfor %}
+            <div class="row">
+                <div class="input-field col s11">
+                    <textarea id="artist_name" name="artist_name" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="artist_name">Artist Name</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
+                </div>
+            </div>
+
             <!-- Playlist Details -->
             <div class="form-outline form-white mb-4">
                 <label for="playlist_details">playlist Descriptions</label>
@@ -42,9 +56,9 @@
             <!-- Enter Img URL -->
             <div class="row">
                 <div class="input-field col s11">
-                    <input id="playlist_url" name="playlist_url" type="url" pattern="https?://.+" class="validate" 
-                    value="https://...jpg" required>
-                    <label for="playlist_url">Image url</label>
+                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
+                    value="{{ playlist.img_url }}" required>
+                    <label for="img_url">Image url</label>
                     <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
                 </div>
             </div>
@@ -61,23 +75,24 @@
                     <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
                 </div>
             </div>
-            <div>
-                <button class="btn green accent-4 btn-add-field-tracks mb-2">More Tracks<span class="input-note btn-note">&#40;max 5 fields&#41;</span></button>
-            </div>
-            <div class="form-outline mb-4 form-white input-fields-wrap-tracks">
-                <div>
-                    {% for tracks in playlist.playlist_tracks %}
-                    <input id="playlist_tracks_{{ loop.index }}" class="form-control mt-3" type="text" name="playlist_tracks" 
-                        maxlength="25" value="{{ tracks }}" required />
-                    {% endfor %}
-                    <p class="input-note">&#40;max 25 char&#41;</p>
+            <br>
+            <!-- Enter Playlist URL -->
+            <div class="row">
+                <div class="form-outline form-white mb-4">
+                    <label for="playlist_url">Playlist URL2</label>
+                    <input id="playlist_url" class="form-control bg-color-49332-06" type="text" name="playlist_url" value="{{ playlist.playlist_url }}" required />
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.{{- playlist.playlist_url -}}</span>
+                        <br>
+                        <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
                 </div>
             </div>
             <hr class="hr-fff">
             
             <!-- Post playlist Button -->
-            <button class="btn green accent-4 mt-2" type="submit">Save Change</button>
-            <a class="btn red accent-4" href="{{ url_for('profile', username=session['user']) }}">Cancel</a>
+            <div class="center-align">
+                <button class="btn green accent-4 mx-auto" style="width: 200px;" type="submit">Save Changes <i class="small material-icons"> save</i></button>
+            <a class="btn red accent-4 mx-auto" style="width: 200px;" href="{{ url_for('profile', username=session['user']) }}">Cancel <i class="small material-icons"> clear</i></a>
+            </div>
         </form>
     </div>
 </div>
