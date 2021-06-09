@@ -62,12 +62,12 @@
                 </div>
             </div>
             <div>
-                <button class="btn green accent-4 btn-add-field-tracks mb-2">More Tracks<span class="input-note btn-note">&#40;max 10 fields&#41;</span></button>
+                <button class="btn green accent-4 btn-add-field-tracks mb-2">More Tracks<span class="input-note btn-note">&#40;max 5 fields&#41;</span></button>
             </div>
             <div class="form-outline mb-4 form-white input-fields-wrap-tracks">
                 <div>
                     {% for tracks in playlist.playlist_tracks %}
-                    <input id="playlist_tracks_{{ loop.index }}" class="form-control bg-color-49332-06 mt-3" type="text" name="playlist_tracks" 
+                    <input id="playlist_tracks_{{ loop.index }}" class="form-control mt-3" type="text" name="playlist_tracks" 
                         maxlength="25" value="{{ tracks }}" required />
                     {% endfor %}
                     <p class="input-note">&#40;max 25 char&#41;</p>

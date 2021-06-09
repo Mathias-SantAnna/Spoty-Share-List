@@ -13,16 +13,35 @@
 nav .brand-logo {
     margin-left: 3%;
 }
-.navbar-brand {
+.brand-logo {
     display: inline-block;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
     margin-right: 1rem;
     font-size: 1.25rem;
     line-height: inherit;
-    white-space: nowrap;}
+    white-space: nowrap;
+}
 
 
+    /* -- Navbar -- */
+/* .navbar {
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+} */
+
+.brand-logo img {
+    height: auto;
+    width: auto;
+    max-height: 70px;
+    max-width: 228px;
+}
+
+.brand-logo a:hover {
+    color: #07420e !important;
+}
  /*  Single Plylist */
  
  .playlist-container{
@@ -80,3 +99,4 @@ nav .brand-logo {
 #section-manage-playlist {
     background-color: rgba(251, 234, 222, 0.3);
 }
+
