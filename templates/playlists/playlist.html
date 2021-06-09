@@ -10,16 +10,16 @@
         <!-- Playlist Image -->
         <div class="grid-top-img">
             {% if playlist.img_url %}
-            <img class="card-img-top playlist-full-img border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+            <img class="card-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
             {% else %}
-            <img class="card-img-top playlist-full-img border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+            <img class="card-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
             {% endif %}
         </div> 
         <div class="playlist-full grid-top-title bg-color-fbeade border-radius-025">
             <!-- Playlist Title, Creator & Detail -->
             <div class="text-center">
                 <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
-                <p class="card-text">{{ playlist.playlist_details               }}</p>
+                <h6 class="card-text">{{ playlist.playlist_details              }}</h6>
             </div>
             <!-- Playlist Artist -->
             <div>

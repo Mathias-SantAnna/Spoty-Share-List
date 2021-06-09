@@ -29,6 +29,11 @@ nav .brand-logo {
     margin-top:1rem;
 }
 
+.card-img-top {
+    max-width: 500px;
+    max-height: 500px;
+}
+
 .card.small .card-image+.card-content, .card.medium .card-image+.card-content, .card.large .card-image+.card-content {
     max-height: 50%;
 }
@@ -36,6 +41,12 @@ nav .brand-logo {
 .card-content{
     max-height: inherit !important;
     padding: 0.5rem !important;
+}
+
+.btn-small {
+    margin: 5%;
+    position: relative;
+    justify-self: center;
 }
 
 /*  Profile */
