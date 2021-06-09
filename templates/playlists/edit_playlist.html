@@ -2,14 +2,17 @@
 
 {% block heading %}
 <section id="heading-manage">
-    <a href="{{ url_for('profile', username=session['user']) }}">
-        <img class="back-page-logo" src="{{ url_for('static', filename='images/SpotyShare_Logo.png') }}" alt="Logo">
-    </a>
-    <h2 class="h2-p-0 h2-mt-4">Edit Your playlist</h2>
+    <div class="center-align">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
+        </a>
+        <h2 class="h2-p-0 h2-mt-4">Edit Your playlist</h2>
+    </div>
+</section>
 
-    <div id="section-manage-playlist" class="color-fbeade">
-        <!-- Credit: MDB Forms & Input + Bootstrap Dropdowns @ https://mdbootstrap.com/docs/standard/forms/overview/ & @ https://getbootstrap.com/docs/5.0/components/dropdowns/ -->
-        <form id="form-playlist" method="POST" action="{{ url_for('edit_playlist', playlist_id=playlist._id) }}">
+<div class="container">
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" ction="{{ url_for('edit_playlist', playlist_id=playlist._id) }}">
             <!-- Select genre -->
             <div class="form-outline form-white mb-4">
                 <label class="genre-name" for="genre_name">Genre</label>
@@ -25,23 +28,23 @@
             </div>
             <!-- Playlist Title -->
             <div class="form-outline form-white mb-4">
-                <label for="playlist_title">playlist Title</label>
-                <input id="playlist_title" class="form-control bg-color-49332-06" type="text" name="playlist_title" maxlength="30" value="{{ playlist.playlist_title }}" required />
+                <label for="playlist_name">Playlist Title</label>
+                <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name" maxlength="30" value="{{ playlist.playlist_name }}" required />
                 <p class="input-note">&#40;max 30&#41;</p>
             </div>
             <!-- Playlist Details -->
             <div class="form-outline form-white mb-4">
-                <label for="playlist_desc">playlist Descriptions</label>
-                <textarea id="playlist_desc" class="form-control bg-color-49332-06" name="playlist_desc" maxlength="300" rows="5" required>{{- playlist.playlist_desc -}}</textarea>
+                <label for="playlist_details">playlist Descriptions</label>
+                <textarea id="playlist_details" class="form-control bg-color-49332-06" name="playlist_details" maxlength="300" rows="5" required>{{- playlist.playlist_details -}}</textarea>
                 <p class="input-note">&#40;max 300&#41;</p>
             </div>
             <hr class="hr-fff">
             <!-- Enter Img URL -->
             <div class="row">
                 <div class="input-field col s11">
-                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
+                    <input id="playlist_url" name="playlist_url" type="url" pattern="https?://.+" class="validate" 
                     value="https://...jpg" required>
-                    <label for="img_url">Image url</label>
+                    <label for="playlist_url">Image url</label>
                     <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
                 </div>
             </div>
@@ -59,7 +62,7 @@
                 </div>
             </div>
             <div>
-                <button class="btn green accent-4 btn-add-field-tracks mb-2">More Tracks<span class="input-note btn-note"> &#40;max 10 fields&#41;</span></button>
+                <button class="btn green accent-4 btn-add-field-tracks mb-2">More Tracks<span class="input-note btn-note">&#40;max 10 fields&#41;</span></button>
             </div>
             <div class="form-outline mb-4 form-white input-fields-wrap-tracks">
                 <div>
@@ -76,7 +79,6 @@
             <button class="btn green accent-4 mt-2" type="submit">Save Change</button>
             <a class="btn red accent-4" href="{{ url_for('profile', username=session['user']) }}">Cancel</a>
         </form>
-        <!-- /End of Credit -->
     </div>
-</section>
+</div>
 {% endblock %}

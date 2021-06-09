@@ -69,3 +69,14 @@ nav .brand-logo {
     width: 100%;
 }
 
+#heading-manage {
+    margin: 0 auto;
+    max-width: 40rem;
+    width: 80%;
+}
+
+#section-playlist-summary,
+#section-playlist,
+#section-manage-playlist {
+    background-color: rgba(251, 234, 222, 0.3);
+}
