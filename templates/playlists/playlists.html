@@ -15,7 +15,7 @@
                         <label for="query"></label>
                     </div>
                     <div class="col s12 m5">
-                            <button type="submit" class="lighten-2 btn-small text-shadow">
+                            <button type="submit" class="btn-small green darken-3 btn-small text-shadow">
                                  <i class="material-icons">search</i>
                             </button>
                             <a href="{{ url_for('home') }}" class="black btn-small text-shadow">Reset</a>
@@ -38,6 +38,13 @@
                             {% for genre in music_genre if playlist.genre == genre._id %}
                                 <p>Genre: {{ genre.genre_name}}</p>
                             {% endfor %}
+                            <!-- Tracks, Artits, Created By & Url -->
+                            <ul class="list-group list-group-flush posted-list">
+                                <li class="list-group-item text-center">Artists: {{ playlist.artist_name._id | truncate(70) }}</li>
+                                <li class="list-group-item center-align">
+                                    <a href="{{ playlist.playlist_url }}" target="_blank" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Play Now</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     

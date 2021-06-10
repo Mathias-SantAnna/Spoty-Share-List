@@ -79,19 +79,22 @@
             <!-- Enter Playlist URL -->
             <div class="row">
                 <div class="form-outline form-white mb-4">
-                    <label for="playlist_url">Playlist URL2</label>
+                    <label for="playlist_url">Playlist URL</label>
                     <input id="playlist_url" class="form-control bg-color-49332-06" type="text" name="playlist_url" value="{{ playlist.playlist_url }}" required />
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.{{- playlist.playlist_url -}}</span>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
                         <br>
                         <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
                 </div>
             </div>
-            <hr class="hr-fff">
-            
+            <br>
             <!-- Post playlist Button -->
-            <div class="center-align">
-                <button class="btn green accent-4 mx-auto" style="width: 200px;" type="submit">Save Changes <i class="small material-icons"> save</i></button>
-            <a class="btn red accent-4 mx-auto" style="width: 200px;" href="{{ url_for('profile', username=session['user']) }}">Cancel <i class="small material-icons"> clear</i></a>
+            <div class="row">
+                <div class="col s6 right_align">
+                    <button class="btn green accent-4 right-align" type="submit"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+                <div class="col s6 left-align">
+                    <a class="btn red accent-4 right-align" href="{{ url_for('profile', username=session['user']) }}">Cancel <i class="fas fa-times"></i></a>
+                </div>
             </div>
         </form>
     </div>
