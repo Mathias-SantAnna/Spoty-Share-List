@@ -16,7 +16,7 @@
             <!-- Select genre -->
             <div class="form-outline form-white mb-4">
                 <label class="genre-name" for="genre_name">Genre</label>
-                <select id="genre_name" class="form-select bg-color-49332-06 playlist-select color-fff" name="genre_name" aria-label="playlist genres">
+                <select id="genre_name" class="form-select playlist-select color-fff" name="genre_name" aria-label="playlist genres">
                     {% for genre in music_genre %}
                     {% if music_genre._id == playlist.genre_name %}
                     <option value="{{ genre._id }}" selected>{{ genre.genre_name | title }}</option>
@@ -81,7 +81,10 @@
                 <div class="form-outline form-white mb-4">
                     <label for="playlist_url">Playlist URL</label>
                     <input id="playlist_url" class="form-control bg-color-49332-06" type="text" name="playlist_url" value="{{ playlist.playlist_url }}" required />
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.
+                        <br>
+                    (For example, spotify:album:1DFixLWuPkv3KT3TnV35m3 or https://open.spotify.com/album/4RuzGKLG99XctuBMBkFFOC.)
+                    </span>
                         <br>
                         <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
                 </div>

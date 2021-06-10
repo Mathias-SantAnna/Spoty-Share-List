@@ -106,3 +106,10 @@ nav .brand-logo {
     background-color: rgba(251, 234, 222, 0.3);
 }
 
+/* .grid-bottom {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 1rem;
+    -ms-grid-columns: 1fr 1rem 2fr;
+    grid-template-columns: 1fr 2fr;
+} */

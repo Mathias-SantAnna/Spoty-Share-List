@@ -203,7 +203,7 @@ def add_playlist():
 @ app.route("/edit_playlist/<playlist_id>", methods=["GET", "POST"])
 def edit_playlist(playlist_id):
     if not session.get("user"):
-        render_template("templates/error_handlers/404.html")
+        render_template("templates/page_404.html")
 
     if request.method == "POST":
         user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
