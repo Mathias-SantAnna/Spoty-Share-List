@@ -16,11 +16,22 @@
                 <img class="card-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                 {% endif %}
             </div> 
-            <div class="playlist-full grid-top-title bg-color-fbeade border-radius-025">
+            <div class="playlist-full grid-top-title border-radius-025">
                 <!-- Playlist Title, Creator & Detail -->
-                <div class="text-center">
+                <div class="center-align">
                     <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
-                    <h6 class="card-text">{{ playlist.playlist_details              }}</h6>
+                    <h6 class="card-text">{{ playlist.playlist_details }}</h6>
+                </div>
+                <!-- Buttons Genre & Play -->
+                <div class="row">
+                    <div class="col s6 right-align">
+                        <a class="btn grey darken-3" href="{{ playlist.playlist_url }}">All {{ playlist.genre_name | title }} Playlists</a>
+                    </div>
+                    <div class="col s6 left-align">
+                        {% if playlist.playlist_url %}
+                            <a href="{{ playlist.playlist_url }}" class="btn green accent-4"><i class="far fa-play-circle"></i> Play Now</a>
+                        {% endif %}
+                    </div>
                 </div>
                 <!-- Playlist Artist -->
                 <div>
@@ -50,22 +61,14 @@
             
         </div>
         
-        <!-- Genre Links -->
-        {% if playlist.playlist_url %}
-        <div class="bbc-playlist-full text-center pb-3">
-            <h5>    
-                <a class="h5" href="{{ playlist.playlist_url }}" target="_blank" rel="noopener">Click Here to Open in Spotify</a>
-            </h5>
-        </div>
-        {% endif %}
-        <br>
-        <div class="p-3">
-            <a class="btn btn-ffd5b7-06" href="#">All {{ playlist.genre_name | title }} Playlists</a>
-        </div>
-        <br>
-        <div class="col-lg12 s12">
-            <a href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}" class="btn-small green accent-4">Edit</a>
-            <a href="" class="btn-small red">Delete</a>
+        <!-- Buttons -->
+        <div class="row">
+            <div class="col s6 right-align">
+                <a href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}" class="btn-small green accent-4">Edit</a>
+            </div>
+            <div class="col s6 left-align">
+                <a href="" class="btn-small red">Delete</a>
+            </div>
         </div>
     </div>
 </div>

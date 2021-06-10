@@ -38,9 +38,8 @@
                             {% for genre in music_genre if playlist.genre == genre._id %}
                                 <p>Genre: {{ genre.genre_name}}</p>
                             {% endfor %}
-                            <!-- Tracks, Artits, Created By & Url -->
+                            <!-- Button Play on Spotify -->
                             <ul class="list-group list-group-flush posted-list">
-                                <li class="list-group-item text-center">Artists: {{ playlist.artist_name._id | truncate(70) }}</li>
                                 <li class="list-group-item center-align">
                                     <a href="{{ playlist.playlist_url }}" target="_blank" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Play Now</a>
                                 </li>
