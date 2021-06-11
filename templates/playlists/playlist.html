@@ -25,7 +25,7 @@
                 <!-- Buttons Genre & Play -->
                 <div class="row">
                     <div class="col s6 right-align">
-                        <a class="btn grey darken-3" href="{{ playlist.playlist_url }}">All {{ playlist.genre_name | title }} Playlists</a>
+                        <a class="btn grey darken-3" target="_blank" href="{{ playlist.playlist_url }}">All {{ playlist.genre_name | title }} Playlists</a>
                     </div>
                     <div class="col s6 left-align">
                         {% if playlist.playlist_url %}
@@ -71,12 +71,14 @@
 
         <!-- Buttons -->
         <div class="row">
+            {% if session.user.username|lower == playlist.created_by|lower %}
             <div class="col s6 right-align">
                 <a href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}" class="btn-small green accent-4">Edit</a>
             </div>
             <div class="col s6 left-align">
                 <a href="" class="btn-small red">Delete</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

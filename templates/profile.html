@@ -11,6 +11,7 @@
         
         <div class="row">
             {% for playlist in user_playlist %}
+            {% if session.user | lower == playlist.created_by | lower %}
             <div class="col s12 m4">
                 <div class="card playlist-summary playlist-summary-height">
                     <!-- Title, Playlist Image, Genre & Details  -->
@@ -46,27 +47,29 @@
                 </div>
             </div>
 
-            <!-- Modal for Delete Confirmation & Credit: MDB Modal @ https://mdbootstrap.com/docs/standard/components/modal/ -->
+            <!-- Modal for Delete Confirmation -->
             <div id="modal-delete{{ playlist._id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content color-493323">
+                    <div class="modal-content ">
                         <div class="modal-header">
                             <h4 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Are you sure to DELETE?</h4>
                             <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p class="h3 font-weight-700 mb-0">{{ playlist.playlist_title | title }} <span class="h5">playlist</span>
+                            <p class="h3 font-weight-700 mb-0">{{ playlist.playlist_name | title }} <span class="h5">Playlist</span>
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <form  method="POST">
-                                <input class="btn btn-e84610 font-weight-700" type="submit" value="Delete">
+                            <form action="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" method="POST">
+                                <input class="btn font-weight-700" type="submit" value="Delete">
                             </form>
-                            <button class="btn btn-ffd5b7-06" type="button" data-mdb-dismiss="modal">No</button>
+                            <button class="btn" type="button" data-mdb-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            {% endif %}
             {% endfor %}
         </div>
         <!-- /End of Credit -->

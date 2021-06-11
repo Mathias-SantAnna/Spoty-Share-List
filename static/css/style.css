@@ -113,3 +113,24 @@ nav .brand-logo {
     -ms-grid-columns: 1fr 1rem 2fr;
     grid-template-columns: 1fr 2fr;
 } */
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 55%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+}
+
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;}
+}

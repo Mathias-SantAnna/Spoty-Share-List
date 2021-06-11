@@ -5,6 +5,8 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from flask_pymongo import ObjectId
+from bson.objectid import ObjectId
+import bson
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -230,6 +232,25 @@ def edit_playlist(playlist_id):
         playlist=playlist, 
         artist=artist, 
         music_genre=music_genre)
+
+
+# DELETE PLAYLIST
+@app.route("/delete_playlist/<playlist_id>", methods=["GET", "POST"])
+def delete_playlist(playlist_id):
+    """Delete playlists function"""
+    if "user" in session:
+        playlist = mongo.db.playlists.find_one({"_id": ObjectId(playlist_id)})
+
+        if session["user"].lower() == playlist["created_by"].lower():
+            mongo.db.playlists.remove({"_id": ObjectId(playlist_id)})
+            flash("playlist successfully deleted", "success")
+            return redirect(url_for("profile", username=session["user"]))
+
+        flash("Access denied. This is not your playlist", "error")
+        return redirect(url_for("profile", username=session["user"]))
+
+    flash("Access denied. This is not your playlist", "error")
+    return redirect(url_for("register"))
 
 
 # THE APP
