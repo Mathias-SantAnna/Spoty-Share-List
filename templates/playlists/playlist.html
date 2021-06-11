@@ -11,9 +11,9 @@
             <!-- Playlist Image -->
             <div class="center-align grid-top-img">
                 {% if playlist.img_url %}
-                <img class="card-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                <img class="card-image-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
                 {% else %}
-                <img class="card-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                 {% endif %}
             </div> 
             <div class="playlist-full grid-top-title border-radius-025">
@@ -25,7 +25,7 @@
                 <!-- Buttons Genre & Play -->
                 <div class="row">
                     <div class="col s6 right-align">
-                        <a class="btn grey darken-3" target="_blank" href="{{ playlist.playlist_url }}">All {{ playlist.genre_name | title }} Playlists</a>
+                        <a class="btn grey darken-3" target="_blank" href="{{ music_genre. }}">All {{ playlist.genre_name | title }} Playlists</a>
                     </div>
                     <div class="col s6 left-align">
                         {% if playlist.playlist_url %}
@@ -69,17 +69,6 @@
 
         <!-- IFRAME ENDS HERE -->
 
-        <!-- Buttons -->
-        <div class="row">
-            {% if session.user.username|lower == playlist.created_by|lower %}
-            <div class="col s6 right-align">
-                <a href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}" class="btn-small green accent-4">Edit</a>
-            </div>
-            <div class="col s6 left-align">
-                <a href="" class="btn-small red">Delete</a>
-            </div>
-            {% endif %}
-        </div>
     </div>
 </div>
 {% endblock %}

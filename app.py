@@ -5,8 +5,6 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from flask_pymongo import ObjectId
-from bson.objectid import ObjectId
-import bson
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -61,6 +59,22 @@ def genre_filter(id):
 def artist_filter(id):
     artist = list(mongo.db.artist.find({"artist": id}))
     return render_template("playlists/playlists.html", artist=artist)
+
+
+# MUSIC GENRE
+@app.route("/music_genre/<genre_id>")
+def music_genre(genre_id): 
+    music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
+    return render_template("genre.html", playlist=playlist,
+                           genre_id=genre_id,
+                           music_genre=music_genre, title=genre_id,)
+
+
+# MUSIC GENRE
+@app.route("/music_genres")
+def music_genres(): 
+    music_genres = list(mongo.db.music_genre.find().sort("_id", 1))
+    return render_template("genre.html", music_genres=music_genres, )
 
 
 # SINGLE PLAYLIST
@@ -232,6 +246,9 @@ def edit_playlist(playlist_id):
         playlist=playlist, 
         artist=artist, 
         music_genre=music_genre)
+
+
+# MANAGE MUSIC GENRE
 
 
 # DELETE PLAYLIST

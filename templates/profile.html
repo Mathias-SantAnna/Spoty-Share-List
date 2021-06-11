@@ -13,28 +13,27 @@
             {% for playlist in user_playlist %}
             {% if session.user | lower == playlist.created_by | lower %}
             <div class="col s12 m4">
-                <div class="card playlist-summary playlist-summary-height">
+                <div class="card playlist-summary playlist-summary-height hoverable">
                     <!-- Title, Playlist Image, Genre & Details  -->
                     <div class="card-body">
-                        <h4 class="center-align">{{ playlist.playlist_name }}</h4>
-                        {% if playlist.img_url %}
+                        
                         <img class="card-img-top playlist-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
                         {% else %}
                         <img class="card-img-top playlist-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                         {% endif %}
+                        <h4 class="center-align">{{ playlist.playlist_name }}</h4>
+                        {% if playlist.img_url %}
                         <h4 class="card-title center-align pt-2 pb-1">
                             {{ playlist.genre | title }}</h4>
                         <p class="card-text details">Details: {{ playlist.playlist_details }}</p>
                         
                         <!-- Tracks, Artits, Created By & Url -->
                         <ul class="list-group list-group-flush posted-list">
-                            <li class="list-group-item text-center">Tracks: {{ playlist.playlist_tracks | truncate(70) }}</li>
                             <li class="list-group-item text-center">Artists: {{ playlist.artist_name | truncate(70) }}</li>
+
+                            <li class="list-group-item text-center">Tracks: {{ playlist.playlist_tracks | truncate(70) }}</li>
+                            
                             <li class="list-group-item text-center">Created by: {{ playlist.created_by | capitalize}}</li>
-                            <br>
-                                <li class="list-group-item center-align">
-                                    <a href="{{ playlist.playlist_url }}" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Play Now</a>
-                                </li>
                         </ul>
                     </div>
                     <!-- Edit & Delet playlist Buttons -->

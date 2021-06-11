@@ -11,8 +11,7 @@ $(document).ready(function () {
         showClearBtn: true,
         i18n: {
             done: "Select"
-        }
-        
+        }  
     });
 
     validateMaterializeSelect();
