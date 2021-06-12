@@ -26,7 +26,9 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
-                        <li><a href="#">Manage Music Genre</a></li>
+                        {% if session.user|lower == "admin"|lower %}
+                            <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
+                        {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -41,13 +43,15 @@
             <li><h4 class="center-align green accent-4-text text-darken 4">Spoty Share List</h4></li>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
-            <li><a href="{{ url_for('music_genres') }}">Manage Music Genre</a></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-        {% else %}
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
+                {% if session.user|lower == "admin"|lower %}
+                    <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
 		</ul>
 	</header>

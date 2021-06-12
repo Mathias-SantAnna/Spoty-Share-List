@@ -62,15 +62,13 @@ def artist_filter(id):
 
 
 # MUSIC GENRE
-@app.route("/music_genre/<genre_id>")
+@app.route("/music_genre/<_id>")
 def music_genre(genre_id): 
     music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("genre.html", playlist=playlist,
-                           genre_id=genre_id,
-                           music_genre=music_genre, title=genre_id,)
+    return render_template("music_genre.html", music_genre=music_genre)
 
 
-# MUSIC GENRE
+# MUSIC GENRE S
 @app.route("/music_genres")
 def music_genres(): 
     music_genres = list(mongo.db.music_genre.find().sort("_id", 1))

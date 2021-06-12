@@ -18,11 +18,11 @@
                 <label class="genre-name" for="genre_name">Genre</label>
                 <select id="genre_name" class="form-select playlist-select color-fff" name="genre_name" aria-label="playlist genres">
                     {% for genre in music_genre %}
-                    {% if music_genre._id == playlist.genre_name %}
-                    <option value="{{ genre._id }}" selected>{{ genre.genre_name | title }}</option>
-                    {% else %}
-                    <option value="{{ genre.genre_name }}">{{ genre.genre_name | title }}</option>
-                    {% endif %}
+                        {% if music_genre._id == playlist.genre_name %}
+                        <option value="{{ genre._id }}" selected>{{ genre.genre_name | title }}</option>
+                        {% else %}
+                        <option value="{{ genre.genre_name }}">{{ genre.genre_name | title }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
