@@ -22,6 +22,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # MongoDB Global Variable
 mongo = PyMongo(app)
 
+
 # Index
 @app.route("/") 
 @app.route("/home")
@@ -61,21 +62,6 @@ def artist_filter(id):
     return render_template("playlists/playlists.html", artist=artist)
 
 
-# MUSIC GENRE
-@app.route("/music_genre/<_id>")
-def music_genre(_id): 
-    playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
-    music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("music_genre.html", music_genre=music_genre, playlist=playlist)
-
-
-# MUSIC GENRE S
-@app.route("/music_genres")
-def music_genres(): 
-    music_genres = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("genre.html", music_genres=music_genres, )
-
-
 # SINGLE PLAYLIST
 @app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
@@ -92,6 +78,21 @@ def playlist(playlist_id):
     return render_template(
         "playlists/playlist.html",
          playlist=playlist, user=user)
+
+
+# MUSIC GENRE
+@app.route("/music_genre/<_id>")
+def music_genre(_id): 
+    playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
+    music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
+    return render_template("music_genre.html", music_genre=music_genre, playlist=playlist)
+
+
+# MUSIC GENRE S
+@app.route("/music_genres")
+def music_genres(): 
+    music_genres = list(mongo.db.music_genre.find().sort("_id", 1))
+    return render_template("genre.html", music_genres=music_genres, )
 
 
 # REGISTER
@@ -189,21 +190,23 @@ def add_playlist():
     if not session.get("user"):
         render_template("templates/error_handlers/404.html")
 
-    
     if request.method == "POST":
         # Get playlist URL field from the form
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
         # VALIDATE if playlist URL was filled 
         if spotify_url:
-            # Validate if the field playlist_url matches with Spotify URL using Regex (module re)
-            spotify_url_validation = re.search('https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+            # Validate if the field matches with Spotify URL
+            # using Regex (module re)
+            spotify_url_validation = re.search(
+                'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
             # Error msg if ! validated
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
-            
-            # if the field playlist_url is valid, split the str by "/" - It will return an array
+                        
+            # if the field spotify_url is valid, split the str by "/"
+            # It will return an array
             url_elements = spotify_url.split("/")
             # The spotify_id is the 4th element of the array
             spotify_id = url_elements[4]
@@ -244,14 +247,17 @@ def edit_playlist(playlist_id):
         spotify_id = ""
         # VALIDATE if playlist URL was filled 
         if spotify_url:
-            # Validate if the field playlist_url matches with Spotify URL using Regex (module re)
-            spotify_url_validation = re.search('https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+            # Validate playlist_url matches with Spotify URL
+            # using Regex (module re)
+            spotify_url_validation = re.search(
+                'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
             # Error msg if ! validated
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
             
-            # if the field playlist_url is valid, split the str by "/" - It will return an array
+            # if the field playlist_url is valid,
+            #  split the str by "/" - Return an array
             url_elements = spotify_url.split("/")
             # The spotify_id is the 4th element of the array
             spotify_id = url_elements[4]
