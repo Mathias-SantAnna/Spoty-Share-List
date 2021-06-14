@@ -6,24 +6,23 @@ Submit a new Playlist
 
 {% block content %}
 
-
 <div class="container">
     <h3 class="center-align"> Add Playlist </h3>
     <div class="row card-panel grey lighten-5">
         <form class="col s12" method="POST" action="">
-            <div class="row">
+
                 <!-- Music Genre name -->
                 <div class="row">
                     <div class="input-field col s11">
-                        <select id="genre" name="genre_name" class="validate" required>
-                            <option value="" disabled selected>Choose Music Genre</option>
+                        <select id="genre" name="genre_name" class="browser-default" required>
+                            <option disabled selected>Choose Music Genre</option>
                             {% for genre in music_genre %}
-                            <option value="{{genre._id}}">{{genre.genre_name}}</option>
+                                <option value="{{genre._id}}">{{genre.genre_name}}</option>
                             {% endfor %}
                         </select>
-                        <label for="genre_name">Music Genre</label>
                     </div>
                 </div>
+
                 <!-- Playlist Name -->
                 <div class="row">
                     <div class="input-field col s11">
@@ -66,8 +65,7 @@ Submit a new Playlist
                 <!-- Artists Name  -->
                 <div class="row">
                     <div class="input-field col s11">
-                        <textarea id="artist_name" name="artist_name" class="materialize-textarea validate"
-                            required></textarea>
+                        <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required></textarea>
                         <label for="artist_name">Artist Name</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
                     </div>
@@ -76,14 +74,14 @@ Submit a new Playlist
                 <!-- Enter Playlist URL -->
                 <div class="row">
                     <div class="input-field col s11">
-                        <input id="playlist_url" name="playlist_url" type="url" pattern="https?://.+" class="validate" 
-                        value="https://open.spotify.com/playlist/37i9dQZF1DZ06evO2IMLWU" required>
+                        <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify">
                         <label for="playlist_url">Playlist Url</label>
                         <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
                         <br>
                         <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
                     </div>
                 </div>
+                
                 <!-- Submit button -->
                 <div class="row">
                     <div class="col s6 right-align">
@@ -98,7 +96,5 @@ Submit a new Playlist
         </form>
     </div>
 </div>
-
-
 
 {% endblock %}
