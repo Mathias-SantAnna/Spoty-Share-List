@@ -1,109 +1,78 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block content %}
 
-{% block heading %}
-<section id="heading-manage">
-    <div class="center-align">
-        <a href="{{ url_for('profile', username=session['user']) }}">
-            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
-        </a>
-        <h2 class="h2-p-0 h2-mt-4">Edit Your playlist</h2>
-    </div>
-</section>
+<div class="row">
+    <div class="col s12">
+        <div class="card-panel">
+            <h3 class="center-align username">
+               {{ username }}'s Playlists 
+            </h3>
+        </div>
+        
+        <div class="row">
+            {% for playlist in user_playlist %}
+            {% if session.user | lower == playlist.created_by | lower %}
+            <div class="col s12 m4">
+                <div class="card playlist-summary playlist-summary-height hoverable">
+                    <!-- Title, Playlist Image, Genre & Details  -->
+                    <div class="card-body">
+                        
+                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                        {% else %}
+                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                        {% endif %}
+                        <h4 class="center-align">{{ playlist.playlist_name }}</h4>
+                        {% if playlist.img_url %}
+                        <h4 class="card-title center-align pt-2 pb-1">
+                            {{ playlist.genre | title }}</h4>
+                        <p class="card-text details">Details: {{ playlist.playlist_details }}</p>
+                        
+                        <!-- Tracks, Artits, Created By & Url -->
+                        <ul class="list-group list-group-flush posted-list">
+                            <li class="list-group-item text-center">Artists: {{ playlist.artist_name | truncate(70) }}</li>
 
-<div class="container">
-    <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" Action="">
-
-            <!-- Music Genre name -->
-            <div class="row">
-                <div class="input-field col s11">
-                    <select id="genre" name="genre_name" class="browser-default" required>
-                        {% for genre in music_genre if playlist.genre == genre._id %}
-                            <option value="{{ genre._id}}" selected>{{ genre.genre_name}}</option>
-                        {% endfor %}
-                        {% for genre in music_genre %}
-                            <option value="{{genre._id}}">{{genre.genre_name}}</option>
-                        {% endfor %}
-                    </select>
+                            <li class="list-group-item text-center">Tracks: {{ playlist.playlist_tracks | truncate(70) }}</li>
+                            
+                            <li class="list-group-item text-center">Created by: {{ playlist.created_by | capitalize}}</li>
+                        </ul>
+                    </div>
+                    <!-- Edit & Delet playlist Buttons -->
+                    <div class="center-align card-body">
+                        <a class="btn-small manage-playlist-edit green darken-3" href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="fas fa-edit"></i>Edit</a>
+                        <button class="btn-small manage-playlist-delete red accent-4" type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Playlist Title -->
-            <div class="row">
-                <div class="form-outline form-white col s11">
-                    <label for="playlist_name">Playlist Name</label>
-                    <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name" maxlength="30" value="{{ playlist.playlist_name }}" required />
-                    <p class="input-note">&#40;max 30&#41;</p>
-                </div>
-            </div>
-
-            <!-- Enter Img URL -->
-            <div class="row">
-                <div class="input-field col s11">
-                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
-                    value="{{ playlist.img_url }}" required>
-                    <label for="img_url">Image url</label>
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
+            <!-- Modal for Delete Confirmation -->
+            <div id="modal-delete{{ playlist._id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <h4 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Are you sure to DELETE?</h4>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="h3 font-weight-700 mb-0">{{ playlist.playlist_name | title }} <span class="h5">Playlist</span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" method="POST">
+                                <input class="btn font-weight-700" type="submit" value="Delete">
+                            </form>
+                            <button class="btn" type="button" data-mdb-dismiss="modal">No</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Playlist Details -->
-            <div class="row">
-                <div class="input-field col s11">
-                    <textarea id="playlist_details" name="playlist_details" class="materialize-textarea validate" required>{{ playlist.playlist_details }}</textarea>
-                    <label for="playlist_details">Playlist Details</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write a short summary in a single line.</span>
-                </div>
-            </div>
-
-            <!-- Playslis Tracks -->
-            <div class="row">
-                <div class="input-field col s11">
-                    <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"required>
-                        {% for track in playlist.playlist_tracks.splitlines() %}
-{{ track }} {% endfor %}
-                    </textarea>
-                    <label for="playlist_tracks">Playlist Tracks</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
-                </div>
-            </div>
-
-             <!-- Artists Name  -->
-            <div class="row">
-                <div class="input-field col s11">
-                    <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required>
-                    {% for artist in playlist.artist_name.splitlines() %}
-{{ artist }} {% endfor %}
-                    </textarea>
-                    <label for="artist_name">Artist Name</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
-                </div>
-            </div>
-
-            <!-- Enter Playlist URL -->
-            <div class="row">
-                <div class="input-field col s11">
-
-                    <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify"
-                    value="{{ 'https://open.spotify.com/playlist/'~playlist.spotify_id if playlist.spotify_id else '' }}">
-                    <label for="playlist_url">Playlist Url</label>
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
-                    <br>
-                    <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
-                </div>
-            </div>
-
-            <!-- Submit button -->
-            <div class="row">
-                <div class="col s6 right-align">
-                    <button type="submit" class="btn custom-btn waves-effect green accent-4">Save Changes</button>
-                </div>
-                <div class="col s6 left-align">
-                    <a class="btn custom-btn waves-effect red accent-4"
-                        href="{{ url_for('profile', username=session['user'])  }}">Cancel</a>
-                </div>
-            </div>
-        </form>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <!-- /End of Credit -->
     </div>
-</div>
+</section>
+
 {% endblock %}
