@@ -1,78 +1,77 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block heading %}
+<h2 class="center-align playlist-title ">{{ playlist.playlist_name }} Playlist</h2>
+{% endblock %}
+
 {% block content %}
-
-<div class="row">
-    <div class="col s12">
-        <div class="card-panel">
-            <h3 class="center-align username">
-               {{ username }}'s Playlists 
-            </h3>
-        </div>
-        
-        <div class="row">
-            {% for playlist in user_playlist %}
-            {% if session.user | lower == playlist.created_by | lower %}
-            <div class="col s12 m4">
-                <div class="card playlist-summary playlist-summary-height hoverable">
-                    <!-- Title, Playlist Image, Genre & Details  -->
-                    <div class="card-body">
-                        
-                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
-                        {% else %}
-                        <img class="card-img-top playlist-img-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
-                        {% endif %}
-                        <h4 class="center-align">{{ playlist.playlist_name }}</h4>
-                        {% if playlist.img_url %}
-                        <h4 class="card-title center-align pt-2 pb-1">
-                            {{ playlist.genre | title }}</h4>
-                        <p class="card-text details">Details: {{ playlist.playlist_details }}</p>
-                        
-                        <!-- Tracks, Artits, Created By & Url -->
-                        <ul class="list-group list-group-flush posted-list">
-                            <li class="list-group-item text-center">Artists: {{ playlist.artist_name | truncate(70) }}</li>
-
-                            <li class="list-group-item text-center">Tracks: {{ playlist.playlist_tracks | truncate(70) }}</li>
-                            
-                            <li class="list-group-item text-center">Created by: {{ playlist.created_by | capitalize}}</li>
-                        </ul>
+<div class="container">
+    <div class="row card-panel grey lighten-5">
+        <div class="grid-top">
+            <!-- Playlist Image -->
+            <div class="center-align grid-top-img">
+                {% if playlist.img_url %}
+                <img class="card-image-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                {% else %}
+                <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                {% endif %}
+            </div> 
+            <div class="playlist-full grid-top-title border-radius-025">
+                <!-- Playlist Title, Creator & Detail -->
+                <div class="center-align">
+                    <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
+                    <h6 class="card-text">{{ playlist.playlist_details }}</h6>
+                </div>
+                <!-- Buttons Genre & Play -->
+                <div class="row">
+                    <div class="col s6 right-align">
+                        <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=playlist.genre) }}">All {{ playlist.genre_name | title }} Playlists</a>
                     </div>
-                    <!-- Edit & Delet playlist Buttons -->
-                    <div class="center-align card-body">
-                        <a class="btn-small manage-playlist-edit green darken-3" href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="fas fa-edit"></i>Edit</a>
-                        <button class="btn-small manage-playlist-delete red accent-4" type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}">
-                            <i class="fas fa-trash-alt"></i> Delete
-                        </button>
+                    <div class="col s6 left-align">
+                        {% if playlist.playlist_url %}
+                            <a href="{{ playlist.playlist_url }}" target="_blank" class="btn green accent-4"><i class="far fa-play-circle"></i> Play Now</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-
-            <!-- Modal for Delete Confirmation -->
-            <div id="modal-delete{{ playlist._id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content ">
-                        <div class="modal-header">
-                            <h4 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Are you sure to DELETE?</h4>
-                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="h3 font-weight-700 mb-0">{{ playlist.playlist_name | title }} <span class="h5">Playlist</span>
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" method="POST">
-                                <input class="btn font-weight-700" type="submit" value="Delete">
-                            </form>
-                            <button class="btn" type="button" data-mdb-dismiss="modal">No</button>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="grid-bottom col s6">
+            <!-- Playlist Artist -->
+            <div>
+                <h5 class="text-center mt-3 font-weight-700">Artists</h4>
+                <ul class="list-group list-group-flush border-radius-025">
+                    {% for artist in playlist.artist_name.splitlines()%}
+                    <li class="list-group-item">
+                        &#9834; {{ artist }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Playlist Tracks -->
+            <div>
+                <h5 class="text-center font-weight-700 mt-4">Tracks</h5>
+                <ul class="list-group list-group-flush border-radius-025">
+                    {% for track in playlist.playlist_tracks.splitlines()%}
+                    <li class="list-group-item">
+                        &#9835; {{ track }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
             
-            {% endif %}
-            {% endfor %}
         </div>
-        <!-- /End of Credit -->
-    </div>
-</section>
 
+        {% if playlist.spotify_id %} 
+            <!-- IFRAME START HERE -->
+            <div class="container-row col s6">
+                <div class="pl-playlist-player">
+                    <iframe src="https://open.spotify.com/embed/playlist/{{ playlist.spotify_id }}?theme=0" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+            <!-- IFRAME ENDS HERE -->
+        {% endif %}
+        
+
+    </div>
+</div>
 {% endblock %}
