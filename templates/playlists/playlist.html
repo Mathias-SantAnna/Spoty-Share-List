@@ -1,74 +1,109 @@
 {% extends "base.html" %}
 
 {% block heading %}
-<h2 class="center-align playlist-title ">{{ playlist.playlist_name }} Playlist</h2>
-{% endblock %}
+<section id="heading-manage">
+    <div class="center-align">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
+        </a>
+        <h2 class="h2-p-0 h2-mt-4">Edit Your playlist</h2>
+    </div>
+</section>
 
-{% block content %}
 <div class="container">
     <div class="row card-panel grey lighten-5">
-        <div class="grid-top">
-            <!-- Playlist Image -->
-            <div class="center-align grid-top-img">
-                {% if playlist.img_url %}
-                <img class="card-image-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
-                {% else %}
-                <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
-                {% endif %}
-            </div> 
-            <div class="playlist-full grid-top-title border-radius-025">
-                <!-- Playlist Title, Creator & Detail -->
-                <div class="center-align">
-                    <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
-                    <h6 class="card-text">{{ playlist.playlist_details }}</h6>
-                </div>
-                <!-- Buttons Genre & Play -->
-                <div class="row">
-                    <div class="col s6 right-align">
-                        <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=playlist.genre) }}">All {{ playlist.genre_name | title }} Playlists</a>
-                    </div>
-                    <div class="col s6 left-align">
-                        {% if playlist.playlist_url %}
-                            <a href="{{ playlist.playlist_url }}" target="_blank" class="btn green accent-4"><i class="far fa-play-circle"></i> Play Now</a>
-                        {% endif %}
-                    </div>
+        <form class="col s12" method="POST" Action="">
+
+            <!-- Music Genre name -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <select id="genre" name="genre_name" class="browser-default" required>
+                        {% for genre in music_genre if playlist.genre == genre._id %}
+                            <option value="{{ genre._id}}" selected>{{ genre.genre_name}}</option>
+                        {% endfor %}
+                        {% for genre in music_genre %}
+                            <option value="{{genre._id}}">{{genre.genre_name}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="grid-bottom col s6">
-            <!-- Playlist Artist -->
-            <div>
-                <h5 class="text-center mt-3 font-weight-700">Artists</h4>
-                <ul class="list-group list-group-flush border-radius-025">
-                    {% for artist in playlist.artist_name.splitlines()%}
-                    <li class="list-group-item">
-                        &#9834; {{ artist }}
-                    </li>
-                    {% endfor %}
-                </ul>
+
+            <!-- Playlist Title -->
+            <div class="row">
+                <div class="form-outline form-white col s11">
+                    <label for="playlist_name">Playlist Name</label>
+                    <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name" maxlength="30" value="{{ playlist.playlist_name }}" required />
+                    <p class="input-note">&#40;max 30&#41;</p>
+                </div>
             </div>
-            <!-- Playlist Tracks -->
-            <div>
-                <h5 class="text-center font-weight-700 mt-4">Tracks</h5>
-                <ul class="list-group list-group-flush border-radius-025">
-                    {% for track in playlist.playlist_tracks.splitlines()%}
-                    <li class="list-group-item">
-                        &#9835; {{ track }}
-                    </li>
-                    {% endfor %}
-                </ul>
+
+            <!-- Enter Img URL -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
+                    value="{{ playlist.img_url }}" required>
+                    <label for="img_url">Image url</label>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
+                </div>
             </div>
             
-        </div>
-        <!-- IFRAME START HERE -->
-        <div class="container-row col s6">
-            <div class="pl-playlist-player">
-                <iframe src="https://open.spotify.com/embed/album/4Gfnly5CzMJQqkUFfoHaP3" width="290" height="370" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <!-- Playlist Details -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <textarea id="playlist_details" name="playlist_details" class="materialize-textarea validate" required>{{ playlist.playlist_details }}</textarea>
+                    <label for="playlist_details">Playlist Details</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write a short summary in a single line.</span>
+                </div>
             </div>
-        </div>
 
-        <!-- IFRAME ENDS HERE -->
+            <!-- Playslis Tracks -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"required>
+                        {% for track in playlist.playlist_tracks.splitlines() %}
+{{ track }} {% endfor %}
+                    </textarea>
+                    <label for="playlist_tracks">Playlist Tracks</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
+                </div>
+            </div>
 
+             <!-- Artists Name  -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required>
+                    {% for artist in playlist.artist_name.splitlines() %}
+{{ artist }} {% endfor %}
+                    </textarea>
+                    <label for="artist_name">Artist Name</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
+                </div>
+            </div>
+
+            <!-- Enter Playlist URL -->
+            <div class="row">
+                <div class="input-field col s11">
+
+                    <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify"
+                    value="{{ 'https://open.spotify.com/playlist/'~playlist.spotify_id if playlist.spotify_id else '' }}">
+                    <label for="playlist_url">Playlist Url</label>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.</span>
+                    <br>
+                    <img src="https://i.postimg.cc/c4BybpzD/Howto-Spotify-Share.png" alt="How to share from Spotify" >
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="row">
+                <div class="col s6 right-align">
+                    <button type="submit" class="btn custom-btn waves-effect green accent-4">Save Changes</button>
+                </div>
+                <div class="col s6 left-align">
+                    <a class="btn custom-btn waves-effect red accent-4"
+                        href="{{ url_for('profile', username=session['user'])  }}">Cancel</a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
