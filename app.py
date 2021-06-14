@@ -83,7 +83,7 @@ def playlist(playlist_id):
 # MUSIC GENRE
 @app.route("/music_genre/<_id>")
 def music_genre(_id): 
-    playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
+    playlist = mongo.db.playlist.find_one({"_id": ObjectId(_id)})
     music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
     return render_template("music_genre.html", music_genre=music_genre, playlist=playlist)
 
