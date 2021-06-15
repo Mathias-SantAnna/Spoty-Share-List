@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container">
     <div class="row card-panel grey lighten-5">
-        <div class="grid-top">
+        <div class="grid-top mb-2">
             <!-- Playlist Image -->
             <div class="center-align grid-top-img">
                 {% if playlist.img_url %}
@@ -22,19 +22,9 @@
                     <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
                     <h6 class="card-text">{{ playlist.playlist_details }}</h6>
                 </div>
-                <!-- Buttons Genre & Play -->
-                <div class="row">
-                    <div class="col s6 right-align">
-                        <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=playlist.genre) }}">All {{ playlist.genre_name | title }} Playlists</a>
-                    </div>
-                    <div class="col s6 left-align">
-                        {% if playlist.playlist_url %}
-                            <a href="{{ playlist.playlist_url }}" target="_blank" class="btn green accent-4"><i class="far fa-play-circle"></i> Play Now</a>
-                        {% endif %}
-                    </div>
-                </div>
             </div>
         </div>
+        <br>
         <div class="grid-bottom col s6">
             <!-- Playlist Artist -->
             <div>
@@ -58,7 +48,12 @@
                     {% endfor %}
                 </ul>
             </div>
-            
+            <!-- Button Go To Genre  -->
+            <div class="row">
+                <div class="col s12 center-align ">
+                    <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=playlist.genre) }}">Find more {{ playlist.genre_name | title }} Playlists</a>
+                </div>
+            </div>
         </div>
 
         {% if playlist.spotify_id %} 

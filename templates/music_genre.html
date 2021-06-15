@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    {% for playlist in playlists if playlist._id == genre._id %}
+     <!-- for playlist in playlists if playlist._id == genre._id  -->
         <div class="col s12 m4">
             <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
                 <div class="card medium">
@@ -30,6 +30,6 @@
             </a>
         </div>
 
-    {% endfor %}
+     <!-- endfor  -->
 </div>
 {% endblock %}
