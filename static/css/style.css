@@ -135,3 +135,31 @@ nav .brand-logo {
     max-width: 500px;
     margin: 1.75rem auto;}
 }
+/* CARDS */
+
+.card {
+    border-radius: 2%;
+    overflow: hidden;
+}
+.card .card-image img {
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -webkit-filter: brightness(0.8);
+            filter: brightness(0.8);
+    width: 100% !important;
+}
+
+.card-stacked .card-content {
+    padding: 1rem;
+}
+
+.card-stacked .card-action {
+    padding: 0.6rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+}
