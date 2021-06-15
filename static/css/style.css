@@ -129,6 +129,7 @@ nav .brand-logo {
     will-change: top, opacity;
 }
 
+
 @media (min-width: 576px){
 .modal-dialog {
     max-width: 500px;

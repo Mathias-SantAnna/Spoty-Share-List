@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
     integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" type="text/css">
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <!-- Materialize Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Style CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -26,6 +30,7 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
+                        <li><a href="{{ url_for('music_genres') }}">Music Genres</a></li>
                         {% if session.user|lower == "admin"|lower %}
                             <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
                         {% endif %}
@@ -45,6 +50,7 @@
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
+                <li><a href="{{ url_for('music_genres') }}">Music Genres</a></li>
                 {% if session.user|lower == "admin"|lower %}
                     <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
                 {% endif %}

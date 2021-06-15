@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
-{% block heading %}
+{% block content %}
 <div class="center-align">
-    <h2>{{ music_genre.genre_name | title }} Music Genre</h2>
+    <h2>{{ playlist.genre | title }} Music Genre</h2>
     {% for genre in music_genre if playlist.genre == genre._id %}
         <p>Genre: {{ genre.genre_name}}</p>
     {% endfor %}
 </div>
-{% endblock %}
 
-{% block content %}
 <div class="row">
-    {% for playlist in playlists %}
+    {% for playlist in playlists if playlist._id == genre._id %}
         <div class="col s12 m4">
             <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
                 <div class="card medium">
@@ -20,9 +18,6 @@
                     </div>
                     <div class="card-content">
                         <h5>{{ playlist.playlist_name }}</h5>
-                        {% for genre in music_genre if playlist.genre == genre._id %}
-                            <p>Genre: {{ genre.genre_name}}</p>
-                        {% endfor %}
                         <!-- Button Play on Spotify -->
                         <ul class="list-group list-group-flush posted-list">
                             <li class="list-group-item center-align">

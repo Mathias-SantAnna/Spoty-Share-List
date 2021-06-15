@@ -89,10 +89,10 @@ def music_genre(_id):
 
 
 # MUSIC GENRE S
-@app.route("/music_genres")
+@app.route("/music_genres", methods=["GET", "POST"])
 def music_genres(): 
     music_genres = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("genre.html", music_genres=music_genres, )
+    return render_template("music_genres.html", music_genres=music_genres )
 
 
 # REGISTER
