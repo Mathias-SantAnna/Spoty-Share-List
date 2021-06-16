@@ -71,28 +71,32 @@ def playlist(playlist_id):
     genre = mongo.db.music_genre.find_one_or_404(
             {'_id': ObjectId(playlist["genre"])}
         )
-    playlist["genre_name"] = genre["genre_name"]
+    # playlist["genre_name"] = genre["genre_name"]
     user = mongo.db.users.find_one_or_404(
             {'_id': ObjectId(playlist["created_by"])}
         )
     return render_template(
         "playlists/playlist.html",
-         playlist=playlist, user=user)
+         playlist=playlist,
+         user=user,
+         genre=genre)
+
+
+# MUSIC GENRE S
+@app.route("/music_genres", methods=["GET", "POST"])
+def music_genres(): 
+    music_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
+    return render_template("music_genres.html", music_genres=music_genres )
 
 
 # MUSIC GENRE
 @app.route("/music_genre/<_id>")
 def music_genre(_id): 
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(_id)})
-    music_genre = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("music_genre.html", music_genre=music_genre, playlist=playlist)
-
-
-# MUSIC GENRE S
-@app.route("/music_genres", methods=["GET", "POST"])
-def music_genres(): 
-    music_genres = list(mongo.db.music_genre.find().sort("_id", 1))
-    return render_template("music_genres.html", music_genres=music_genres )
+    music_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
+    return render_template("music_genre.html",
+    music_genre=music_genre,
+    playlist=playlist)
 
 
 # REGISTER
@@ -165,8 +169,7 @@ def profile(username):
     for playlist in user_playlist:
         playlist['created_by'] = mongo.db.users.find_one(
             {"_id": playlist['created_by']})['username']
-        playlist['genre'] = mongo.db.music_genre.find_one(
-            {"_id": playlist['genre']})['genre_name']
+
     if session["user"]:
         return render_template(
             "profile.html", username=username, user_playlist=user_playlist)

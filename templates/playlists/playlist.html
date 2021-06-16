@@ -51,7 +51,7 @@
             <!-- Button Go To Genre  -->
             <div class="row">
                 <div class="col s12 center-align ">
-                    <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=playlist.genre) }}">Find more {{ playlist.genre_name | title }} Playlists</a>
+                    <a class="btn grey darken-3" target="_blank" href="{{ url_for('music_genre', _id=genre._id) }}">Find more {{ genre.genre_name | title }} Playlists</a>
                 </div>
             </div>
         </div>

@@ -9,12 +9,12 @@
 </div>
 
 <div class="row">
-     <!-- for playlist in playlists if playlist._id == genre._id  -->
+    {% for playlist in playlists if playlist.genre_id == genre._id %}
         <div class="col s12 m4">
             <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
                 <div class="card medium">
                     <div class="card-image">
-                        <img class="img_playlist" src="{{ playlist.img_url }}" alt="playlist">
+                        <img class="img_playlist" src="/static/images/PlaylistNOCover.png" alt="playlist">
                     </div>
                     <div class="card-content">
                         <h5>{{ playlist.playlist_name }}</h5>
@@ -30,6 +30,6 @@
             </a>
         </div>
 
-     <!-- endfor  -->
+    {% endfor %}
 </div>
 {% endblock %}

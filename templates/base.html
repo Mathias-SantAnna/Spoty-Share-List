@@ -31,9 +31,6 @@
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
                         <li><a href="{{ url_for('music_genres') }}">Music Genres</a></li>
-                        {% if session.user|lower == "admin"|lower %}
-                            <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
-                        {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
@@ -51,9 +48,6 @@
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
                 <li><a href="{{ url_for('music_genres') }}">Music Genres</a></li>
-                {% if session.user|lower == "admin"|lower %}
-                    <li><a href="{{ url_for('mng_music_genre') }}">Manage Music Genre</a></li>
-                {% endif %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
