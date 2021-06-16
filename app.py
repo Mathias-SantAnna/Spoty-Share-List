@@ -1,11 +1,14 @@
 # Import Python Modules
 import os
 import re
+import pymongo
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from flask_pymongo import ObjectId
+from pymongo import MongoClient
+import urllib.parse
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -21,6 +24,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 # MongoDB Global Variable
 mongo = PyMongo(app)
+
+username = urllib.parse.quote_plus('username')
+password = urllib.parse.quote_plus("password")
+
 
 
 # Index
@@ -82,20 +89,20 @@ def playlist(playlist_id):
          genre=genre)
 
 
-# MUSIC GENRE S
-@app.route("/music_genres", methods=["GET", "POST"])
-def music_genres(): 
-    music_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
-    return render_template("music_genres.html", music_genres=music_genres )
+# ALL GENRE S
+@app.route("/all_genres", methods=["GET", "POST"])
+def all_genres(): 
+    all_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
+    return render_template("all_genres.html", all_genres=all_genres )
 
 
-# MUSIC GENRE
-@app.route("/music_genre/<_id>")
-def music_genre(_id): 
+# SINGLE GENRE
+@app.route("/single_genre/<_id>")
+def single_genre(_id): 
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(_id)})
-    music_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
-    return render_template("music_genre.html",
-    music_genre=music_genre,
+    single_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
+    return render_template("single_genre.html",
+    single_genre=single_genre,
     playlist=playlist)
 
 

@@ -13,14 +13,14 @@
 <!-- Cards -->
 <div class="container">
     <div class="row">
-        {% for genre in music_genres %}
+        {% for genre in all_genres %}
         <div class="col s12 m6 xl4">
             <div class="card light-green lighten-5 hoverable">
 
                 <!-- Card name -->
                 <div class="card-content genre-card-content valign-wrapper center">
                     <div class="col s12 card-title activator grey-text text-darken-4">
-                        <a href="{{ url_for('music_genre', _id=genre._id) }}">
+                        <a href="{{ url_for('single_genre', _id=genre._id) }}">
                         <p>Genre: {{ genre.genre_name}}</p>
 
                     </div>
