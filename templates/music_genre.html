@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    {% for playlist in playlists if playlist.genre_id == genre._id %}
+    {% for playlist in playlists %}
         <div class="col s12 m4">
             <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
                 <div class="card medium">
