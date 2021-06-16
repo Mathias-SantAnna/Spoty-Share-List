@@ -289,9 +289,6 @@ def edit_playlist(playlist_id):
         music_genre=music_genre)
 
 
-# MANAGE MUSIC GENRE
-
-
 # DELETE PLAYLIST
 @app.route("/delete_playlist/<playlist_id>", methods=["GET", "POST"])
 def delete_playlist(playlist_id):
@@ -309,6 +306,57 @@ def delete_playlist(playlist_id):
 
     flash("Access denied. This is not your playlist", "error")
     return redirect(url_for("register"))
+
+
+# EDIT GENRE
+@ app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
+def edit_genre(genre_id):
+    if not session.get("user"):
+        render_template("templates/page_404.html")
+
+    if request.method == "POST":
+        # Get playlist URL field from the form
+        spotify_url = request.form.get("playlist_url")
+        spotify_id = ""
+        # VALIDATE if playlist URL was filled 
+        if spotify_url:
+            # Validate playlist_url matches with Spotify URL
+            # using Regex (module re)
+            spotify_url_validation = re.search(
+                'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+            # Error msg if ! validated
+            if not spotify_url_validation:
+                flash("Invalid Playlist URL")
+                return render_template("playlists/add_playlist.html")
+            
+            # if the field playlist_url is valid,
+            #  split the str by "/" - Return an array
+            url_elements = spotify_url.split("/")
+            # The spotify_id is the 4th element of the array
+            spotify_id = url_elements[4]
+
+        user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
+        playlist = {
+            "genre": ObjectId(request.form.get("genre_name")),
+            "playlist_name": request.form.get("playlist_name"),
+            "img_url": request.form.get("img_url"),
+            "playlist_details": request.form.get("playlist_details"),
+            "playlist_tracks": request.form.get("playlist_tracks"),
+            "artist_name": request.form.get("artist_name"),
+            "created_by": ObjectId(user_id),
+            "spotify_id": spotify_id
+        }
+        
+        mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
+        flash("Playlist successfully edited")
+        return redirect(url_for("profile", username=session['user']))
+
+    playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
+    music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+    return render_template(
+        "playlists/edit_playlist.html", 
+        playlist=playlist,
+        music_genre=music_genre)
 
 
 # THE APP
