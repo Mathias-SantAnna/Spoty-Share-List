@@ -3,8 +3,8 @@
 {% block content %}
 <div class="center-align">
     <h2>{{ playlist.genre | title }} Music Genre</h2>
-    {% for genre in music_genre if playlist.genre == genre._id %}
-        <p>Genre: {{ genre.genre_name}}</p>
+    {% for genre in single_genre if playlist.genre == genre._id %}
+        <p>Genre: {{ genre.genre_name }}</p>
     {% endfor %}
 </div>
 
