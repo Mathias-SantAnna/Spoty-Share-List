@@ -62,13 +62,6 @@ def genre_filter(id):
     return render_template("/playlists/playlists.html", genre=genre)
 
 
-# FILTER PLAYLISTS (GENRE & ARTISTS)
-@app.route("/artist_filter/<id>")
-def artist_filter(id):
-    artist = list(mongo.db.artist.find({"artist": id}))
-    return render_template("playlists/playlists.html", artist=artist)
-
-
 # SINGLE PLAYLIST
 @app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
@@ -92,6 +85,24 @@ def playlist(playlist_id):
 # ALL GENRE S
 @app.route("/all_genres", methods=["GET", "POST"])
 def all_genres(): 
+    if request.method == "POST":
+        #EDIT EXISTING GENRE
+        if request.form.get("edit"):
+            music_genre = {
+                "_id": ObjectId(request.form.get("genre_id")),
+                "genre_name": request.form.get("genre_name")
+            }
+            #Check if new name imput already exists
+            exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
+            if not exists: 
+                #Create a new Genre
+                mongo.db.music_genre.update({"_id": ObjectId(music_genre["_id"])}, music_genre)
+                flash(music_genre["genre_name"] + " Edited")
+            else:
+                flash(music_genre["genre_name"] + " Already Exists! Try another one")
+
+            return redirect(url_for("all_genres"))
+
     all_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template("all_genres.html", all_genres=all_genres )
 
