@@ -5,33 +5,34 @@
     <h2>{{ single_genre.genre_name | title }} Music Genre</h2>
 </div>
 
-<div class="row">
-    {% for playlist in playlists %}
-        <div class="col s12 m4">
-            <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-                <div class="card medium">
-                    <div class="card-image">
-                        {% if playlist.img_url %}
-                        <img class="card-image-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
-                        {% else %}
-                        <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
-                        {% endif %}
+<div class="container playlist-container center-align">
+    <div class="row">
+        {% for playlist in playlists %}
+            <div class="col s12 m4">
+                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
+                    <div class="card medium">
+                        <div class="card-image">
+                            {% if playlist.img_url %}
+                            <img class="card-image border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                            {% else %}
+                            <img class="card-image border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                            {% endif %}
+                        </div>
+                        <div class="card-content center-align">
+                            <h5>{{ playlist.playlist_name }}</h5>
+                            <!-- Button Play on Spotify -->
+                            <ul class="list-group list-group-flush posted-list">
+                                <li class="list-group-item center-align">
+                                    <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" target="_blank" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card-content center-align">
-                        <h5>{{ playlist.playlist_name }}</h5>
-                        <p>{{ playlist.created_by | capitalize}}</p>
-                        <!-- Button Play on Spotify -->
-                        <ul class="list-group list-group-flush posted-list">
-                            <li class="list-group-item center-align">
-                                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" target="_blank" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-            </a>
-        </div>
+                    
+                </a>
+            </div>
 
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
