@@ -11,13 +11,13 @@
             <!-- Playlist Image -->
             <div class="center-align grid-top-img">
                 {% if playlist.img_url %}
-                <img class="card-image-top border-radius-025" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
+                <img class="card-image-top" src="{{ playlist.img_url }}" alt="{{ playlist.playlist_name }}" />
                 {% else %}
-                <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
+                <img class="card-image-top" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                 {% endif %}
             </div> 
-            <div class="playlist-full grid-top-title border-radius-025">
-                <!-- Playlist Name, Creator & Detail -->
+            <div class="playlist-full grid-top-title">
+                <!-- Playlist Creator & Detail -->
                 <div class="center-align">
                     <h4 class="font-weight-400">by {{ user.username.capitalize() }}</h4>
                     <h6 class="card-text">{{ playlist.playlist_details }}</h6>
@@ -29,7 +29,7 @@
             <!-- Playlist Artist -->
             <div>
                 <h5 class="text-center mt-3 font-weight-700">Artists</h4>
-                <ul class="list-group list-group-flush border-radius-025">
+                <ul class="list-group list-group-flush">
                     {% for artist in playlist.artist_name.splitlines()%}
                     <li class="list-group-item">
                         &#9834; {{ artist }}
@@ -40,7 +40,7 @@
             <!-- Playlist Tracks -->
             <div>
                 <h5 class="text-center font-weight-700 mt-4">Tracks</h5>
-                <ul class="list-group list-group-flush border-radius-025">
+                <ul class="list-group list-group-flush">
                     {% for track in playlist.playlist_tracks.splitlines()%}
                     <li class="list-group-item">
                         &#9835; {{ track }}

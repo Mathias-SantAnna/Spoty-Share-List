@@ -29,7 +29,6 @@ username = urllib.parse.quote_plus('username')
 password = urllib.parse.quote_plus("password")
 
 
-
 # Index
 @app.route("/") 
 @app.route("/home")
@@ -93,39 +92,39 @@ def playlist(playlist_id):
 @app.route("/all_genres", methods=["GET", "POST"])
 def all_genres():
     if request.method == "POST":
-        #EDIT EXISTING GENRE
+        # EDIT EXISTING GENRE
         if request.form.get("edit"):
             music_genre = {
                 "_id": ObjectId(request.form.get("genre_id")),
                 "genre_name": request.form.get("genre_name")
             }
-            #Check if new name imput already exists
+            # Check if new name imput already exists
             exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
             if not exists: 
-                #Create a new Genre
+                # Create a new Genre
                 mongo.db.music_genre.update({"_id": ObjectId(music_genre["_id"])}, music_genre)
-                flash(music_genre["genre_name"] + " Edited")
+                flash(music_genre["genre_name"] + " Genre NameAltered")
             else:
-                flash(music_genre["genre_name"] + " Already Exists! Try another one")
+                flash(music_genre["genre_name"] + " Already Exists! Try another name")
 
             return redirect(url_for("all_genres"))
 
-        #DELETE EXISTING GENRE
+        # DELETE EXISTING GENRE
         if request.form.get("delete"):
             music_genre = {
                 "_id": request.form.get("genre_id"),
                 "genre_name": request.form.get("genre_name")
                 }
             mongo.db.music_genre.remove({"_id": ObjectId(music_genre["_id"])})
-            flash(music_genre["genre_name"] + " Deleted")
+            flash(music_genre["genre_name"] + " Genre Deleted")
 
             return redirect(url_for("all_genres"))
 
-        #ADD NEW GENRE
+        # ADD NEW GENRE
         music_genre = {"genre_name": request.form.get("genre_name")}
         exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
         if not exists: 
-            #Create a new Genre
+            # Create a new Genre
             mongo.db.music_genre.insert_one(music_genre)
             flash(music_genre["genre_name"] + " Created")
         else:
@@ -134,8 +133,8 @@ def all_genres():
         return redirect(url_for("all_genres"))
 
     all_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
-    return render_template("all_genres.html", all_genres=all_genres )
 
+    return render_template("all_genres.html", all_genres=all_genres )
 
 
 # SINGLE GENRE
@@ -143,6 +142,7 @@ def all_genres():
 def single_genre(_id): 
     playlists = list(mongo.db.playlist.find({"genre": ObjectId(_id)}))
     single_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
+    
     return render_template("single_genre.html",
     single_genre=single_genre,
     playlists=playlists)
@@ -396,7 +396,6 @@ def edit_genre(genre_id):
             "created_by": ObjectId(user_id),
             "spotify_id": spotify_id
         }
-        
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))

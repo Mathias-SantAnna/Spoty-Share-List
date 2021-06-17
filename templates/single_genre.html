@@ -17,8 +17,9 @@
                         <img class="card-image-top border-radius-025" src="{{ url_for('static', filename='/images/PlaylistNOCover.png') }}" alt="No playlist image" />
                         {% endif %}
                     </div>
-                    <div class="card-content">
+                    <div class="card-content center-align">
                         <h5>{{ playlist.playlist_name }}</h5>
+                        <p>{{ playlist.created_by | capitalize}}</p>
                         <!-- Button Play on Spotify -->
                         <ul class="list-group list-group-flush posted-list">
                             <li class="list-group-item center-align">

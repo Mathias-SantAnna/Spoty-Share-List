@@ -149,6 +149,12 @@ nav .brand-logo {
     width: 100% !important;
 }
 
+.card-image-top {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
 .card-stacked .card-content {
     padding: 1rem;
 }
@@ -161,4 +167,11 @@ nav .brand-logo {
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
+}
+
+.card-form {
+    width: 45% !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    border-radius: 5px;
 }
