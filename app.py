@@ -103,6 +103,17 @@ def all_genres():
 
             return redirect(url_for("all_genres"))
 
+        #DELETE EXISTING GENRE
+        if request.form.get("delete"):
+            music_genre = {
+                "_id": request.form.get("genre_id"),
+                "genre_name": request.form.get("genre_name")
+                }
+            mongo.db.music_genre.remove({"_id": ObjectId(music_genre["_id"])})
+            flash(music_genre["genre_name"] + " Deleted")
+
+            return redirect(url_for("all_genres"))
+
     all_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template("all_genres.html", all_genres=all_genres )
 
