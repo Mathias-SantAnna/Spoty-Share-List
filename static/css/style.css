@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .text-shadow {
@@ -173,7 +176,7 @@ nav .brand-logo {
 
 #card-profile {
     /* height: 700px !important; */
-    height: 47rem !important;
+    height: 46rem !important;
 
 } 
 
