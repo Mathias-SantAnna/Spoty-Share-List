@@ -62,6 +62,13 @@ def genre_filter(id):
     return render_template("/playlists/playlists.html", genre=genre)
 
 
+# FILTER PLAYLISTS (GENRE & ARTISTS)
+@app.route("/artist_filter/<id>")
+def artist_filter(id):
+    artist = list(mongo.db.artist.find({"artist": id}))
+    return render_template("playlists/playlists.html", artist=artist)
+
+
 # SINGLE PLAYLIST
 @app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
@@ -84,7 +91,7 @@ def playlist(playlist_id):
 
 # ALL GENRE S
 @app.route("/all_genres", methods=["GET", "POST"])
-def all_genres(): 
+def all_genres():
     if request.method == "POST":
         #EDIT EXISTING GENRE
         if request.form.get("edit"):
@@ -113,7 +120,7 @@ def all_genres():
             flash(music_genre["genre_name"] + " Deleted")
 
             return redirect(url_for("all_genres"))
-        
+
         #ADD NEW GENRE
         music_genre = {"genre_name": request.form.get("genre_name")}
         exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
@@ -130,14 +137,15 @@ def all_genres():
     return render_template("all_genres.html", all_genres=all_genres )
 
 
+
 # SINGLE GENRE
 @app.route("/single_genre/<_id>")
 def single_genre(_id): 
-    playlist = mongo.db.playlist.find_one({"_id": ObjectId(_id)})
+    playlists = list(mongo.db.playlist.find({"genre": ObjectId(_id)}))
     single_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
     return render_template("single_genre.html",
     single_genre=single_genre,
-    playlist=playlist)
+    playlists=playlists)
 
 
 # REGISTER
@@ -208,8 +216,9 @@ def profile(username):
     user_playlist = list(mongo.db.playlist.find(
         {'created_by': ObjectId(user["_id"])}))
     for playlist in user_playlist:
-        playlist['created_by'] = mongo.db.users.find_one(
-            {"_id": playlist['created_by']})['username']
+        playlist['created_by'] = mongo.db.users.find_one({"_id": playlist['created_by']})['username']
+        genre = mongo.db.music_genre.find_one({"_id": ObjectId(playlist['genre'])})
+        playlist['genre_name'] = genre['genre_name']
 
     if session["user"]:
         return render_template(
