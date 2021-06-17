@@ -7,9 +7,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from flask_pymongo import ObjectId
-from pymongo import MongoClient
-import urllib.parse
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import (generate_password_hash, check_password_hash)
 
 if os.path.exists("env.py"):
     import env
@@ -25,9 +23,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # MongoDB Global Variable
 mongo = PyMongo(app)
 
-username = urllib.parse.quote_plus('username')
-password = urllib.parse.quote_plus("password")
-
 
 # Index
 @app.route("/") 
@@ -35,7 +30,6 @@ password = urllib.parse.quote_plus("password")
 def home():
     playlists = list(mongo.db.playlist.find())
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
-
     return render_template(
         "/playlists/playlists.html",
         playlists=playlists,

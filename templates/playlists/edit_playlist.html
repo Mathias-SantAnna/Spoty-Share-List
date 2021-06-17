@@ -3,9 +3,7 @@
 {% block heading %}
 <section id="heading-manage">
     <div class="center-align">
-        <a href="{{ url_for('profile', username=session['user']) }}">
-            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
-        </a>
+
         <h2 class="h2-p-0 h2-mt-4">Edit Your playlist</h2>
     </div>
 </section>
@@ -72,8 +70,9 @@
             <div class="row">
                 <div class="input-field col s11">
                     <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required>
-                    {% for artist in playlist.artist_name.splitlines() %}
-{{ artist }} {% endfor %}
+                    {% for artist in playlist.artist_name %}
+                        {{ artist }} 
+                    {% endfor %}
                     </textarea>
                     <label for="artist_name">Artist Name</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
