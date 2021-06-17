@@ -113,6 +113,18 @@ def all_genres():
             flash(music_genre["genre_name"] + " Deleted")
 
             return redirect(url_for("all_genres"))
+        
+        #ADD NEW GENRE
+        music_genre = {"genre_name": request.form.get("genre_name")}
+        exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
+        if not exists: 
+            #Create a new Genre
+            mongo.db.music_genre.insert_one(music_genre)
+            flash(music_genre["genre_name"] + " Created")
+        else:
+            flash(music_genre["genre_name"] + " Already Exists! Try another one")
+
+        return redirect(url_for("all_genres"))
 
     all_genres = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template("all_genres.html", all_genres=all_genres )
