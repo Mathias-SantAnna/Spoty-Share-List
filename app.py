@@ -46,41 +46,40 @@ def home():
 @app.route("/search")
 def search():
 
-    query = request.args.get("query")
-    music_genre = list(mongo.db.music_genre.find())
-    playlists = list(mongo.db.playlist.find({"$text": {"$search": query}}).sort("_id", -1)
-    return render_template("/playlists/playlists.html",
-                           music_genre=_music_genre,
-                           playlists=playlists,
-                           page_heading="Results for '{}'".format(query))
+    query = request.form.get("query")
+    playlists = list(mongo.db.playlists.find({"$text": {"$search": query}}).sort("_id", -1))
+    music_genre = mongo.db.music_genre.find()
+    return render_template("playlists/playlists.html", 
+        playlists=playlists,
+        music_genre=music_genre)
 
 
-@app.route("/filter/genre/<genre_id>")
-def filter_genre(genre_id):
+# @app.route("/filter/genre/<genre_id>")
+# def filter_genre(genre_id):
 
-    genre = list(mongo.db.music_genre.find())
-    genre = mongo.db.music_genre.find_one({"_id": ObjectId(genre_id)})
-    playlists = list(mongo.db.plailyst.find(
-        {"genre_name": genre["genre_name"]}).sort("_id", -1))
+    # genre = list(mongo.db.music_genre.find())
+    # genre = mongo.db.music_genre.find_one({"_id": ObjectId(genre_id)})
+    # playlists = list(mongo.db.plailyst.find(
+    #     {"genre_name": genre["genre_name"]}).sort("_id", -1))
 
-    return render_template("playlists.html",
-                           genre=genre,
-                           playlists=playlists,
-                           genre=genre,
-                           page_heading=genre['genre_name'])
+    # return render_template("playlists.html",
+    #                        genre=genre,
+    #                        playlists=playlists,
+    #                        genre=genre,
+    #                        page_heading=genre['genre_name'])
 
 
-@app.route("/filter/user/<username>")
-def filter_user(username):
+# @app.route("/filter/user/<username>")
+# def filter_user(username):
 
-    genre = list(mongo.db.music_genre.find())
-    playlists = list(mongo.db.playlist.find(
-        {"created_by": username}).sort("_id", -1))
+    # genre = list(mongo.db.music_genre.find())
+    # playlists = list(mongo.db.playlist.find(
+    #     {"created_by": username}).sort("_id", -1))
 
-    return render_template("playlists.html",
-                           playlists=playlists,
-                           genre=genre,
-                           page_heading="Playlists from {}".format(username)
+    # return render_template("playlists.html",
+    #                        playlists=playlists,
+    #                        genre=genre,
+    #                        page_heading="Playlists from {}".format(username)
 
 
 # SINGLE PLAYLIST
