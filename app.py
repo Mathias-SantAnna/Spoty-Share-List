@@ -43,34 +43,50 @@ def home():
 
 
 # SEARCH PLAYLISTS
-@app.route("/search", methods=["GET", "POST"])
+@app.route("/search")
 def search():
-    query = request.form.get("query")
-    playlist = list(mongo.db.playlist.find({"$text": {"$search": query}}))
-    if len(playlist) == 0:
-        flash(f"Sorry no playlists with {query} were found!")
-    else:
-        flash(f"Your search for {query} returned {len(playlist)} result(s)!")
-    return render_template("/playlists/playlists.html", playlist=playlist)  
+
+    query = request.args.get("query")
+    music_genre = list(mongo.db.music_genre.find())
+    playlists = list(mongo.db.playlist.find({"$text": {"$search": query}}).sort("_id", -1)
+    return render_template("/playlists/playlists.html",
+                           music_genre=_music_genre,
+                           playlists=playlists,
+                           page_heading="Results for '{}'".format(query))
 
 
-# FILTER PLAYLISTS (GENRE & ARTISTS)
-@app.route("/genre_filter/<id>")
-def genre_filter(id):
-    genre = list(mongo.db.music_genre.find({"genre_name": id}))
-    return render_template("/playlists/playlists.html", genre=genre)
+@app.route("/filter/genre/<genre_id>")
+def filter_genre(genre_id):
+
+    genre = list(mongo.db.music_genre.find())
+    genre = mongo.db.music_genre.find_one({"_id": ObjectId(genre_id)})
+    playlists = list(mongo.db.plailyst.find(
+        {"genre_name": genre["genre_name"]}).sort("_id", -1))
+
+    return render_template("playlists.html",
+                           genre=genre,
+                           playlists=playlists,
+                           genre=genre,
+                           page_heading=genre['genre_name'])
 
 
-# FILTER PLAYLISTS (GENRE & ARTISTS)
-@app.route("/artist_filter/<id>")
-def artist_filter(id):
-    artist = list(mongo.db.artist.find({"artist": id}))
-    return render_template("playlists/playlists.html", artist=artist)
+@app.route("/filter/user/<username>")
+def filter_user(username):
+
+    genre = list(mongo.db.music_genre.find())
+    playlists = list(mongo.db.playlist.find(
+        {"created_by": username}).sort("_id", -1))
+
+    return render_template("playlists.html",
+                           playlists=playlists,
+                           genre=genre,
+                           page_heading="Playlists from {}".format(username)
 
 
 # SINGLE PLAYLIST
 @app.route("/playlist/<playlist_id>")
 def playlist(playlist_id):
+
     playlist = mongo.db.playlist.find_one_or_404(
             {'_id': ObjectId(playlist_id)}
         )
@@ -91,6 +107,7 @@ def playlist(playlist_id):
 # ALL GENRE S
 @app.route("/all_genres", methods=["GET", "POST"])
 def all_genres():
+
     if request.method == "POST":
         # EDIT EXISTING GENRE
         if request.form.get("edit"):
@@ -100,10 +117,12 @@ def all_genres():
             }
             # Check if new name imput already exists
             exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
+
             if not exists: 
                 # Create a new Genre
                 mongo.db.music_genre.update({"_id": ObjectId(music_genre["_id"])}, music_genre)
                 flash(music_genre["genre_name"] + " Genre NameAltered")
+
             else:
                 flash(music_genre["genre_name"] + " Already Exists! Try another name")
 
@@ -123,10 +142,12 @@ def all_genres():
         # ADD NEW GENRE
         music_genre = {"genre_name": request.form.get("genre_name")}
         exists = mongo.db.music_genre.find_one({"genre_name": music_genre["genre_name"]})
+
         if not exists: 
             # Create a new Genre
             mongo.db.music_genre.insert_one(music_genre)
             flash(music_genre["genre_name"] + " Created")
+
         else:
             flash(music_genre["genre_name"] + " Already Exists! Try another one")
 
@@ -140,6 +161,7 @@ def all_genres():
 # SINGLE GENRE
 @app.route("/single_genre/<_id>")
 def single_genre(_id): 
+
     playlists = list(mongo.db.playlist.find({"genre": ObjectId(_id)}))
     single_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
     
@@ -151,6 +173,7 @@ def single_genre(_id):
 # REGISTER
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
@@ -178,6 +201,7 @@ def register():
 # LOGIN
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -209,12 +233,14 @@ def login():
 # PROFILE PAGE
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+
     # grab the session user's username from db
     user = mongo.db.users.find_one(
         {"username": session["user"]})
     username = user["username"]
     user_playlist = list(mongo.db.playlist.find(
         {'created_by': ObjectId(user["_id"])}))
+
     for playlist in user_playlist:
         playlist['created_by'] = mongo.db.users.find_one({"_id": playlist['created_by']})['username']
         genre = mongo.db.music_genre.find_one({"_id": ObjectId(playlist['genre'])})
@@ -231,6 +257,7 @@ def profile(username):
 # LOGOUT
 @app.route("/logout")
 def logout():
+
     # remove user from session cookie
     flash("You have been logged out")
     session.clear()
@@ -240,6 +267,7 @@ def logout():
 # ADD PLAYLIST
 @ app.route("/add_playlist", methods=["GET", "POST"])
 def add_playlist():
+
     if not session.get("user"):
         render_template("templates/error_handlers/404.html")
 
@@ -247,12 +275,14 @@ def add_playlist():
         # Get playlist URL field from the form
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
+
         # VALIDATE if playlist URL was filled 
         if spotify_url:
             # Validate if the field matches with Spotify URL
             # using Regex (module re)
             spotify_url_validation = re.search(
                 'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+
             # Error msg if ! validated
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
@@ -280,9 +310,10 @@ def add_playlist():
         mongo.db.playlist.insert_one(playlist)
         flash("Playlist successfully added")
         return redirect(url_for("profile", username=session['user']))
-# if GET
+
     # artist = mongo.db.artist.find()
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+
     return render_template(
         "playlists/add_playlist.html", music_genre=music_genre
         )
@@ -291,6 +322,7 @@ def add_playlist():
 # EDIT PLAYLIST
 @ app.route("/edit_playlist/<playlist_id>", methods=["GET", "POST"])
 def edit_playlist(playlist_id):
+
     if not session.get("user"):
         render_template("templates/page_404.html")
 
@@ -298,12 +330,14 @@ def edit_playlist(playlist_id):
         # Get playlist URL field from the form
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
+
         # VALIDATE if playlist URL was filled 
         if spotify_url:
             # Validate playlist_url matches with Spotify URL
             # using Regex (module re)
             spotify_url_validation = re.search(
                 'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+
             # Error msg if ! validated
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
@@ -326,13 +360,15 @@ def edit_playlist(playlist_id):
             "created_by": ObjectId(user_id),
             "spotify_id": spotify_id
         }
-        
+     
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
         flash("Playlist successfully edited")
+
         return redirect(url_for("profile", username=session['user']))
 
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+
     return render_template(
         "playlists/edit_playlist.html", 
         playlist=playlist,
@@ -342,13 +378,16 @@ def edit_playlist(playlist_id):
 # DELETE PLAYLIST
 @app.route("/delete_playlist/<playlist_id>", methods=["GET", "POST"])
 def delete_playlist(playlist_id):
+
     user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
     """Delete playlists function"""
     if "user" in session:
         playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
+
         if user_id == playlist["created_by"]:
             mongo.db.playlist.delete_one({"_id": ObjectId(playlist_id)})
             flash("playlist successfully deleted", "success")
+
             return redirect(url_for("profile", username=session["user"]))
 
         flash("Access denied. This is not your playlist", "error")
@@ -361,6 +400,7 @@ def delete_playlist(playlist_id):
 # EDIT GENRE
 @ app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
+
     if not session.get("user"):
         render_template("templates/page_404.html")
 
@@ -368,6 +408,7 @@ def edit_genre(genre_id):
         # Get playlist URL field from the form
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
+
         # VALIDATE if playlist URL was filled 
         if spotify_url:
             # Validate playlist_url matches with Spotify URL
@@ -375,6 +416,7 @@ def edit_genre(genre_id):
             spotify_url_validation = re.search(
                 'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
             # Error msg if ! validated
+
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
@@ -398,10 +440,12 @@ def edit_genre(genre_id):
         }
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
         flash("Playlist successfully edited")
+
         return redirect(url_for("profile", username=session['user']))
 
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+
     return render_template(
         "playlists/edit_playlist.html", 
         playlist=playlist,
