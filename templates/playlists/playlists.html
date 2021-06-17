@@ -12,7 +12,6 @@
 
                 <!-- Input field -->
                 <div class="input-field col s12 m7">
-                    <i class="fas fa-search prefix"></i>
                     <input type="text" name="query" id="query" minlength="3" class="validate" required>
                     <label for="query">Search Playlists</label>
                 </div>
@@ -38,28 +37,26 @@
     <div class="row">
         {% for playlist in playlists %}
             <div class="col s12 m4">
-                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-                    <div class="card medium">
+                <div class="card medium">
+                    <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
                         <div class="card-image">
                             <img class="img_playlist" src="{{ playlist.img_url }}" alt="playlist">
                         </div>
-                        <div class="card-content">
-                            <h5>{{ playlist.playlist_name }}</h5>
-                            {% for genre in music_genre if playlist.genre == genre._id %}
-                                <p>Genre: {{ genre.genre_name}}</p>
-                            {% endfor %}
-                            <!-- Button Play on Spotify -->
-                            <ul class="list-group list-group-flush posted-list">
-                                <li class="list-group-item center-align">
-                                    <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" target="_blank" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
-                                </li>
-                            </ul>
-                        </div>
+                    </a>    
+                    <div class="card-content">
+                        <h5>{{ playlist.playlist_name }}</h5>
+                        {% for genre in music_genre if playlist.genre == genre._id %}
+                            <p>Genre: {{ genre.genre_name}}</p>
+                        {% endfor %}
+                        <!-- Button Play on Spotify -->
+                        <ul class="list-group list-group-flush posted-list">
+                            <li class="list-group-item center-align">
+                                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
+                            </li>
+                        </ul>
                     </div>
-                    
-                </a>
+                </div>
             </div>
-
         {% endfor %}
     </div>
 

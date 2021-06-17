@@ -49,8 +49,8 @@ nav .brand-logo {
 }
 
 .card-image-top {
-    max-width: 500px;
-    max-height: 500px;
+    -webkit-filter: brightness(0.8);
+    filter: brightness(0.8);
 }
 
 .card.small .card-image+.card-content, .card.medium .card-image+.card-content, .card.large .card-image+.card-content {
@@ -87,10 +87,12 @@ nav .brand-logo {
 }
 
 .playlist-img-top {
-    height: 100%;
+    height: 300px;
     -o-object-fit: cover;
-    object-fit: cover;
-    width: 100%;
+       object-fit: cover;
+    -webkit-filter: brightness(0.8);
+            filter: brightness(0.8);
+    width: 100% !important;
 }
 
 #heading-manage {
@@ -137,7 +139,7 @@ nav .brand-logo {
 /* CARDS */
 
 .card {
-    border-radius: 2%;
+    border-radius: 10px;
     overflow: hidden;
 }
 .card .card-image img {
@@ -168,6 +170,12 @@ nav .brand-logo {
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
 }
+
+#card-profile {
+    /* height: 700px !important; */
+    height: 47rem !important;
+
+} 
 
 .card-form {
     width: 45% !important;
