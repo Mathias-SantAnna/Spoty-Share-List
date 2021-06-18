@@ -37,7 +37,20 @@ def home():
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
 
     return render_template(
-        "/playlists/playlists.html",
+        "/index.html",
+        playlists=playlists,
+        music_genre=music_genre)
+
+
+# PLAYLIST LIBRARY        
+@app.route("/playlists/library")
+def library():
+
+    playlists = list(mongo.db.playlist.find())
+    music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
+
+    return render_template(
+        "/playlists/library.html",
         playlists=playlists,
         music_genre=music_genre)
 
@@ -49,27 +62,20 @@ def search():
     query = request.args.get("query")
     playlists = list(mongo.db.playlist.find(
         {"$text": {"$search": query}}).sort("_id", -1))
-    music_genre = mongo.db.music_genre.find()
+    music_genre = list(mongo.db.playlist.find(
+        {"$text": {"$search": query}}).sort("_id", -1))
     return render_template(
-        "playlists/playlists.html", 
+        "playlists/library.html", 
         playlists=playlists,
         music_genre=music_genre)
 
 
-# FILTER PLAYLISTS (GENRE & ARTISTS)
+# FILTER PLAYLISTS (GENRE )
 @app.route("/genre_filter/<id>")
 def genre_filter(id):
 
     genre = list(mongo.db.music_genre.find({"genre_name": id}))
-    return render_template("/playlists/playlists.html", genre=genre)
-
-
-# FILTER PLAYLISTS (GENRE & ARTISTS)
-@app.route("/artist_filter/<id>")
-def artist_filter(id):
-
-    artist = list(mongo.db.artist.find({"artist": id}))
-    return render_template("playlists/playlists.html", artist=artist)
+    return render_template("/playlists/library.html", genre=genre)
 
 
 # SINGLE PLAYLIST
@@ -87,7 +93,7 @@ def playlist(playlist_id):
             {'_id': ObjectId(playlist["created_by"])}
         )
     return render_template(
-        "playlists/playlist.html",
+        "playlists/library.html",
         playlist=playlist,
         user=user,
         genre=genre)
