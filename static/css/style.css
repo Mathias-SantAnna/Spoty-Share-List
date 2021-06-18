@@ -44,7 +44,7 @@ a, a:hover, a:focus, a:active {
 }
  /*  Single Plylist */
  
- .playlist-container{
+.playlist-container{
     margin-top:1rem;
 }
 
@@ -135,6 +135,7 @@ a, a:hover, a:focus, a:active {
     max-width: 500px;
     margin: 1.75rem auto;}
 }
+
 /* CARDS */
 
 .card {
@@ -171,9 +172,7 @@ a, a:hover, a:focus, a:active {
 }
 
 #card-profile {
-    /* height: 700px !important; */
     height: 58rem !important;
-
 } 
 
 .card-form {
