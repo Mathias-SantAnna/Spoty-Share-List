@@ -37,7 +37,7 @@
         {% for playlist in playlists %}
             <div class="col s12 m4">
                 <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-                    <div class="card medium">
+                    <div class="card medium hoverable">
                         <div class="card-image">
                             <img class="img_playlist" src="{{ playlist.img_url }}" alt="playlist">
                         </div>

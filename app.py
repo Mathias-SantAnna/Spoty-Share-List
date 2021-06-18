@@ -93,7 +93,7 @@ def playlist(playlist_id):
             {'_id': ObjectId(playlist["created_by"])}
         )
     return render_template(
-        "playlists/library.html",
+        "playlists/playlist.html",
         playlist=playlist,
         user=user,
         genre=genre)
