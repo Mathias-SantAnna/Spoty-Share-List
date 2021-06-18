@@ -58,8 +58,8 @@
             <div class="row">
                 <div class="input-field col s11">
                     <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"required>
-                        {% for track in playlist.playlist_tracks.splitlines() %}
-{{ track }} {% endfor %}
+                        {%- for track in playlist.playlist_tracks.splitlines() %}
+{{ track }}{% endfor -%}
                     </textarea>
                     <label for="playlist_tracks">Playlist Tracks</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
@@ -70,9 +70,8 @@
             <div class="row">
                 <div class="input-field col s11">
                     <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required>
-                    {% for artist in playlist.artist_name %}
-                        {{ artist }} 
-                    {% endfor %}
+                        {%- for artist in playlist.artist_name.splitlines() %}
+{{ artist }} {% endfor -%}
                     </textarea>
                     <label for="artist_name">Artist Name</label>
                     <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
@@ -82,9 +81,10 @@
             <!-- Enter Playlist URL -->
             <div class="row">
                 <div class="input-field col s11">
-                    <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify">
+                    <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify"
+                    value="{{ 'https://open.spotify.com/playlist/'~playlist.spotify_id if playlist.spotify_id else '' }}">
                     <label for="playlist_url">Playlist Url</label>
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.
                     <br>E.g.: https://open.spotify.com/playlist/6PDXrjun1PrnqOC2iFQity .</span>
                     <br>
                 </div>
