@@ -284,18 +284,17 @@ def add_playlist():
             # The spotify_id is the 4th element of the array
             spotify_id = url_elements[4]
 
-        user_id = mongo.db.users.find_one(
-            {"username": session["user"]})["_id"]
-            playlist = {
-                "genre": ObjectId(request.form.get("genre_name")),
-                "playlist_name": request.form.get("playlist_name").strip(),
-                "img_url": request.form.get("img_url").strip(),
-                "playlist_details": request.form.get("playlist_details").strip(),
-                "playlist_tracks": request.form.get("playlist_tracks").strip(),
-                "artist_name": request.form.get("artist_name").strip(),
-                "created_by": ObjectId(user_id),
-                "spotify_id": spotify_id
-            }
+        user_id = mongo.db.users.find_one({"username": session["user"]})["_id"]
+        playlist = {
+            "genre": ObjectId(request.form.get("genre_name")),
+            "playlist_name": request.form.get("playlist_name").strip(),
+            "img_url": request.form.get("img_url").strip(),
+            "playlist_details": request.form.get("playlist_details").strip(),
+            "playlist_tracks": request.form.get("playlist_tracks").strip(),
+            "artist_name": request.form.get("artist_name").strip(),
+            "created_by": ObjectId(user_id),
+            "spotify_id": spotify_id
+        }
 
         mongo.db.playlist.insert_one(playlist)
         flash("Playlist successfully added")
