@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container playlist-container center-align">
+    <div class="center-align">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
+        </a>
 
+    </div>
     <div class="row">
-        <h2 class="align-center"> Playlists Library</h2>
+        <h2 class="align-center"> Welcome !</h2>
         <br>
     </div>
     <div class="row">
