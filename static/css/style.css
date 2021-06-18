@@ -27,13 +27,10 @@ nav .brand-logo {
 }
 
 
-    /* -- Navbar -- */
-/* .navbar {
-    left: 0;
-    position: absolute;
-    right: 0;
-    z-index: 1;
-} */
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
 
 .brand-logo img {
     height: auto;
@@ -110,13 +107,12 @@ nav .brand-logo {
     background-color: rgba(251, 234, 222, 0.3);
 }
 
-/* .grid-bottom {
-    display: -ms-grid;
-    display: grid;
-    grid-gap: 1rem;
-    -ms-grid-columns: 1fr 1rem 2fr;
-    grid-template-columns: 1fr 2fr;
-} */
+#genre_card_title {
+    font-weight: 600;
+}
+.card-title i {
+    color: #21E666;
+}
 
 .modal {
     display: none;
