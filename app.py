@@ -146,7 +146,7 @@ def all_genres():
     return render_template("all_genres.html", all_genres=all_genres)
 
 
- # DELETE EXISTING GENRE
+# DELETE EXISTING GENRE
 @app.route("/delete_genre/<genre_id>", methods=["GET"])
 def delete_genre(genre_id):
 
@@ -211,7 +211,8 @@ def login():
                     existing_user["password"],
                     request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(request.form.get("username")))
+                        flash("Welcome, {}".format(request.form.get(
+                            "username")))
                         return redirect(url_for(
                             "profile", username=session["user"]))
             else:
@@ -267,7 +268,7 @@ def logout():
 @ app.route("/add_playlist", methods=["GET", "POST"])
 def add_playlist():
     if not session.get("user"):
-        render_template("templates/error_handlers/404.html")
+        render_template("templates/page_404.html")
 
     if request.method == "POST":
         # Get playlist URL field from the form
@@ -329,13 +330,14 @@ def edit_playlist(playlist_id):
             # Validate playlist_url matches with Spotify URL
             # using Regex (module re)
             spotify_url_validation = re.search(
-                'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+', spotify_url)
+                'https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+',
+                spotify_url)
 
             # Error msg if ! validated
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
-            
+
             # if the field playlist_url is valid,
             #  split the str by "/" - Return an array
             url_elements = spotify_url.split("/")
@@ -352,8 +354,7 @@ def edit_playlist(playlist_id):
             "artist_name": request.form.get("artist_name"),
             "created_by": ObjectId(user_id),
             "spotify_id": spotify_id
-        }
-        
+            }
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))
