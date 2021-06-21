@@ -5,6 +5,28 @@
     font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+/* Combined with min-height on body, this sets footer to bottom of screen without any content */
+main {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+}
+
+.container {
+    padding: 1rem 0;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5)
 }
@@ -180,4 +202,39 @@ a, a:hover, a:focus, a:active {
     margin-left: 15px !important;
     margin-right: 15px !important;
     border-radius: 5px;
+}
+
+/* FOOTER */
+
+.footer-menu li {
+    display:inline-block;
+    padding: 0 1rem;
+    border-right: thin solid;
+}
+
+.footer-menu li:last-child {
+    border-right: none;
+    padding: 0.5rem 0 0 1rem;
+}
+
+.footer-menu li,
+.footer-links li {
+    display:inline-block;
+    padding: 0 1rem;
+}
+
+.footer-menu a,
+.footer-links a {
+    color: #fff;
+    display: inherit;
+    -webkit-transition: scale 0.1s ease;
+    -o-transition: scale 0.1s ease;
+    transition: scale 0.1s ease;
+}
+
+.footer-menu a:hover,
+.footer-links a:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
 }
