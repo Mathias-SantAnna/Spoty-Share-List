@@ -378,7 +378,7 @@ def delete_playlist(playlist_id):
 
         if user_id == playlist["created_by"]:
             mongo.db.playlist.delete_one({"_id": ObjectId(playlist_id)})
-            flash("playlist successfully deleted", "success")
+            flash("Playlist Successfully Deleted")
             return redirect(url_for("profile", username=session["user"]))
 
         flash("Access denied. This is not your playlist", "error")

@@ -25,42 +25,52 @@
                         {% if playlist.img_url %}
                         <h4 class="card-title center-align pt-2 pb-1">
                             {{ playlist.genre_name | title }}</h4>
-
-                        
-                        <h6 class="text-center mt-3 font-weight-600">Details:</h6>
+                        <div class="card-profile">
+                            <h6 class="text-center mt-2">Details:</h6>
                             <p class="card-text details">{{ playlist.playlist_details }}</p>
 
-                        <!-- Tracks, Artits, Created By & Url -->
-                        <h6 class="text-center mt-3 font-weight-600">Artists:</h6>
-                            <ul class="list-group list-group-flush border-radius-025">
-                                {% for artist in playlist.artist_name.splitlines()%}
-                                <li class="list-group-item">
-                                    &#9834; {{ artist }}
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        <h6 class="text-center mt-3 font-weight-600">Tracks:</h6>
-                            <ul class="list-group list-group-flush border-radius-025">
-                                {% for tracks in playlist.playlist_tracks.splitlines()%}
-                                <li class="list-group-item">
-                                    &#9835; {{ tracks }}
-                                </li>
-                                {% endfor %}
-                            </ul>
-
+                            <!-- Tracks, Artits, Created By & Url -->
+                            <h6 class="text-center mt-2">Artists:</h6>
+                                <ul class="list-group list-group-flush border-radius-025">
+                                    {% for artist in playlist.artist_name.splitlines()%}
+                                    <li class="list-group-item">
+                                        &#9834; {{ artist }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            <h6 class="text-center mt-2">Tracks:</h6>
+                                <ul class="list-group list-group-flush border-radius-025">
+                                    {% for tracks in playlist.playlist_tracks.splitlines()%}
+                                    <li class="list-group-item">
+                                        &#9835; {{ tracks }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                        </div>
                     </div>
                     <!-- Edit & Delet playlist Buttons -->
-                    <div class="center-align card-body">
+                    <!-- <div class="center-align card-body">
                         <a class="btn-small manage-playlist-edit green darken-3" href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="fas fa-edit"></i>Edit</a>
                         <button class="btn-small manage-playlist-delete red accent-4" type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}">
                             <i class="fas fa-trash-alt"></i> Delete
                         </button>
+                        
+                    </div> -->
+                    <div class="row">
+
+                        <div class="col s6 right-align">
+                            <a class="btn custom-btn waves-effect green accent-4"
+                                href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="far fa-edit"></i> Edit</a>
+                        </div>
+                        <div class="col s6 left-align">
+                            <button type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}" class="btn custom-btn waves-effect red accent-4"><i class="far fa-trash-alt"></i> Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Modal for Delete Confirmation -->
-            <div id="modal-delete{{ playlist._id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
+            <div id="modal-delete{{ playlist._id }}" class="modal modal-overlay fade" style="height: 18%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content ">
                         <div class="modal-header">
@@ -68,7 +78,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                            <a href="" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                            <a href="" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                         </div>
                     </div>
                 </div>
