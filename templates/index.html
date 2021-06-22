@@ -4,10 +4,7 @@
     <div class="container playlist-container center-align">
         <div class="center-align">
             <h2 class="align-center"> 🤟 Welcome to </h2>
-            <a href="{{ url_for('profile', username=session['user']) }}">
-                <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
-            </a>
-    
+            <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
         </div>
         <div class="row text-intro">
             <h4>🎶 "Music is much better when shared." 🎵</h4>
@@ -16,9 +13,10 @@
                 </h5>
             </div>
             <div class="col s6">
-                <h5>🎧 For all music lovers, this website is a tool where you can create, organize and share your favorite playlists. 🎸  <a class="btn custom-btn waves-effect green accent-4" href="{{ url_for('register') }}"><i class="far fa-play-circle"></i> Start Now ! </a></h5>
+                <h5 class="hide-on-med-and-down">🎧 For all music lovers, this website is a tool where you can create, organize and share your favorite playlists. 🎸 </h5>
+    
             </div>
-
+            <a class="btn custom-btn waves-effect green accent-4" href="{{ url_for('register') }}"><i class="far fa-play-circle"></i> Start Now ! </a>
         </div>
         <div class="row card-panel search-bar grey lighten-5">
             <form action="{{ url_for('search') }}" method="GET" class="col s12">

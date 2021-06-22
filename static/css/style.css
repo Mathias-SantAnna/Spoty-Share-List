@@ -42,6 +42,11 @@ h1, h2, h3, h4, h5, h6 {
 nav .brand-logo {
     margin-left: 3%;
 }
+
+.back-page-logo{
+    width: 70%;
+}
+
 .brand-logo {
     display: inline-block;
     padding-top: .3125rem;
@@ -178,11 +183,6 @@ a, a:hover, a:focus, a:active {
 }
 
 
-@media (min-width: 576px){
-.modal-dialog {
-    max-width: 500px;
-    margin: 1.75rem auto;}
-}
 
 /* CARDS */
 
@@ -270,4 +270,17 @@ a, a:hover, a:focus, a:active {
 .Error404-500, .Error404-500 iframe {
     border-radius: 60px !important;
 
+}
+
+/* ----------  MEDIA QUERIES  -----------*/
+
+@media (max-width: 768px){
+    .modal-dialog {
+        max-width: 450px;
+        margin: 1.2rem auto;
+    }
+
+    .back-page-logo{
+        width: 100%!important;
+    }
 }
