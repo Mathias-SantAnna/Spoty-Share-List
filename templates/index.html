@@ -3,23 +3,26 @@
 <section>
     <div class="container playlist-container center-align">
         <div class="center-align">
+            <h2 class="align-center"> 🤟 Welcome to </h2>
             <a href="{{ url_for('profile', username=session['user']) }}">
                 <img class="back-page-logo" src="{{ url_for('static', filename='images/LogoTransp.png') }}" alt="Logo">
             </a>
     
         </div>
-        <div class="row">
-            <h2 class="align-center"> Welcome ! 🤟</h2>
-            <h4>🎵"Music is better when shared."🎶</h4>
-            <br>
-            <h5 class="hide-on-med-and-down">Music has been shown in studies to improve general well-being, regulate emotions, and promote enjoyment and relaxation in everyday life.
-            </h5>
-            <h5>For all music lovers, this website is a tool where you can create, organize and share your favorite playlists.  🎧 🎼 <a style="color: #21E666; text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.7)" href="{{ url_for('register') }}">Sign Up Now!</a> 🎸</h5>
+        <div class="row text-intro">
+            <h4>🎶 "Music is much better when shared." 🎵</h4>
+            <div class="col s6">
+                <h5 class="hide-on-med-and-down">Music has been shown in studies to improve general well-being, regulate emotions, and promote enjoyment and relaxation in everyday life. 🎼 
+                </h5>
+            </div>
+            <div class="col s6">
+                <h5>🎧 For all music lovers, this website is a tool where you can create, organize and share your favorite playlists. 🎸  <button class="btn custom-btn waves-effect green accent-4" href="{{ url_for('register') }}"><i class="far fa-play-circle"></i> Start Now ! </button></h5>
+            </div>
+
         </div>
-        <br>
         <div class="row card-panel search-bar grey lighten-5">
             <form action="{{ url_for('search') }}" method="GET" class="col s12">
-                <div class="row center-align">
+                <div class="row search-content center-align">
 
                     <!-- Input field -->
                     <div class="input-field col s12 m7">
