@@ -29,7 +29,7 @@ password = urllib.parse.quote_plus("password")
 
 
 # Index
-@app.route("/") 
+@app.route("/")
 @app.route("/home")
 def home():
 
@@ -42,7 +42,7 @@ def home():
         music_genre=music_genre)
 
 
-# PLAYLIST LIBRARY        
+# PLAYLIST LIBRARY
 @app.route("/playlists/library")
 def library():
 
@@ -65,7 +65,7 @@ def search():
     music_genre = list(mongo.db.playlist.find(
         {"$text": {"$search": query}}).sort("_id", -1))
     return render_template(
-        "playlists/library.html", 
+        "playlists/library.html",
         playlists=playlists,
         music_genre=music_genre)
 
@@ -114,7 +114,7 @@ def all_genres():
             # Check if new name imput already exists
             exists = mongo.db.music_genre.find_one(
                 {"genre_name": music_genre["genre_name"]})
-            if not exists: 
+            if not exists:
 
                 # Create a new Genre
                 mongo.db.music_genre.update(
@@ -122,7 +122,7 @@ def all_genres():
                 flash(music_genre["genre_name"] + " Edited")
             else:
                 flash(
-                    music_genre["genre_name"] + 
+                    music_genre["genre_name"] +
                     " Already Exists! Try another one")
 
             return redirect(url_for("all_genres"))
@@ -132,7 +132,7 @@ def all_genres():
         exists = mongo.db.music_genre.find_one(
             {"genre_name": music_genre["genre_name"]})
 
-        if not exists: 
+        if not exists:
             # Create a new Genre
             mongo.db.music_genre.insert_one(music_genre)
             flash(music_genre["genre_name"] + " Created")
@@ -158,7 +158,7 @@ def delete_genre(genre_id):
 
 # SINGLE GENRE
 @app.route("/single_genre/<_id>")
-def single_genre(_id): 
+def single_genre(_id):
 
     playlists = list(mongo.db.playlist.find({"genre": ObjectId(_id)}))
     single_genre = mongo.db.music_genre.find_one({"_id": ObjectId(_id)})
@@ -274,7 +274,7 @@ def add_playlist():
         # Get playlist URL field from the form
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
-        # VALIDATE if playlist URL was filled 
+        # VALIDATE if playlist URL was filled
         if spotify_url:
             # Validate if the field matches with Spotify URL
             # using Regex (module re)
@@ -284,7 +284,7 @@ def add_playlist():
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
-                        
+
             # if the field spotify_url is valid, split the str by "/"
             # It will return an array
             url_elements = spotify_url.split("/")
@@ -325,7 +325,7 @@ def edit_playlist(playlist_id):
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
 
-        # VALIDATE if playlist URL was filled 
+        # VALIDATE if playlist URL was filled
         if spotify_url:
             # Validate playlist_url matches with Spotify URL
             # using Regex (module re)
@@ -362,7 +362,7 @@ def edit_playlist(playlist_id):
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/edit_playlist.html", 
+        "playlists/edit_playlist.html",
         playlist=playlist,
         music_genre=music_genre)
 
@@ -400,7 +400,7 @@ def edit_genre(genre_id):
         spotify_url = request.form.get("playlist_url")
         spotify_id = ""
 
-        # VALIDATE if playlist URL was filled 
+        # VALIDATE if playlist URL was filled
         if spotify_url:
             # Validate playlist_url matches with Spotify URL
             # using Regex (module re)
@@ -412,7 +412,7 @@ def edit_genre(genre_id):
             if not spotify_url_validation:
                 flash("Invalid Playlist URL")
                 return render_template("playlists/add_playlist.html")
-            
+
             # if the field playlist_url is valid,
             #  split the str by "/" - Return an array
             url_elements = spotify_url.split("/")
@@ -430,7 +430,7 @@ def edit_genre(genre_id):
             "created_by": ObjectId(user_id),
             "spotify_id": spotify_id
         }
-        
+
         mongo.db.playlist.update({"_id": ObjectId(playlist_id)}, playlist)
         flash("Playlist successfully edited")
         return redirect(url_for("profile", username=session['user']))
@@ -438,7 +438,7 @@ def edit_genre(genre_id):
     playlist = mongo.db.playlist.find_one({"_id": ObjectId(playlist_id)})
     music_genre = list(mongo.db.music_genre.find().sort("genre_name", 1))
     return render_template(
-        "playlists/edit_playlist.html", 
+        "playlists/edit_playlist.html",
         playlist=playlist,
         music_genre=music_genre)
 

@@ -35,7 +35,10 @@ Since everyone loves music (and I even more 🤟), why not do something enjoyabl
 ## User Experience Planes
 
 ### Strategy Plane
-The website is designed for the people who would like to share and find different spotify playlists, add to their own catalog, share with friends, while working, excercing or just for the fun or it, it's a great tool of motivation, scientofically proofed to increased someone's performance up to 30%.Following simple steps users can Register to create an account, to create a new Playlist in a very easy way. Users which are just visiting can see all the playlists shown by post date, or browse by music genre(Music Genre), or even by artists. Also they can click in the playlist url field that would send them to the existing playlist in Spotify. A search field is on these pages to help the user to find what they're looking for, using a specific keyword(s). To open a specific playlist the visitor don't need to register himself, only for adding new ones, editing or deleting your playlists. The website design is simple and user friendly for the first-time visitor easily start navigating. Also for creating a new playlist is a set of instructions for the "hardest parts" like to add a Url for the specific spotify. 
+The website is designed for the people who would like to share and find different spotify playlists, add to their own catalog, share with friends, while working, excercing or just for the fun or it, it's a great tool of motivation, scientifically proofed to increased someone's performance up to 30%. Following simple steps users can Register to create an account, to create a new Playlist in a very easy way. 
+To open a specific playlist the visitor don't need to register himself, going to Search field they can find any existing playlist that matches the input field. The Library with all playlists is hidden for visitor to make them sign up in order to add a playlist and browse for mode content such Genres.
+
+Registered users see all the playlists shown , or browse by music genre(Music Genre), or even by details. Also they can click in the embed iframe field that would send them to the existing playlist in Spotify. A search field is on these pages to help the user to find what they're looking for, using a specific keyword(s).  The website design is simple and user friendly for the first-time visitor easily start navigating. Also for creating a new playlist is a set of instructions for the "hardest parts" like to add a Url for the specific spotify. 
 
 All the functions on the tables below are minimum requirements on the website to achieve the current user's and owner's goals. &#40;On a scale of 1 &#91;least&#93; - 5 &#91;most&#93;&#41;.
 
@@ -47,21 +50,21 @@ All the functions on the tables below are minimum requirements on the website to
 | Search Playlist By Keywords                   |     4      |            5            |
 | Show Playlists By Genre                       |     4      |            5            |
 | Responsiveness                                |     4      |            5            |
-| Subscribe To Newsletter                       |     4      |            4            |
 | Manage Playlist Genre &#40;Admin only&#41;    |     3      |            5            |
 | Page 404                                      |     3      |            4            |
 
 There is some other functions to implement in the website, however, these are not mandatory to achieve the current project goals. Because of lack of time or knowledge, most of these features will only implemented in the future.
 
-| Opportunity                             | Importance |        Viability        |
-| :-------------------------------------- | :--------: | :---------------------: |
-| Upload Image For Each Playlist          |     4      |            4            |
-| Upload Spotify Url For Each Playlist    |     4      |            3            |
-| Pagination                              |     3      |            3            |
-| User profile favorite Genre & Artists   |     3      |            2            |
-| Resetting Password When Users Forget It |     3      |            2            |
-| Review By Other Users                   |     3      |            2            |
-| “Like” Button By Other Users            |     3      |            2            |
+| Opportunity                                    | Importance |        Viability        |
+| :--------------------------------------------- | :--------: | :---------------------: |
+| Upload Image For Each Playlist                 |     4      |            4            |
+| Upload Spotify Url For Each Playlist           |     4      |            3            |
+| Pagination                                     |     3      |            3            |
+| Admin Edit and Delete buttons in Library page  |     3      |            3            |
+| User profile favorite Genre & Artists          |     2      |            2            |
+| Resetting Password When Users Forget It        |     3      |            2            |
+| Review By Other Users                          |     2      |            2            |
+| “Like” Button By Other Users                   |     2      |            2            |
 
 
   <div align="right"><a href="#top">🔝</a></div
