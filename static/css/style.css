@@ -264,3 +264,10 @@ a, a:hover, a:focus, a:active {
         -ms-transform: scale(1.1);
             transform: scale(1.1);
 }
+
+/* Page 404 & 500 */
+
+.Error404-500, .Error404-500 iframe {
+    border-radius: 60px !important;
+
+}

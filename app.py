@@ -443,6 +443,16 @@ def edit_genre(genre_id):
         music_genre=music_genre)
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('page_404.html', error=error), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('page_500.html', error=error), 500
+
+
 # THE APP
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
