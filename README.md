@@ -200,26 +200,26 @@ Updating README.md and some testing is also done during the above process
 
 ### Existing Features
 
-- Create with **HTML5**, **CSS3** &#40;with Material Design for Bootstrap&#41;, **JavaScript**, **Python** &#40;Flask&#41;, **MongoDB** &#40;Atlas&#41;
-- It consists of 1 base html file and 14?????? other html files
+- Create with **HTML5**, **CSS3** &#40;with Materialize &#41;, **JavaScript**, **Python** &#40;Flask&#41;, **MongoDB** &#40;Atlas&#41;
+- It consists of 1 base html file and 13 other html files
 - Modal for "Create Playlist" instructions and confirmation for "Delete" function
+- Upload Image For Each Playlist: Image data cannot be stored in MongoDB, so having image for Playlists is achieved by using image URL.
+- Spotify Embed iframe, for a sample view of the Playlist selected. 
 - CONTINUE... ???
 
 ### Features Left To Implement
 
 - **Resetting Password When Users Forget It:** To achieve this, an e-mail address is probably required for creating an account. The current primary purpose of the website is to provide easy access to the platform so do not ask e-mail address to create an account. In addition, do not know how to implement this with my current skills, decide to leave this out.
 
-- **Upload Image For Each Recipe:** Image data cannot be stored in MongoDB so this is not possible with the current project however, having image for recipes is achieved by using image URL.
-
 - **Share Button:** Do not know how to achieve this with my current skill and do not have time to learn so decide to leave this out.
 
 - **“Like” Reaction By Other Users:** Do not know how to achieve this with my current skill and do not have time to learn so decide to leave this out.
 
-- **Customise Pagination Page Display:** Manage to do pagination as it is essential to make the website neat, however, do not know how to customise pagination page display &#40;e.g. When there are more recipes, it will show page 1, 2, 3, 4, 5, 6, 7...&#41; and do not have time to look into details so decide to leave as it is.
+- **Customise Pagination Page Display:** Manage to do pagination as it is essential to make the website neat, however, do not know how to customise pagination page display &#40;e.g. When there are more Playlists, it will show page 1, 2, 3, 4, 5, 6, 7...&#41; and do not have time to look into details so decide to leave as it is.
 
 - **Error Pages:** Only one type of error page &#40;404&#41; is set up for the project. Ideally, users should be directed to a specific error page depending on the type of the error, however, do not have time to implement this so leave this out.
 
-- **Hooked Up a Spotify API** Where the user can connect to it's Spotify account and there bring data like their playlists, all with two clicks. I'm very exciting to be able to implement this feature in the future. 
+- **Hook Up a Spotify API** Where the user can connect to it's Spotify account and there bring data like their playlists, all with two clicks. I'm very exciting to be able to implement this feature in the future. 
 
 <div align="right"><a href="#top">🔝</a></div>
 
@@ -227,7 +227,7 @@ Updating README.md and some testing is also done during the above process
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML) for markup
 - [CSS3](https://en.wikipedia.org/wiki/CSS) for style
-- [Material Design for Bootstrap 5 & 4](https://mdbootstrap.com/) &#40;an open-source toolkit based on Bootstrap for developing Material Design&#41; for the mainframe of the website
+- [Materialize](materializecss.com/) &#40;A modern responsive front-end framework based on Material Design&#41; for the mainframe of the website
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript) for interaction
 - [Python3](https://www.python.org/) as a backend programming language
 - [Flask](https://flask.palletsprojects.com/) &#40;a micro web framework written in Python&#41; as the main framework of Python
@@ -253,17 +253,18 @@ Updating README.md and some testing is also done during the above process
 
 ### Tools
 
+- [Spotify For Developers](https://developer.spotify.com/documentation/widgets/guides/adding-a-spotify-embed/) to add a embed iframe to webpage
 - [Balsamiq](https://balsamiq.com/) for wireframes
 - [ImageResizer](https://imageresizer.com/) for resizing images
 - [PostImages](https://postimages.org/) for hosting images online
 - [PNG to ICO](https://hnet.com/png-to-ico/) for converting png to ico for favicon
-- [removebg](https://www.remove.bg/) for removing background images
+- [Online Palette](https://www.onlinepalette.com/spotify/) for generate a colour Palette
 - [Canva](https://www.canva.com/) for creating logos and some images
 - [Multi Device Website Mockup Generator](http://techsini.com/multi-mockup/index.php) for mockup
 - [Autoprefixer](https://autoprefixer.github.io/) for parsing CSS and add vendor prefixes
 - [W3C Markup Validation Service](https://validator.w3.org/) for testing HTML code
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) for testing CSS code
-- [jshint](https://jshint.com/) for testing JavaScript code
+- [Jshint](https://jshint.com/) for testing JavaScript code
 - [PEP8 Online](http://pep8online.com/) for checking Python code compliance
 - [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) for testing, style checking and debugging
 

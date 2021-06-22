@@ -31,7 +31,7 @@
 					<li><a href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
+                        <li><a href="{{ url_for('add_playlist') }}">Add a Playlist</a></li>
                         <li><a href="{{ url_for('library') }}">Library</a></li>
                         <li><a href="{{ url_for('all_genres') }}">All Genres</a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
@@ -49,7 +49,7 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('add_playlist') }}">New Playlist</a></li>
+                <li><a href="{{ url_for('add_playlist') }}">Add a Playlist</a></li>
                 <li><a href="{{ url_for('library') }}">Library</a></li>
                 <li><a href="{{ url_for('all_genres') }}">All Genres</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
@@ -87,7 +87,7 @@
             <div class="row">
             <div class="col l6 s12 center-align">
                 <p>This website is created for educational purpose only. All Playlists on this website are from 
-                <a class="font-weight-700" href="https://www.spotify.com/" target="_blank" rel="noopener"> Spotify &copy;</a>.</p>
+                <a class="font-weight-600" href="https://www.spotify.com/" target="_blank" rel="noopener"> Spotify&#174;</a></p>
             </div>
             <div class="col l4 offset-l2 s12 center-align">
                 <ul class="footer-links">
