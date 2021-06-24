@@ -27,13 +27,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+.main-page-comments {
+    font-weight: 200;
+}
+
 .container {
     padding: 1rem 0;
 }
 
-.text-shadow {
+/* .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5)
-}
+} */
 
 .flashes h4 {
     line-height: 2;
@@ -165,6 +169,13 @@ a, a:hover, a:focus, a:active {
 
 .card-profile {
     margin: 0 3px 0 30px;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .modal {
