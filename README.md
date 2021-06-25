@@ -5,7 +5,7 @@ It's a mobile-first &#38; responsive web application for sharing Playlists with 
 Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/home)
 
 <br>
-
+<h2 align="center"><img src="https://i.postimg.cc/hjKHYfQf/Site-Mock-Up.png"></h2>
 # Table of Contents
 
 - [Spoty Share List](#Spoty-Share-List)
