@@ -135,7 +135,7 @@ Below is the chart of the database to show the collections and their relationshi
 ![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/Collections%20SCHEMA.png)
 
 > **Note:**<br>
-> On the subscription collection, subs_name is listed but the subscribe function collects e-mail address only
+> Decided to not use Artist collection for simplicity , and didn't have time to add newsletter feature
 
 ### Skeleton Plane
 
