@@ -260,6 +260,7 @@ Updating README.md and some testing is also done during the above process
 - [PNG to ICO](https://hnet.com/png-to-ico/) for converting png to ico for favicon
 - [Online Palette](https://www.onlinepalette.com/spotify/) for generate a colour Palette
 - [Canva](https://www.canva.com/) for creating logos and some images
+- [Regex Tester](https://www.regextester.com/94502) to create a Regex validation code
 - [Multi Device Website Mockup Generator](http://techsini.com/multi-mockup/index.php) for mockup
 - [Autoprefixer](https://autoprefixer.github.io/) for parsing CSS and add vendor prefixes
 - [W3C Markup Validation Service](https://validator.w3.org/) for testing HTML code
@@ -280,18 +281,6 @@ In the beggiging I didn't get much feedback into this part in a way to correct m
 I had to rename playlists.html into Library.html, music_genres.html into All_Genre.html, and also the playlists.html as home was changed into index.html. Not only that but also understanding deeply how for loops and if statments work, and when and how to use them.
 
 
-— **Form Validation** —
-
-There are some headings for dropdown menus for creating playlists. Even though those headings are disabled, users actually can submit it, if they do not open the options in the dropdown menu, and it stores an empty value in the database. It causes issues for `genre_name` as there must be a value for this. Try a few ways to solve the issue and come up with an idea to allocate "other" as a category. Currently form is validated by HTML only but by using Flask form validation WTForms, this might be achieved better, however, this is a new module for me and currently do not have time to learn it so decide to keep the form as it is.
-
-
-— **Defensive Programme** —
-
-There is a certain restriction on accessing pages. For example, *create playlist* page can be accessed by logged-in users, *edit playlist* can be accessed by the playlist owner only, so a good defensive programme is required to prevent non-authorised users from accessing them. Defensive programme when users logged-in is achieved easily (e.g. User A tries to access user B's playlist) however when a user is not logged in and do a manual test, it gives me a **KeyError:  "user"**. I've got this suggestion of `if "user" in session:`  can be used for this. Also other restrictions only available to Admin for maintanance of the content such as management of Playlists in the Library page and also Music Genres in the All_genre page (CRUD functions).
-
-In this subject I have used Regex (module re) validation for the spotify_url. Where it gets the Url, validate with Regex, grabs a part of the url, slipts and return an array for object Id to be stored. For avoid malicius code or string to be passed into the database. Found in [Regex Tester](https://www.regextester.com/94502).
-
-
 — **Jinga2 For Loop Issue** —
 
 For a prefix list, such as tracks and artists, I was using a regular foor loop but having a few problems, creating new lines in the beggining and end of the text area, when edit page was open.
@@ -307,21 +296,61 @@ I notice when implementing profile.html the delete modal was been overlapped by 
 - style="height: 18%; width: 20%;" 
 - tabindex="-1"
 
+— **Defensive Programme** —
+
+There is a certain restriction on accessing pages. For example, *create playlist* page can be accessed by logged-in users, *edit playlist* can be accessed by the playlist owner only, so a good defensive programme is required to prevent non-authorised users from accessing them. Defensive programme when users logged-in is achieved easily (e.g. User A tries to access user B's playlist) however when a user is not logged in and do a manual test, it gives me a **KeyError:  "user"**. I've got this suggestion of `if "user" in session:`  can be used for this. Also other restrictions only available to Admin for maintanance of the content such as management of Playlists in the Library page and also Music Genres in the All_genre page (CRUD functions).
+
+In this subject I have used Regex (module re) validation for the spotify_url. Where it gets the Url, validate with Regex, grabs a part of the url, slipts and return an array for object Id to be stored. For avoid malicius code or string to be passed into the database. Found in [Regex Tester](https://www.regextester.com/94502).
+
 — **Heroku Application Error** —
 The problem was with config vars int the cluster, and after that fixed it was identified that in MongoDB I forgot to create a query for the search function. After suggested by a tutor, and following the Code Inst. video I created the query as instructed, and it worked as expected.
 
-Bla bla bla
 
 <div align="right"><a href="#top">🔝</a></div>
 
+
+## CREDITS
+
+### Code
+
+— **HTML5** —
+
+- [Materialize](materializecss.com/) for navigation bar, input forms, card displays, modals and dropdown menus.
+
+
+— **CSS3** —
+
+- [Materialize Classes and colours](materializecss.com/) for styling.
+
+
+— **JavaScript** —
+
+- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/quick-start/) client-side JavaScript library which allows you to create a new player in Spotify Connect and play any audio track from Spotify in the browser via Encrypted Media Extensions.
+
+— **Python** —
+
+- [TTL255 - Przemek Rogala's Blog](https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/) Jinga2 for loops
+- [Ed Bradley](https://github.com/Edb83/self-isolution/blob/master/app.py) for reference.
+
+
+
+### Contents
+
+— **Playlists** —
+> Almost every image has been collected from spotify website
+
+>Tracks titles, Artitst names, and Url also from the same playlist in spotify
+- [Spotify web player](https://open.spotify.com/)
+
+
 ## ACKNOWLEDGEMENTS
 
-I would like to thank ;
+I would like to thank:
 
 - My deer friend and personal mentor, **Rimom Costa**, for going through the project with me and giving a lots of advice and taking so much time for teaching and helping me when I needed the most. (If it wasn't for him I wouldn't have finished it)
 
 - For all Code Institute Tutors, **Michael**, **Stephen**, **Igor** and **Sheryl**, for giving me a guidance on how to solve different issues
 - **Ed Bradley** for the meeting about MS3 and explainig very carefully each subject.
-- **Antonio R.** for giving me advice on some subjects and helping with beggining of the project
+- **Antonio R.** for giving me advice on some subjects and helping in the beggining of the project
 
 <div align="right"><a href="#top">🔝</a></div>

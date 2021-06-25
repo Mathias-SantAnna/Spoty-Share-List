@@ -71,7 +71,7 @@ a, a:hover, a:focus, a:active {
     height: auto;
     width: auto;
     max-height: 70px;
-    max-width: 228px;
+    max-width: 200px;
 }
 
 .brand-logo a:hover {
@@ -302,5 +302,9 @@ a, a:hover, a:focus, a:active {
 
     .back-page-logo{
         width: 100%!important;
+    }
+
+    p {
+        font-size: 17px;
     }
 }
