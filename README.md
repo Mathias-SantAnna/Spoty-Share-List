@@ -309,40 +309,6 @@ The problem was with config vars int the cluster, and after that fixed it was id
 <div align="right"><a href="#top">🔝</a></div>
 
 
-## CREDITS
-
-### Code
-
-— **HTML5** —
-
-- [Materialize](materializecss.com/) for navigation bar, input forms, card displays, modals and dropdown menus.
-
-
-— **CSS3** —
-
-- [Materialize Classes and colours](materializecss.com/) for styling.
-
-
-— **JavaScript** —
-
-- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/quick-start/) client-side JavaScript library which allows you to create a new player in Spotify Connect and play any audio track from Spotify in the browser via Encrypted Media Extensions.
-
-— **Python** —
-
-- [TTL255 - Przemek Rogala's Blog](https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/) Jinga2 for loops
-- [Ed Bradley](https://github.com/Edb83/self-isolution/blob/master/app.py) for reference.
-
-
-
-### Contents
-
-— **Playlists** —
-> Almost every image has been collected from spotify website
-
->Tracks titles, Artitst names, and Url also from the same playlist in spotify
-- [Spotify web player](https://open.spotify.com/)
-
-
 ### Test Strategy
 #### **Summary**
 Testing is required on all features and user stories documented in this README. 
@@ -456,6 +422,40 @@ for your own idea. - Definition from [Github Docs](https://docs.github.com/en/fr
     
     ![Fork](readme_images/fork.JPG)
 1. This will create a duplicate of the full project in your GitHub Repository.
+
+
+## CREDITS
+
+### Code
+
+— **HTML5** —
+
+- [Materialize](materializecss.com/) for navigation bar, input forms, card displays, modals and dropdown menus.
+
+
+— **CSS3** —
+
+- [Materialize Classes and colours](materializecss.com/) for styling.
+
+
+— **JavaScript** —
+
+- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/quick-start/) client-side JavaScript library which allows you to create a new player in Spotify Connect and play any audio track from Spotify in the browser via Encrypted Media Extensions.
+
+— **Python** —
+
+- [TTL255 - Przemek Rogala's Blog](https://ttl255.com/jinja2-tutorial-part-2-loops-and-conditionals/) Jinga2 for loops
+- [Ed Bradley](https://github.com/Edb83/self-isolution/blob/master/app.py) for reference.
+
+
+
+### Contents
+
+— **Playlists** —
+> Almost every image has been collected from spotify website
+
+>Tracks titles, Artitst names, and Url also from the same playlist in spotify
+- [Spotify web player](https://open.spotify.com/)
 
 
 ## ACKNOWLEDGEMENTS
