@@ -82,6 +82,11 @@ a, a:hover, a:focus, a:active {
     margin-bottom: 0px !important;
 }
 
+.btn-open-playlist {
+    margin-top: 15px;
+    bottom: 5px;
+}
+
  /*  Single Plylist */
  
 .playlist-container{
@@ -176,6 +181,10 @@ a, a:hover, a:focus, a:active {
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+
+.card-footer .row {
+    margin-bottom: 0px !important;
 }
 
 .modal {

@@ -41,11 +41,11 @@
                     </div>
 
                     <!-- Modal for Delete Confirmation -->
-                    <div id="modal-delete{{ genre._id }}" class="modal modal-overlay fade" style="height: 12%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ genre._id }}" aria-hidden="true">
+                    <div id="modal-delete{{ genre._id }}" class="modal modal-overlay fade" style="height: 12%; width: 25%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ genre._id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content ">
                                 <div class="modal-header">
-                                    <h4 id="modal-deleteLabel-{{ genre._id }}" class="modal-title">Delete genre {{ genre.genre_name}}?</h4>
+                                    <h5 id="modal-deleteLabel-{{ genre._id }}" class="modal-title">Do you want to Delete genre: "{{ genre.genre_name}}" ?</h5>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
