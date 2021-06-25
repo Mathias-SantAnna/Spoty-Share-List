@@ -68,11 +68,11 @@
             </div>
 
             <!-- Modal for Delete Confirmation -->
-            <div id="modal-delete{{ playlist._id }}" class="modal modal-overlay fade" style="height: 18%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
+            <div id="modal-delete{{ playlist._id }}" class="modal modal-overlay fade" style="height: 18%; width: 20%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content ">
                         <div class="modal-header">
-                            <h4 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Delete playlist {{ playlist.playlist_name}}?</h4>
+                            <h5 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Do you want to Delete the playlist: {{ playlist.playlist_name}} ?</h5>
                         </div>
                         <div class="modal-footer">
                             <a href="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>

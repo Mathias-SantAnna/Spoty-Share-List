@@ -9,14 +9,16 @@
         <div class="row text-intro">
             <h4>🎶 "Music is much better when shared." 🎵</h4>
             <div class="col s6">
-                <h5 class="hide-on-med-and-down main-page-comments">Music has been shown in studies to improve general well-being, regulate emotions, and promote enjoyment and relaxation in everyday life. 🎼 
+                <h5 class="hide-on-med-and-down main-page-comments">Music has been shown in studies to improve general well-being, regulate emotions, promote enjoyment and relaxation in everyday life. 🎼 
                 </h5>
             </div>
             <div class="col s6">
                 <h5 class="hide-on-med-and-down main-page-comments">🎧 For all music lovers, this website is a tool where you can create, organize and share your favorite playlists. 🎸 </h5>
     
             </div>
-            <a class="btn custom-btn waves-effect green accent-4" href="{{ url_for('register') }}"><i class="far fa-play-circle"></i> Start Now ! </a>
+            <div class="col s12">
+                <a class="btn custom-btn waves-effect green accent-4" href="{{ url_for('register') }}"> Start Now! </a>
+            </div>
         </div>
         <div class="row card-panel search-bar grey lighten-5">
             <form action="{{ url_for('search') }}" method="GET" class="col s12">
@@ -65,12 +67,12 @@
                                 {% for genre in music_genre if playlist.genre == genre._id %}
                                     <p>{{ genre.genre_name}}</p>
                                 {% endfor %}
+                            </div>
+                            <div class="card-footer">
+                                <div class="row center-align">
                                 <!-- Button Play on Spotify -->
-                                <ul class="list-group list-group-flush posted-list">
-                                    <li class="list-group-item center-align">
-                                        <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
-                                    </li>
-                                </ul>
+                                    <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" class="btn green accent-4" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
+                                </div>
                             </div>
                         </div>
                     </div>

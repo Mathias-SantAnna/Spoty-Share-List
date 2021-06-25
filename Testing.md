@@ -3,3 +3,4 @@ validation test is performed using the W3C Markup Validation Service, which is a
 by the World Wide Web Consortium for checking HTML and XHTML files for well-designed markup,
 scanning any warnings and errors. Because the Flask Jinja template is applied in all HTML files, the
 source code for testing is retrieved from the displayed pages.
+
