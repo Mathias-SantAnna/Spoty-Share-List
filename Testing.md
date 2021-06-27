@@ -7,7 +7,15 @@ scanning any warnings and errors. Because the Flask Jinja template is applied in
 source code for testing is retrieved from the displayed pages.
 
 Full test results can be found in an excel document [here](testing/test_results.xlsx)
-![Test Results](testing/test_results_13.JPG)
+![Test Results](Testing/TC-01.png)
+![Test Results](Testing/TC-02-04.png)
+![Test Results](Testing/TC-05-07.png)
+![Test Results](Testing/TC-08-10.png)
+![Test Results](Testing/TC-11-13.png)
+![Test Results](Testing/TC-14-16.png)
+![Test Results](Testing/TC-17-18.png)
+![Test Results](Testing/TC-19-21.png)
+
 ## User Story Testing
 
 ### User Story:
