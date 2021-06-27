@@ -11,26 +11,47 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
 - [Spoty Share List](#Spoty-Share-List)
 - [UX](#ux)
   * [General](##WHO'S-THIS-WEBSITE-FOR)
-  * [User Stories](#user-stories)
-  * [Wireframes](#wireframes)
-- [Features](#features)
-  * [Paylists Library](#playlists-library)
-  * [Navigation](#navigation)
-  * [Footer](#footer)
-  * [Register](#register)
-  * [Log In](#log-in)
-  * [User Tools](#user-tools)
-  * [User Profile](#user-profile)
-  * [Create a Playlist](#create-a-Playlist)
-  * [404 pages](#404-pages)
-  * [Search](#search)
-- [Features to implement in future updates](#features-to-implement-in-future-updates)
-- [User Types and permissions](#user-types-and-permissions)
-  * [Visitor](#visitor)
-  * [User](#user)
-  * [Admin](#admin)
+  * [User Experience Planes](##User-Experience-Planes)
+  * [Strategy Plane](###Strategy-Plane)
+  * [Scope Plane](###Scope-Plane)
+  * [Structure Plane](###Structure-Plane)
+  * [Skeleton Plane](###Structure-Plane)
+  * [Surface Plane](###Structure-Plane)
+  * [Website Construction Plans](##Website-Construction-Plans)
+
+- [Features](##Features)
+   * [Existing Features](###Existing-Features)
+   * [Features Left to Implement](###Features-left-to-implement)
+
+- [Technologies Used](##Technologies-Used)
+
+- [Resources](##Resources)
+   * [General Resources](###General-Resources)
+   * [Tools](###Tools)
+
+- [Project Barriers & Solutions](##Project-Barriers-&-Solutions)
+  * [Test Strategy](###Test-Strategy) 
+  * [Summary](####Summary)
+  * [High Level Test Cases](###High-Level-Test-Cases)
+  * [Access Requirements](####Access-Requirements)
+  * [Regression Testing](####Regression-Testing)
+  * [Assumptions and Dependencies](####Assumptions-and-Dependencies)
+  * [Out of Scope](####Out-of-Scope)
+  * [Test Results](###Test-Results)
+
+- [Deployment](##Deployment)
+  * [Project Creation](###Project-Creation)
+  * [Deployment to Heroku](###Deployment-to-Heroku)
+  * [Run Locally](###Run-Locally)
+  * [Fork Project](###Fork-Project)
+
+- [Credits](##Credits)
+  * [Code](###Code)
+  * [Contents](###Contents)
+  * [Acknowledgements](###Acknowledgements)
+
 ## WHO'S THIS WEBSITE FOR
-Since everyone loves music (and I even more 🤟), why not do something enjoyable  and productive in the same time. As we all know, these days the consumption of the streaming services are only growing, and a great tool to have is to be part of a awesome group of people with great music taste (some may discord) where you can create, edit, share your Playlists and much more...(more features to be added in the future). The website is designed for the user that desires to share their playlists and find new ones in a very simple and easy way that the first time visitor can adapt fairly quickly...CONTINUE 💚 🎧 🎸  🎼 🎵 
+Since everyone loves music (and I even more 🤟), why not do something enjoyable and productive at the same time. As we all know, these days the consumption of the streaming services are only growing, and a great tool to have is to be part of a awesome group of people with great music taste (some may discord) where you can create, edit, share your Playlists and much more...(more features to be added in the future). The website is designed for the user that desires to share their playlists and find new ones in a very simple and easy way that the first time visitor can adapt fairly quickly...CONTINUE 💚 🎧 🎸  🎼 🎵  
 
 ## User Experience Planes
 
@@ -67,10 +88,9 @@ There is some other functions to implement in the website, however, these are no
 | “Like” Button By Other Users                   |     2      |            2            |
 
 
-  <div align="right"><a href="#top">🔝</a></div
+  <div align="right"><a href="#top">🔝</a></div>
 
-
-## Scope Plane
+### Scope Plane
 
 To achieve user my project goals, below are the minimum features to be included in this project. Also, **CRUD** (Create, Read, Update, and Delete) functions are required for this project so these are implemented as a part of essential features.
 
@@ -302,7 +322,7 @@ There is a certain restriction on accessing pages. For example, *create playlist
 
 In this subject I have used Regex (module re) validation for the spotify_url. Where it gets the Url, validate with Regex, grabs a part of the url, slipts and return an array for object Id to be stored. For avoid malicius code or string to be passed into the database. Found in [Regex Tester](https://www.regextester.com/94502).
 
-— **Heroku Application Error** —
+— **MongoDB/Heroku Application Error** —
 The problem was with config vars int the cluster, and after that fixed it was identified that in MongoDB I forgot to create a query for the search function. After suggested by a tutor, and following the Code Inst. video I created the query as instructed, and it worked as expected.
 
 
@@ -466,6 +486,6 @@ I would like to thank:
 
 - For all Code Institute Tutors, **Michael**, **Stephen**, **Igor** and **Sheryl**, for giving me a guidance on how to solve different issues
 - **Ed Bradley** for the meeting about MS3 and explainig very carefully each subject.
-- **Antonio R.** for giving me advice on some subjects and helping in the beggining of the project
+- **Antonio R.** for giving me advice on some subjects and helping with the project
 
 <div align="right"><a href="#top">🔝</a></div>
