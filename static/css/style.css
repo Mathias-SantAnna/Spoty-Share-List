@@ -127,6 +127,9 @@ a, a:hover, a:focus, a:active {
     margin-bottom: 0px !important;
 }
 
+.card-text {
+    margin-left: 2rem;
+}
 /*  Profile */
 
 .username{
@@ -175,6 +178,7 @@ a, a:hover, a:focus, a:active {
 .card-footer {
     position: absolute;
     bottom: 20px;
+    right: .5px;
     width: 100%;
     text-align: center;
 }
@@ -290,7 +294,7 @@ a, a:hover, a:focus, a:active {
 
 /* ----------  MEDIA QUERIES  -----------*/
 
-@media (max-width: 768px){
+@media only screen and (max-width: 600px){
     .modal-dialog {
         max-width: 450px;
         margin: 1.2rem auto;
@@ -302,5 +306,9 @@ a, a:hover, a:focus, a:active {
 
     p {
         font-size: 17px;
+    }
+
+    .card-text {
+        margin-left: 1rem;
     }
 }

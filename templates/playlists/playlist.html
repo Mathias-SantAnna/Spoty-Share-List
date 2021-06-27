@@ -25,10 +25,10 @@
             </div>
         </div>
         <br>
-        <div class="grid-bottom col s6">
+        <div class="grid-bottom col s12 m6">
             <!-- Playlist Artist -->
-            <div>
-                <h5 class="text-center mt-3 font-weight-700">Artists</h4>
+            <div class="card-text">
+                <h5 class="font-weight-700 mt-3">Artists</h4>
                 <ul class="list-group list-group-flush">
                     {% for artist in playlist.artist_name.splitlines()%}
                     <li class="list-group-item">
@@ -38,8 +38,8 @@
                 </ul>
             </div>
             <!-- Playlist Tracks -->
-            <div>
-                <h5 class="text-center font-weight-700 mt-4">Tracks</h5>
+            <div class="card-text">
+                <h5 class="font-weight-700 mt-3">Tracks</h5>
                 <ul class="list-group list-group-flush">
                     {% for track in playlist.playlist_tracks.splitlines()%}
                     <li class="list-group-item">
@@ -51,20 +51,20 @@
             <!-- Button Go To Genre  -->
             <div class="row">
                 <div class="col s12 center-align ">
-                    <a class="btn grey darken-3" href="{{ url_for('single_genre', _id=genre._id) }}">Find more {{ genre.genre_name | title }} Playlists</a>
+                    <a class="btn grey darken-3" href="{{ url_for('single_genre', _id=genre._id) }}">More {{ genre.genre_name | title }} Playlists</a>
                 </div>
             </div>
         </div>
 
-        {% if playlist.spotify_id %} 
-            <!-- IFRAME START HERE -->
-            <div class="container-row col s6">
-                <div class="pl-playlist-player">
-                    <iframe src="https://open.spotify.com/embed/playlist/{{ playlist.spotify_id }}?theme=0" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                </div>
+    {% if playlist.spotify_id %} 
+        <!-- IFRAME START HERE -->
+        <div class="container-row col s12 m6">
+            <div class="pl-playlist-player">
+                <iframe src="https://open.spotify.com/embed/playlist/{{ playlist.spotify_id }}?theme=0" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
-            <!-- IFRAME ENDS HERE -->
-        {% endif %}
+        </div>
+        <!-- IFRAME ENDS HERE -->
+    {% endif %}
     </div>
 </div>
 {% endblock %}
