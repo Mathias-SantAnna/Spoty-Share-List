@@ -6,7 +6,7 @@ by the World Wide Web Consortium for checking HTML and XHTML files for well-desi
 scanning any warnings and errors. Because the Flask Jinja template is applied in all HTML files, the
 source code for testing is retrieved from the displayed pages.
 
-Full test results can be found in an excel document [here](testing/test_results.xlsx)
+Full test results can be found in an excel document [here](Testing/test_results.xlsx)
 
 ![Test Results](Testing/TC-01.png)
 ![Test Results](Testing/TC-02-04.png)
