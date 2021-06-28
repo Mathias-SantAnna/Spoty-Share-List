@@ -51,7 +51,8 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
   * [Acknowledgements](###Acknowledgements)
 
 ## WHO'S THIS WEBSITE FOR
-Since everyone loves music (and I even more 🤟), why not do something enjoyable and productive at the same time. As we all know, these days the consumption of the streaming services are only growing, and a great tool to have is to be part of a awesome group of people with great music taste (some may discord) where you can create, edit, share your Playlists and much more...(more features to be added in the future). The website is designed for the user that desires to share their playlists and find new ones in a very simple and easy way that the first time visitor can adapt fairly quickly...CONTINUE 💚 🎧 🎸  🎼 🎵  
+Since everyone loves music (and I even more 🤟), why not do something enjoyable and productive at the same time. As we all know, these days the consumption of the streaming services are only growing, and a great tool to have is to be part of a awesome group of people with great music taste (some may discord) where you can create, edit, share your Playlists and much more...(more features to be added in the future). 
+The website is designed for the user that desires to share their playlists and find new ones in a very simple and easy way that the first time visitor can adapt fairly quickly.💚 🎧  
 
 ## User Experience Planes
 
@@ -63,7 +64,7 @@ Registered users see all the playlists shown (Library), or browse by music genre
 
 All the functions on the tables below are minimum requirements on the website to achieve the current user's and owner's goals. (On a scale of 1 &#91;least&#93; - 5 &#91;most&#93;).
 
-| Opportunity                                   | Importance |         Viability         |
+| Opportunity                                   | Importance |         Viability       |
 | :-------------------------------------------- | :--------: | :---------------------: |
 | Register                                      |     5      |            5            |
 | Login / Log out                               |     5      |            5            |
@@ -115,15 +116,13 @@ To achieve user my project goals, below are the minimum features to be included 
 
 — **Front-end** —
 
-The website consists of a **Home** page with **13 other core pages**.
+The website consists of a **Home** page with **12 other core pages**.
 
 - **Home** (`index.html`)<br>The main page of the website. There is a logo, navigation bar to *Music Genre*, *Register* & *Login* pages, a title and a hero image. All the summary of playlists are contained and users can access a full *Playlist* page. There is a footer with a form to subscribe to newsletter and some social icons
 
-- **Search Result** (`search.html`)<br>The page where users can see playlists by search and access a full *Playlist* page. The same navigation bar and footer are used as *Home* *Idea of having this page comes up during the project
+- **Library** (`playlists/library.html`)<br>The page where users can see all existing playlists and search and access a full *Playlist* page. The same navigation bar and footer are used as *Home*
 
-- **Music Genre** (`Music Genre_<genre_name>.html`)<br>The pages where users can see playlists by playlist and access a full *Playlist* page. The same navigation bar and footer are used as *Home*
-
-- **Playlist** (`Playlist.html`)<br>The page where a full Playlist is shown individually. The same navigation bar and footer are used as *Home*
+- **Playlist** (`playlists/playlist.html`)<br>The page where a full Playlist is shown individually. The same navigation bar and footer are used as *Home*
 
 - **Register** (`register.html`)<br>The page where users can create an account. Once users create an account successfully, they will be led to *Profile* page. The navigation bar is different to *Home* page, in which users can go back to *Home* page by clicking Uncle Jam's icon, and there is no footer
 
@@ -131,21 +130,24 @@ The website consists of a **Home** page with **13 other core pages**.
 
 - **Profile** (`profile.html`)<br>The page where users will be led when they create an account or log in. Users see all of their playlists with an option to edit&#47;delete. Users can access to *Edit Playlist* page and *Delete Playlist* function by clicking a button on the Playlist. There is an option to create a new Playlist from this page by clicking a button and that leads to *Create Playlist* page. The same navigation bar and footer are used as *Home* but there is a *Logout* function instead of *Register* and *Login*. There is also a link to *Profile* page on the navigation bar
 
-- **Create Playlist** (`add_playlist.html`)<br>The page where users can create and post playlists. There is no link on the navigation bar and it can only be accessed by clicking a Create Playlist button on *Profile* page. The page style is the same as *Register | Login*, and users can go back to *Profile* page by clicking Gingerbread man icon or cancel button
+- **Create Playlist** (`playlists/add_playlist.html`)<br>The page where users can create and post playlists. There is no link on the navigation bar and it can only be accessed by clicking a Create Playlist button on *Profile* page. The page style is the same as *Register | Login*, and users can go back to *Profile* page by clicking Gingerbread man icon or cancel button
 
-- **Edit Playlist** (`edit_playlist.html`)<br>The page where users can edit playlists. There is no link on the navigation bar and it can only be accessed by clicking an Edit button on *Profile* page. The page style is the same as *Register | Login*, and users can go back to *Profile* page by clicking Gingerbread man icon or cancel button
+- **Edit Playlist** (`playlists/edit_playlist.html`)<br>The page where users can edit playlists. There is no link on the navigation bar and it can only be accessed by clicking an Edit button on *Profile* page. The page style is the same as *Register | Login*, and users can go back to *Profile* page by clicking Gingerbread man icon or cancel button
 
-- **Edit Genre** (`edit_genre.html`)<br>The page where only <ins>admin user</ins> (owner) can access to create and edit Music genre pages as well as to delete Music Genre. Only admin user can have an access to this page by a navigation link that appears on *Profile* page for admin. The page style is the same as *Home*
+- **Single Genre** (`/single_genre/<_id>.html`)<br>The pages where users can see all playlists of the same genre (eg: Rock) and access the selected *Playlist* page. The same navigation bar and footer are used as *Home*
 
-- **Create Genre** (`add_genre.html`)<br>The page where only <ins>admin user</ins> (owner) can create Music Genre. The page style is the same as *Register | Login*, and admin user can go back to *Manage playlist* page by clicking Tools icon or cancel button
+- **All Genres** (`all_genres.html`)<br>The pages where users can see the genres as card and access the selected *Sinle Genre* page. The same navigation bar and footer are used as *Home*
+  1. The CRUD features is accessible for Admin only in this page in the bottom as two cards, One for create and another one for edit and a detele button in each Genre Card as well.
 
 - **Page 404** (`page_404.html`)<br>The page that informs users the page not found and takes them back to *Home* page safely. The page style is the same as *Register | Login*.
 
-Summary of playlists and full playlists are accessible by any users. Summary of playlists are available on *Home* and *Music Genre* pages and full playlists are available on *Playlists* page.
+Summary of playlists and full playlists are accessible by any users. Summary of playlists are available on *Profile* and full playlists are available from the cards in *Library*, *Home* and *Single Genre* page.
 
 Below is the chart of the website to show the core relationships between the pages. (Most of the pages are linked to each other subject to permission)<br>
 
 ![image](https://github.com/Mathias-SantAnna/Spoty-Share-List/blob/master/static/images/SiteMap2.0.png)<br>
+> **Note:**<br>
+> Decided to change the tile of following pages for better understanding of it's purpose: Playlists => Library, Genre => All Genres;
 
 — **Back-end** —<br>
 Users must have an account to create playlists so there is a **users collection** that has <ins>username</ins> and <ins>password</ins> as keys of the data. <ins>username</ins> in **users collections** is linked with the <ins>username</ins> in **playlists collection** because users who have an account can only create a Playlist and they create a Playlist in their own account. Same principle as <ins>username</ins> in **users collection** that users can only create a Playlist for the Music Genre available in a **Music Genre collection** so it is liked with <ins>playlist_name</ins> in **playlists collection**. Music Genre in **Music Genre collection** are editable by admin so it is created as an independent collection. The data in all the collections are retrievable and can be identified by the key or unique id of the object.
@@ -163,7 +165,7 @@ It is a mobile-first website because people usually bake with a playlist so a go
 
 - [Wireframes: Home (`index.html`)](/workspace/Spoty-Share-List/wireframes/Home.png)
 
-- [Wireframes: Login / Register (`login.html`)](/workspace/Spoty-Share-List/wireframes/Register_Login.png) UPDATE LATER!!
+- [Wireframes: Login / Register (`login.html`)](/workspace/Spoty-Share-List/wireframes/Register_Login.png)
 
 - [Wireframes: Profile (`profile.html`)](/workspace/Spoty-Share-List/wireframes/.png)
 
@@ -175,7 +177,7 @@ It is a mobile-first website because people usually bake with a playlist so a go
 
 - [Wireframes: Edit a Playlist (`edit_playlist.html`)](/workspace/Spoty-Share-List/wireframes/EditPlaylist.png)
 
-- [Wireframes: Manage Genre (`manage_genre.html`)](/workspace/Spoty-Share-List/wireframes/ManageGenre(Admin).png) UPDATE LATER!
+- [Wireframes: Manage Genre (`manage_genre.html`)](/workspace/Spoty-Share-List/wireframes/ManageGenre(Admin).png)
 
 ### Surface Plane
 
@@ -227,9 +229,9 @@ Updating README.md and some testing is also done during the above process
 - Spotify Embed iframe, for a sample view of the Playlist selected. 
 - For Admin Only:
   1. Access to manage Genres (CRUD) in all_genres.html,
-    ![All Genres CRUD - Admin Only](images/Admin-Genre-CRUD.png)
+    ![All Genres CRUD - Admin Only](/images/Admin-Genre-CRUD.png)
   1. Access to Edit and Delete playlist buttons in library.html
-    ![Library Buttons - Admin Only](images/Admin_Edit_Delete_Playlist_Btns.png)
+    ![Library Buttons - Admin Only](/images/Admin_Edit_Delete_Playlist_Btns.png)
 
 ### Features Left To Implement
 
