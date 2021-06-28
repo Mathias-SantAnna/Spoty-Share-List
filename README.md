@@ -448,7 +448,7 @@ for your own idea. - Definition from [Github Docs](https://docs.github.com/en/fr
 
 1. This will create a duplicate of the full project in your GitHub Repository.
 
-
+  <div align="right"><a href="#top">🔝</a></div>
 ## CREDITS
 
 ### Code
@@ -473,7 +473,7 @@ for your own idea. - Definition from [Github Docs](https://docs.github.com/en/fr
 - [Ed Bradley](https://github.com/Edb83/self-isolution/blob/master/app.py) for reference.
 
 
-
+  <div align="right"><a href="#top">🔝</a></div>
 ### Contents
 
 — **Playlists** —
