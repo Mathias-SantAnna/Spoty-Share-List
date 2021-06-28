@@ -9,8 +9,8 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
 # Table of Contents
 
 - [Spoty Share List](#Spoty-Share-List)
-- [UX](##WHO'S-THIS-WEBSITE-FOR)
-  * [General](##WHO'S-THIS-WEBSITE-FOR)
+- [UX]()
+  * [WHO'S THIS WEBSITE FOR](##WHO'S-THIS-WEBSITE-FOR)
   * [User Experience Planes](##User-Experience-Planes)
   * [Strategy Plane](###Strategy-Plane)
   * [Scope Plane](###Scope-Plane)
