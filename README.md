@@ -222,10 +222,14 @@ Updating README.md and some testing is also done during the above process
 
 - Create with **HTML5**, **CSS3** (with Materialize ), **JavaScript**, **Python** (Flask), **MongoDB** (Atlas)
 - It consists of 1 base html file and 13 other html files
-- Modal for "Create Playlist" instructions and confirmation for "Delete" function
+- Modal for confirmation of "Delete" function
 - Upload Image For Each Playlist: Image data cannot be stored in MongoDB, so having image for Playlists is achieved by using image URL.
 - Spotify Embed iframe, for a sample view of the Playlist selected. 
-
+- For Admin Only:
+  1. Access to manage Genres (CRUD) in all_genres.html,
+    ![All Genres CRUD - Admin Only](images/Admin-Genre-CRUD.png)
+  1. Access to Edit and Delete playlist buttons in library.html
+    ![Library Buttons - Admin Only](images/Admin_Edit_Delete_Playlist_Btns.png)
 
 ### Features Left To Implement
 
