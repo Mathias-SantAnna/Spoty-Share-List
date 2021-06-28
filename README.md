@@ -2,7 +2,7 @@
 <h2 align="center"><img src="https://i.postimg.cc/CLWV9npc/Big-Logo-Read-Me.gif"></h2>
 
 It's a mobile-first &#38; responsive web application for sharing Playlists with it's users. The objective is to intensify and amplify the usage of music streaming services like Spotify® 🎶
-Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/home)
+Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/)
 
 <br>
 <h2 align="center"><img src="https://i.postimg.cc/hjKHYfQf/Site-Mock-Up.png"></h2>
