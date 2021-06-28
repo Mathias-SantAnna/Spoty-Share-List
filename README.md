@@ -9,14 +9,14 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
 # Table of Contents
 
 - [Spoty Share List](#Spoty-Share-List)
-- [UX](#ux)
+- UX
   * [General](##WHO'S-THIS-WEBSITE-FOR)
   * [User Experience Planes](##User-Experience-Planes)
   * [Strategy Plane](###Strategy-Plane)
   * [Scope Plane](###Scope-Plane)
   * [Structure Plane](###Structure-Plane)
-  * [Skeleton Plane](###Structure-Plane)
-  * [Surface Plane](###Structure-Plane)
+  * [Skeleton Plane](###Skeleton-Plane)
+  * [Surface Plane](###Surface-Plane)
   * [Website Construction Plans](##Website-Construction-Plans)
 
 - [Features](##Features)
@@ -30,7 +30,7 @@ Link to the website is available [HERE.](https://spoty-share-list.herokuapp.com/
    * [Tools](###Tools)
 
 - [Project Barriers & Solutions](##Project-Barriers-&-Solutions)
-  * [Test Strategy](###Test-Strategy) 
+  * [Test Strategy](####Test-Strategy)
   * [Summary](####Summary)
   * [High Level Test Cases](###High-Level-Test-Cases)
   * [Access Requirements](####Access-Requirements)
@@ -71,7 +71,7 @@ All the functions on the tables below are minimum requirements on the website to
 | Search Playlist By Keywords                   |     4      |            5            |
 | Show Playlists By Genre                       |     4      |            5            |
 | Responsiveness                                |     4      |            5            |
-| Manage Playlist Genre (Admin only)    |     3      |            5            |
+| Manage Playlist Genre (Admin only)            |     3      |            5            |
 | Page 404                                      |     3      |            4            |
 
 There is some other functions to implement in the website, however, these are not mandatory to achieve the current project goals. Because of lack of time or knowledge, most of these features will only implemented in the future.
@@ -347,7 +347,7 @@ JavaScript code must pass through the [JSHint Validator](https://jshint.com/).
 
 Python Code must pass through [PEP8 Validator](http://pep8online.com/)
 #### **High Level Test Cases**
-![Test Cases](Spoty-Share-List/Testing.md)
+[Test Cases](Testing.md)
 
 #### **Access Requirements**
 Tester must have access to MongoDB in order to manually verify the insertion 
@@ -443,8 +443,7 @@ for your own idea. - Definition from [Github Docs](https://docs.github.com/en/fr
 
 1. Navigate to the GitHub Repository you want to fork.
 1. On the top right of the page under the header, click the fork button.
-    
-    ![Fork](readme_images/fork.JPG)
+
 1. This will create a duplicate of the full project in your GitHub Repository.
 
 

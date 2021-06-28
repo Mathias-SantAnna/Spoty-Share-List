@@ -87,7 +87,6 @@ Issue #4:
 ![Test Issues](Testing/PEP8_Old.png)
 
 
-
 ## Validator Results
 
 #### HTML Results:
