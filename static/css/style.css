@@ -39,6 +39,14 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 2;
 }
 
+nav.nav-extended .nav-wrapper {
+    min-height: 70px;
+}
+
+nav .nav-wrapper {
+    padding: 7px 0 8px 0;
+}
+
 nav .brand-logo {
     margin-left: 3%;
 }
@@ -109,9 +117,11 @@ a, a:hover, a:focus, a:active {
 }
 
 .btn-small {
-    margin: 2%;
+    margin: 5% 3%;
     position: relative;
     justify-self: center;
+    height: 28px;
+    font-size: .8rem;
 }
 
 .btn:hover {
@@ -210,6 +220,29 @@ a, a:hover, a:focus, a:active {
     will-change: top, opacity;
 }
 
+.modal-overlay {
+    height: 18% !important;
+    width: 20% !important;
+}
+
+.outer {
+    position: relative;
+  }
+   
+  .outer > a {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+   
+  .inner {
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+   
+  .inner a {
+    pointer-events: all;
+  }
 
 
 /* CARDS */
@@ -256,6 +289,34 @@ a, a:hover, a:focus, a:active {
     margin-left: 15px !important;
     margin-right: 15px !important;
     border-radius: 5px;
+}
+
+.card.medium {
+    height: 400px;
+}
+
+.card-footer-library {
+    bottom: 5px !important;
+    position: absolute;
+    width: 100%;
+}
+
+.for-admin {
+    width: max-content;
+    margin: 0 1px;
+    padding: 0 .5px;
+}
+
+.mb--0 {
+    margin-bottom: 0;
+}
+
+#playlist-iframe {
+    width: 100%;
+    height: 380px;
+    border: none;
+    background-color: #FFF; /*this gives a background color for browsers that can't do RGBA color, like internet explorer*/
+    background-color: rgba(255,255,255,0.5)
 }
 
 /* FOOTER */
@@ -322,5 +383,12 @@ a, a:hover, a:focus, a:active {
 
     .card-footer-profile {
         bottom: 5px;
+    }
+
+}
+
+@media only screen and (min-width: 1800px){
+    .for-admin {
+        left: 12%;
     }
 }

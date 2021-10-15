@@ -22,4 +22,7 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Dracula At Night",
    "editor.defaultFormatter": "HookyQR.beautify",
+   "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+   },
 }

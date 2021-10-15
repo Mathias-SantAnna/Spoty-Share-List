@@ -28,7 +28,7 @@
         <div class="grid-bottom col s12 m6">
             <!-- Playlist Artist -->
             <div class="card-text">
-                <h5 class="font-weight-700 mt-3">Artists</h4>
+                <h5 class="font-weight-700 mt-3">Artists</h5>
                 <ul class="list-group list-group-flush">
                     {% for artist in playlist.artist_name.splitlines()%}
                     <li class="list-group-item">
@@ -60,7 +60,7 @@
         <!-- IFRAME START HERE -->
         <div class="container-row col s12 m6">
             <div class="pl-playlist-player">
-                <iframe src="https://open.spotify.com/embed/playlist/{{ playlist.spotify_id }}?theme=0" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/playlist/{{ playlist.spotify_id }}?theme=0" id="playlist-iframe" allow="encrypted-media"></iframe>
             </div>
         </div>
         <!-- IFRAME ENDS HERE -->

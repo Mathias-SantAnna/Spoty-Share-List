@@ -17,10 +17,10 @@
                 <div class="input-field col s11">
                     <select id="genre" name="genre_name" class="browser-default" required>
                         {% for genre in music_genre if playlist.genre == genre._id %}
-                            <option value="{{ genre._id}}" selected>{{ genre.genre_name}}</option>
+                        <option value="{{ genre._id}}" selected>{{ genre.genre_name}}</option>
                         {% endfor %}
                         {% for genre in music_genre %}
-                            <option value="{{genre._id}}">{{genre.genre_name}}</option>
+                        <option value="{{genre._id}}">{{genre.genre_name}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -30,7 +30,8 @@
             <div class="row">
                 <div class="form-outline form-white col s11">
                     <label for="playlist_name">Playlist Name</label>
-                    <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name" maxlength="30" value="{{ playlist.playlist_name }}" required />
+                    <input id="playlist_name" class="form-control bg-color-49332-06" type="text" name="playlist_name"
+                        maxlength="30" value="{{ playlist.playlist_name }}" required />
                     <p class="input-note">&#40;max 30&#41;</p>
                 </div>
             </div>
@@ -38,35 +39,41 @@
             <!-- Enter Img URL -->
             <div class="row">
                 <div class="input-field col s11">
-                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate" 
-                    value="{{ playlist.img_url }}" required>
+                    <input id="img_url" name="img_url" type="url" pattern="https?://.+" class="validate"
+                        value="{{ playlist.img_url }}" required>
                     <label for="img_url">Image url</label>
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image url, keep the default value.</span>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">If you don't have image
+                        url, keep the default value.</span>
                 </div>
             </div>
-            
+
             <!-- Playlist Details -->
             <div class="row">
                 <div class="input-field col s11">
-                    <textarea id="playlist_details" name="playlist_details" class="materialize-textarea validate" minlength="15" maxlength="80" data-length="50"required>{{ playlist.playlist_details }}</textarea>
+                    <textarea id="playlist_details" name="playlist_details" class="materialize-textarea validate"
+                        minlength="15" maxlength="80" data-length="50"
+                        required>{{ playlist.playlist_details }}</textarea>
                     <label for="playlist_details">Playlist Details</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write a short summary in a single line.</span>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write a short summary in a single
+                        line.</span>
                 </div>
             </div>
 
             <!-- Playslis Tracks -->
             <div class="row">
                 <div class="input-field col s11">
-                    <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"required>
+                    <textarea id="playlist_tracks" name="playlist_tracks" class="materialize-textarea validate"
+                        required>
                         {%- for track in playlist.playlist_tracks.splitlines() %}
 {{ track }}{% endfor -%}
                     </textarea>
                     <label for="playlist_tracks">Playlist Tracks</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single line.</span>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write each song title in a single
+                        line.</span>
                 </div>
             </div>
 
-             <!-- Artists Name  -->
+            <!-- Artists Name  -->
             <div class="row">
                 <div class="input-field col s11">
                     <textarea id="artist_name" name="artist_name" class="materialize-textarea validate" required>
@@ -74,18 +81,22 @@
 {{ artist }} {% endfor -%}
                     </textarea>
                     <label for="artist_name">Artist Name</label>
-                    <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the artist/artists in a single line.</span>
+                    <span class="helper-text" data-error="wrong" data-success="right">Write each the name of the
+                        artist/artists in a single line.</span>
                 </div>
             </div>
 
             <!-- Enter Playlist URL -->
             <div class="row">
                 <div class="input-field col s11">
-                    <input id="playlist_url" name="playlist_url" type="url" pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate" placeholder="Optional - Compatible only with Spotify"
-                    value="{{ 'https://open.spotify.com/playlist/'~playlist.spotify_id if playlist.spotify_id else '' }}">
+                    <input id="playlist_url" name="playlist_url" type="url"
+                        pattern="https:\/\/open.spotify.com\/playlist\/([a-zA-Z0-9]{18,25}$)+" class="validate"
+                        placeholder="Optional - Compatible only with Spotify"
+                        value="{{ 'https://open.spotify.com/playlist/'~playlist.spotify_id if playlist.spotify_id else '' }}">
                     <label for="playlist_url">Playlist Url</label>
-                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the Playlist Url from the share button in the Spotify app, and paste it here.
-                    <br>E.g.: https://open.spotify.com/playlist/6PDXrjun1PrnqOC2iFQity .</span>
+                    <span class="helper-text" data-error="enter valid URL" data-success="right">You can copy the
+                        Playlist Url from the share button in the Spotify app, and paste it here.
+                        <br>E.g.: https://open.spotify.com/playlist/6PDXrjun1PrnqOC2iFQity .</span>
                     <br>
                 </div>
             </div>
@@ -93,11 +104,13 @@
             <!-- Submit button -->
             <div class="row">
                 <div class="col s6 right-align">
-                    <button type="submit" class="btn custom-btn waves-effect green accent-4"><i class="far fa-save"></i> Save Changes</button>
+                    <button type="submit" class="btn custom-btn waves-effect green accent-4"><i class="far fa-save"></i>
+                        Save Changes</button>
                 </div>
                 <div class="col s6 left-align">
                     <a class="btn custom-btn waves-effect red accent-4"
-                        href="{{ url_for('profile', username=session['user'])  }}"><i class="far fa-window-close"></i> Cancel</a>
+                        href="{{ url_for('profile', username=session['user'])  }}"><i class="far fa-window-close"></i>
+                        Cancel</a>
                 </div>
             </div>
         </form>

@@ -16,14 +16,15 @@
                 </div>
 
                 <!-- Search buttons -->
-                <div class="col s12 m5 search-button-container">  
+                <div class="col s12 m5 search-button-container">
                     <div class="col s6 search-button">
                         <button type="submit" class="btn-small indigo text-shadow" aria-label="search button">
                             <i class="fas fa-search center-align"></i>
                         </button>
                     </div>
                     <div class="col s6 search-button">
-                        <a href="{{ url_for('library') }}" class="btn-small teal accent-3 text-shadow" aria-label="reload page button">
+                        <a href="{{ url_for('library') }}" class="btn-small teal accent-3 text-shadow"
+                            aria-label="reload page button">
                             <i class="fas fa-redo center-align"></i>
                         </a>
                     </div>
@@ -32,66 +33,74 @@
             </div>
         </form>
     </div>
-    
+
     <div class="row">
         {% for playlist in playlists %}
-            <div class="col s12 m4">
-                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}">
-                    <div class="card medium hoverable">
-                        <div class="card-image">
-                            <img class="img_playlist" src="{{ playlist.img_url }}" alt="playlist">
-                        </div>
-                        <div class="card-content">
-                            <h5>{{ playlist.playlist_name }}</h5>
-                            {% for genre in music_genre if playlist.genre == genre._id %}
-                                <p>{{ genre.genre_name}}</p>
-                            {% endfor %}
+        <div class="col s12 m4">
+            <div class="outer">
+                <a href="{{ url_for('playlist', playlist_id=playlist._id) }}"></a>
+                <div class="card medium hoverable inner">
+                    <div class="card-image">
+                        <img class="img_playlist" src="{{ playlist.img_url }}" alt="playlist">
+                    </div>
+                    <div class="card-content">
+                        <h5>{{ playlist.playlist_name }}</h5>
+                        {% for genre in music_genre if playlist.genre == genre._id %}
+                        <p>{{ genre.genre_name}}</p>
+                        {% endfor %}
 
-                            <div class="card-footer">
-                                <div class="row">
-                                    <!-- Button Open Playlist page -->
-                                    <div class="center-align">
-                                        <a href="{{ url_for('playlist', playlist_id=playlist._id) }}" class="btn green accent-4 btn-open-playlist" data-playlist-id="312079"><i class="far fa-play-circle"></i> Open Playlist</a>
-                                    </div>
+                        <div class="card-footer-library">
+                            <div class="row mb--0">
+                                <!-- Button Open Playlist page -->
+                                <div class="center-align">
+                                    <a href="{{ url_for('playlist', playlist_id=playlist._id) }}"
+                                        class="btn green accent-4 btn-open-playlist" data-playlist-id="312079">
+                                        <i class="far fa-play-circle"></i> Open Playlist
+                                    </a>
                                 </div>
+                            </div>
 
-                                {% if session.user|lower == "admin" %}
-                                <!-- Edit and Delete Buttons ADMIN ONLY -->
-                                <div class="row for-admin">
-                                    <div class="col s6 right-align">
-                                        <a class="btn custom-btn waves-effect green accent-4"
-                                            href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}"><i class="far fa-edit"></i> Edit</a>
-                                    </div>
-                                    <div class="col s6 left-align">
-                                        <button type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}" class="btn custom-btn waves-effect red accent-4"><i class="far fa-trash-alt"></i> Delete</button>
-                                    </div>
+                            {% if session.user|lower == "admin" %}
+                            <!-- Edit and Delete Buttons ADMIN ONLY -->
+                            <div class="row for-admin mb--0">
+                                <div class="col s6 right-align">
+                                    <a class="btn custom-btn btn-small waves-effect green accent-4"
+                                        href="{{ url_for('edit_playlist', playlist_id=playlist._id) }}">
+                                        <i class="far fa-edit"></i> Edit
+                                    </a>
                                 </div>
+                                <div class="col s6 left-align">
+                                    <button type="button" data-mdb-toggle="modal" data-mdb-target="#modal-delete{{ playlist._id }}" 
+                                        class="btn custom-btn btn-small waves-effect red accent-4">
+                                        <i class="far fa-trash-alt"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
 
-                                <!-- Modal for Delete Confirmation -->
-                                <div id="modal-delete{{ playlist._id }}" class="modal modal-overlay fade" style="height: 18%; width: 20%;" tabindex="-1" aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content ">
-                                            <div class="modal-header">
-                                                <h5 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Do you want to Delete playlist: "{{ playlist.playlist_name}}" ?</h5>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="{{ url_for('delete_playlist', playlist_id=playlist._id) }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                                                <a href="" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                            </div>
+                            <!-- Modal for Delete Confirmation -->
+                            <div id="modal-delete{{ playlist._id }}" class="modal modal-overlay fade" tabindex="-1"
+                                aria-labelledby="modal-deleteLabel-{{ playlist._id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content ">
+                                        <div class="modal-header">
+                                            <h5 id="modal-deleteLabel-{{ playlist._id }}" class="modal-title">Do you want to Delete playlist: "{{ playlist.playlist_name}}" ?</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{{ url_for('delete_playlist', playlist_id=playlist._id) }}"
+                                                class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                                            <a href="" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
-                            {% endif %} 
                             </div>
-
-
+                            {% endif %}
                         </div>
-   
                     </div>
-                    
-                </a>
+                </div>
             </div>
-
+            
+            
+        </div>
         {% endfor %}
     </div>
 </div>
