@@ -428,7 +428,7 @@ Click the settings tab and then click the Reveal Config Vars button and add the 
 MONGO_URI, MONGO_DBNAME and SECRET_KEY. You must have the connection details in order to do this. These details are private and not disclosed in this repository 
 for security purposes.**
 
-1. Navigate to the GitHub [Repository](https://github.com/Daisy-McG/Motorbike-Event-Finder).
+1. Navigate to the GitHub [Repository](https://github.com/Mathias-SantAnna/Spoty-Share-List).
 1. Click the Code drop down menu.
 1. Either Download the ZIP file, unpackage locally and open with IDE (This route ends here) OR Copy Git URL from the HTTPS dialogue box.
 1. Open your developement editor of choice and open a terminal window in a directory of your choice.
